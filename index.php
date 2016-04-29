@@ -1,4 +1,4 @@
-<?php include("./inc/header.php"); ?>
+<?php include("./header.php"); ?>
 <div id="wrapper">
 
 <ul id="buttons_dl">
@@ -292,7 +292,7 @@ $('#slider_duo_bottom').slider_nike({
 
 
 </div><!-- /wrapper -->
-<?php include("./inc/footer.php"); ?>
+<?php include("./footer.php"); ?>
 <script>
 $(document).ready(function() {
 
