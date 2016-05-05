@@ -13,6 +13,14 @@ function generateRandomString() {
 	return $randomString;
 }
 ?>
+<?php
+function generateRandomImgPlaceholder() {
+	$length1 = rand(500, 1200);
+	$length2 = rand(500, 1200);
+	$randomImgPlaceholder = "http://placehold.it/".$length1."x".$length2;
+	return $randomImgPlaceholder;
+}
+?>
 <!doctype html>
 <html lang="fr">
 <head>
