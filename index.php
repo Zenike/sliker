@@ -1,4 +1,55 @@
-<?php include("./header.php"); ?>
+<?php 
+$pathLinkFile="./assets/";
+?>
+<?php
+function generateRandomString() {
+	$length = rand(5, 20);
+	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	$charactersLength = strlen($characters);
+	$randomString = '';
+	for ($i = 0; $i < $length; $i++) {
+		$randomString .= $characters[rand(0, $charactersLength - 1)];
+	}
+	return $randomString;
+}
+?>
+<?php
+function generateRandomImgPlaceholder() {
+	$length1 = rand(500, 1200);
+	$length2 = rand(500, 1200);
+	$randomImgPlaceholder = "http://placehold.it/".$length1."x".$length2;
+	return $randomImgPlaceholder;
+}
+?>
+<!doctype html>
+<html lang="fr">
+<head>
+	<title>formflex</title>
+	
+	<meta name="description" content="Description courte de la page" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="fr" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	
+	<link href="<?php echo $pathLinkFile; ?>css/style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+	<link href="<?php echo $pathLinkFile; ?>img/favicon.png" rel="shortcut icon" type="image/png" />
+</head>
+
+<body>
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
 <div id="wrapper">
 
 <ul id="buttons_dl">
@@ -292,7 +343,17 @@ $('#slider_duo_bottom').slider_nike({
 
 
 </div><!-- /wrapper -->
-<?php include("./footer.php"); ?>
+</div><!-- \wrapper -->
+
+<script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+<!--[if lt IE 9]>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+<script type="text/javascript" src="<?php echo $pathLinkFile; ?>js/sliker.js"></script>
+<script type="text/javascript" src="<?php echo $pathLinkFile; ?>js/startpack.js"></script>
+<script type="text/javascript" src="<?php echo $pathLinkFile; ?>js/monjquery.js"></script>
+</body>
+</html>
 <script>
 $(document).ready(function() {
 
