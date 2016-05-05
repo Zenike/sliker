@@ -351,7 +351,6 @@ $('#slider_duo_bottom').slider_nike({
 <![endif]-->
 <script type="text/javascript" src="<?php echo $pathLinkFile; ?>/../../../sliker.js"></script>
 <script type="text/javascript" src="<?php echo $pathLinkFile; ?>js/startpack.js"></script>
-<script type="text/javascript" src="<?php echo $pathLinkFile; ?>js/monjquery.js"></script>
 </body>
 </html>
 <script>
@@ -437,6 +436,12 @@ $('#slider_duo_bottom').slider_nike({
 
 
 
+$("pre").each(function(){
+	$(this).append('<span>code <i class="fa fa-chevron-down"></i><i class="fa fa-chevron-up"></i></span>');
+});
+$("blockquote").each(function(){
+	$(this).append('<span>infos <i class="fa fa-chevron-down"></i><i class="fa fa-chevron-up"></i></span>');
+});
 
 
 
@@ -444,4 +449,14 @@ $('#slider_duo_bottom').slider_nike({
 
 
 });//DOC READY END
+
+$("pre, blockquote").on("click","span",function(){
+	target = $(this).parents("pre, blockquote");
+
+	if(target.is(".selected")){
+		target.removeClass("selected");
+	}else{
+		target.addClass("selected");
+	}
+});
 </script>
