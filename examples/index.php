@@ -349,7 +349,7 @@ $('#slider_duo_bottom').slider_nike({
 <!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 <![endif]-->
-<script type="text/javascript" src="<?php echo $pathLinkFile; ?>js/sliker.js"></script>
+<script type="text/javascript" src="<?php echo $pathLinkFile; ?>/../../../sliker.js"></script>
 <script type="text/javascript" src="<?php echo $pathLinkFile; ?>js/startpack.js"></script>
 <script type="text/javascript" src="<?php echo $pathLinkFile; ?>js/monjquery.js"></script>
 </body>
