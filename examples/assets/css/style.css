@@ -768,6 +768,7 @@ background-clip:         padding-box;
   float: left;
   position: relative;
   overflow: hidden;
+  background-color: #fff;
 }
 .sliker .conteneur_strict .grand_slider li img.full {
   display: block;
