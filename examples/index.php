@@ -17,38 +17,20 @@ $pathLinkFile="./assets/";
 	<link href="<?php echo $pathLinkFile; ?>img/favicon.png" rel="shortcut icon" type="image/png" />
 </head>
 <body>
-</form>
 <div id="wrapper">
 
-
-<h1><i class="fa fa-link"></i> SliKer</h1>
-
-<!-- /FIN DU HEADER ------------------------------------------------------------------------------->
-<!-- /FIN DU HEADER ------------------------------------------------------------------------------->
-
-
-
-
-
-
-
-
-
-
+<h1>
+	<i class="fa fa-link"></i> SliKer
+</h1>
 
 <div id="slider_classique" class="sliker safeload">
 	<div class="conteneur_strict">
 		<ul class="grand_slider">
 			<?php for($i=1;$i<=6;$i++){ ?>
 			<li class="<?php if($i==3){echo "selected";} ?>">
-				<div class="illu_prop">
-					<img class="template" src="<?php echo $pathLinkFile; ?>img/ratio/3_2.png">
-					<span class="illu">
-						<span>
-						<span>
-							<img class="" src="<?php echo $pathLinkFile; ?>img/examples/<?php echo $i; ?>.jpg">
-						</span>
-						</span>
+				<div class="block-3-2">
+					<span>
+						<img src="<?php echo $pathLinkFile; ?>img/examples/<?php echo $i; ?>.jpg">
 					</span>
 				</div>
 			</li>
@@ -185,9 +167,8 @@ Ecrire .sliker_arrows_in; utilsera un spacing de 0px (par defaut) et les fleches
 		<ul class="grand_slider">
 			<?php for($i=1;$i<=7;$i++){ ?>
 			<li>
-				<div class="illu_prop">
-					<img class="template" src="<?php echo $pathLinkFile; ?>img/ratio/3_2.png">
-					<span class="illu">
+				<div class="block-3-2">
+					<span>
 						<img src="<?php echo $pathLinkFile; ?>img/examples/<?php echo $i; ?>.jpg">
 					</span>
 				</div>
@@ -205,9 +186,8 @@ Ecrire .sliker_arrows_in; utilsera un spacing de 0px (par defaut) et les fleches
 		<ul class="grand_slider">
 			<?php for($i=1;$i<=7;$i++){ ?>
 			<li>
-				<div class="illu_prop">
-					<img class="template" src="<?php echo $pathLinkFile; ?>img/ratio/3_2.png">
-					<span class="illu">
+				<div class="block-3-2">
+					<span>
 						<img src="<?php echo $pathLinkFile; ?>img/examples/<?php echo $i; ?>.jpg">
 					</span>
 				</div>
@@ -267,9 +247,8 @@ $('#slider_duo_bottom').slider_nike({
 			<?php for($i=1;$i<=7;$i++){ ?>
 			<li>
 				<span class="mask"></span>
-				<div class="illu_prop">
-					<img class="template" src="<?php echo $pathLinkFile; ?>img/ratio/3_2.png">
-					<span class="illu">
+				<div class="block-3-2">
+					<span>
 						<img src="<?php echo $pathLinkFile; ?>img/examples/<?php echo $i; ?>.jpg">
 					</span>
 				</div>
@@ -293,13 +272,7 @@ $('#slider_duo_bottom').slider_nike({
 
 
 
-
-
-
-
-
-</div><!-- \wrapper -->
-
+</div><!-- \#wrapper -->
 <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
 <!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
