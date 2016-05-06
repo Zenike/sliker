@@ -16,35 +16,10 @@ $pathLinkFile="./assets/";
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 	<link href="<?php echo $pathLinkFile; ?>img/favicon.png" rel="shortcut icon" type="image/png" />
 </head>
-
 <body>
-
-
 </form>
-
-
-
-
-
-
-
-
-
-
 <div id="wrapper">
 
-<ul id="buttons_dl">
-	<li>
-		<a href="./assets/js/sliker.js" target="_blank" download="sliker.js">
-		télécharger le <strong>js</strong>
-		</a>
-	</li>
-	<li>
-		<a href="./assets/less/sliker.less" target="_blank" download="sliker.less">
-		télécharger le <strong>less</strong>
-		</a>
-	</li>
-</ul>
 
 <h1><i class="fa fa-link"></i> SliKer</h1>
 
@@ -323,7 +298,6 @@ $('#slider_duo_bottom').slider_nike({
 
 
 
-</div><!-- /wrapper -->
 </div><!-- \wrapper -->
 
 <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>

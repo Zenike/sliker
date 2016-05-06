@@ -1003,36 +1003,6 @@ textarea {
 body {
   background-color: #ddd;
 }
-#buttons_dl {
-  position: absolute;
-  top: -43px;
-  right: 0px;
-}
-#buttons_dl li {
-  float: left;
-  margin-left: 5px;
-}
-#buttons_dl li a,
-#buttons_dl li button {
-  display: block;
-  padding: 0 20px;
-  height: 40px;
-  line-height: 40px;
-  color: #fff;
-  font-size: 12px;
-  background-color: yellowgreen;
-  cursor: pointer;
-  z-index: 999;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
-}
-#buttons_dl li a:hover,
-#buttons_dl li button:hover {
-  background-color: #000;
-}
 #css {
   background-color: #eee;
   overflow: auto;
