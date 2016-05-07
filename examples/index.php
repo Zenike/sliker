@@ -23,7 +23,7 @@ $pathLinkFile="./assets/";
 	<i class="fa fa-link"></i> SliKer
 </h1>
 
-<div id="slider_classique" class="sliker safeload">
+<div id="slider_classique" class="sliker safeload vam" data-arrow="fa fa-caret">
 	<div class="conteneur_strict">
 		<ul class="grand_slider">
 			<?php for($i=1;$i<=6;$i++){ ?>
@@ -37,11 +37,8 @@ $pathLinkFile="./assets/";
 			<?php } ?>
 		</ul>
 	</div>
-	
-	<a class="btn_left" href=""><span><i class="fa fa-chevron-left"></i></span></a>
-	<a class="btn_right" href=""><span><i class="fa fa-chevron-right"></i></span></a>
-	<a class="btn_fs" href=""><span><i class="fa fa-expand"></i></span></a>
 </div>
+<!--
 <pre>
 &ltdiv id="slider_classique" class="sliker">
 	&ltdiv class="conteneur_strict">
@@ -259,14 +256,13 @@ $('#slider_duo_bottom').slider_nike({
 	
 	<a class="btn_left" href=""><span><i class="fa fa-chevron-left"></i></span></a>
 	<a class="btn_right" href=""><span><i class="fa fa-chevron-right"></i></span></a>
-	<!--<a class="btn_fs" href=""><span><i class="fa fa-expand"></i></span></a>-->
 </div>
 <blockquote>
 - Pour créer ce visuel, cibler en css le div ".conteneur_strict" et le rendre plus petit que 100% (valeur par défaut width:100%)<br />
 <br />
 - Pour l'effet "images inactives noircies", ajouter cette structure (&ltspan class="mask">&lt/span>) dans chaque li
 </blockquote>
-
+-->
 
 
 

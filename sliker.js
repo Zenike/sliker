@@ -21,6 +21,7 @@ var defaults = {
 'creer_afficheur': 0,
 'fading_mode': 0,
 'buffering_nbr': 1,
+'fullscreen': 1,
 };
 
 // to avoid confusions, use "plugin" to reference the current instance of the object
@@ -69,17 +70,34 @@ $(window).load(function() {
 
 /* INIT *****************************************************************************************************************************/
 plugin.init = function() {
+
 	// the plugin's final properties are the merged default and user-provided options (if any)
 	plugin.settings = $.extend({}, defaults, options);
 	
+	//autocréation du bouton fullscreen
+	if (mobile == false && plugin.settings.fullscreen == 1 && plugin.settings.liquide == 1) {
+		$element.append('<a class="btn_fs" href=""><span><i class="fa fa-expand"></i></span></a>');
+	}
+	
+	//autocréation des flèches
+	if (mobile == false) {
+		if($element.is("[data-arrow]")){
+			var icon = $element.attr("data-arrow");
+		}else{
+			var icon = "fa fa-chevron"
+		}
+		$element.append('<a class="btn_left" href=""><span><i class="'+icon+'-left"></i></span></a>');
+		$element.append('<a class="btn_right" href=""><span><i class="'+icon+'-right"></i></span></a>');
+	}
+	
 	//modifs spéciales mobile
 	if (mobile != false) {
-		$element.find(".btn_left, .btn_right").css("display", "none");
 		if (plugin.settings.drag == "mobile") {
 			plugin.settings.drag = 1;
 		}
 		
 		$element.addClass("mobile");
+		
 		if (plugin.settings.pc_only == 1) {
 			$element.remove();
 		}
@@ -101,10 +119,12 @@ plugin.init = function() {
 	if ($("#cache_slider").length == 0 && plugin.settings.isolement == 1) {
 		$("body").append('<div id="cache_slider"></div>');
 	}
+	
 	//en mode drag, pas de mode loop
 	if (plugin.settings.drag == 1) {
 		plugin.settings.loop = 0;
 	}
+	
 	//en mode fading, pas de mode loop non plus
 	if (plugin.settings.fading_mode == 1) {
 		plugin.settings.loop = 0;
@@ -160,10 +180,6 @@ plugin.init = function() {
 
 
 	/* FULLSCREEN SYSTEM *********************************************************/
-	if (mobile != false) {
-		$(".btn_fs").hide();
-	}
-
 	$element.on("click", ".btn_fs", function() {
 		clearInterval(defilement_auto);
 
@@ -263,12 +279,12 @@ plugin.init = function() {
 	$(window).scroll(function() {
 		$("#cache_slider").fadeOut();
 	});
+	
 	$("body").on("click", "#cache_slider", function() {
 		$("#cache_slider").fadeOut();
 	});
 	
-	//charger les images au fur et à mesure.
-	//nécessite un attribut data-src sur les images et des src vides
+	//charger les images au fur et à mesure (nécessite un attribut data-src sur les images et des src vides)
 	plugin.buffering_imgs();
 };
 /* END INIT *****************************************************************************************************************************/
@@ -512,8 +528,6 @@ plugin.lacher = function(e) {
 plugin.reset = function() {
 	if (plugin.settings.liquide == 1) {
 		$element.find(".conteneur_strict .grand_slider li").width($element.find(".conteneur_strict").width());
-	}else{
-		$element.find(".btn_fs").remove();
 	}
 	
 	/* supprimer les li rajouts, ils vont être calculés à nouveau */
