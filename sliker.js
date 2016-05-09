@@ -76,7 +76,9 @@ plugin.init = function() {
 	
 	//autocréation du bouton fullscreen
 	if (mobile == false && plugin.settings.fullscreen == 1 && plugin.settings.liquide == 1) {
-		$element.append('<a class="btn_fs" href=""><span><i class="fa fa-expand"></i></span></a>');
+		if($element.find(".btn_fs").length < 1){
+			$element.append('<a class="btn_fs" href=""><span><i class="fa fa-expand"></i></span></a>');
+		}
 	}
 	
 	//autocréation des flèches
@@ -86,8 +88,10 @@ plugin.init = function() {
 		}else{
 			var icon = "fa fa-chevron"
 		}
-		$element.append('<a class="btn_left" href=""><span><i class="'+icon+'-left"></i></span></a>');
-		$element.append('<a class="btn_right" href=""><span><i class="'+icon+'-right"></i></span></a>');
+		if($element.find(".btn_left").length < 1){
+			$element.append('<a class="btn_left" href=""><span><i class="'+icon+'-left"></i></span></a>');
+			$element.append('<a class="btn_right" href=""><span><i class="'+icon+'-right"></i></span></a>');
+		}
 	}
 	
 	//modifs spéciales mobile
