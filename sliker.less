@@ -124,24 +124,37 @@ z-index: 2;
 	font-size: 0;
 		li {
 		display: inline-block;
-		background-color: @gris_moyen;
-		width: 15px;
-		height: 15px;
-		/*height: auto;*/
 		margin-right: 3px;
 		margin-left: 3px;
-		text-align: center;
-		color: #eee;
-		.round(30px);
-		/*.round(2px);*/
-		cursor: pointer;
-		overflow: hidden;
-		text-indent: -100px;
-		/*text-indent: 0;*/
+			span {
+			display: block;
+			background-color: @gris_moyen;
+			width: 15px;
+			height: 15px;
+			/*height: auto;*/
+			text-align: center;
+			color: #eee;
+			.round(30px);
+			/*.round(2px);*/
+			cursor: pointer;
+			overflow: hidden;
+			text-indent: -100px;
+			/*text-indent: 0;*/
+			}
+			i {
+			font-size: 18px;
+			cursor: pointer;
+			color: @gris_moyen;
+			}
 		}
 		li:hover, li.selected {
-		background-color: @theme;
-		color: #fff;
+			span {
+			background-color: @theme;
+			color: #fff;
+			}
+			i {
+			color: @theme;
+			}
 		}
 	}
 	.sliker_bullets_in();
@@ -264,10 +277,20 @@ z-index: 2;
 	}
 	ul.boutons {
 		li {
-		background-color: @bg;
+			span {
+			background-color: @bg;
+			}
+			i {
+			color: @bg;
+			}
 		}
 		li:hover, li.selected {
-		background-color: @color;
+			span {
+			background-color: @color;
+			}
+			i {
+			color: @color;
+			}
 		}
 	}
 }
@@ -275,9 +298,14 @@ z-index: 2;
 .sliker_bullets(@size,@round) {
 	ul.boutons {
 		li {
-		width: @size;
-		height: @size;
-		.round(@round);
+			span {
+			width: @size;
+			height: @size;
+			.round(@round);
+			}
+			i {
+			font-size: @size;
+			}
 		}
 	}
 }

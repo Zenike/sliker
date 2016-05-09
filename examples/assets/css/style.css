@@ -795,12 +795,15 @@ background-clip:         padding-box;
 }
 .sliker ul.boutons li {
   display: inline-block;
+  margin-right: 3px;
+  margin-left: 3px;
+}
+.sliker ul.boutons li span {
+  display: block;
   background-color: #aaa;
   width: 15px;
   height: 15px;
   /*height: auto;*/
-  margin-right: 3px;
-  margin-left: 3px;
   text-align: center;
   color: #eee;
   -webkit-border-radius: 30px;
@@ -814,10 +817,19 @@ background-clip:         padding-box;
   text-indent: -100px;
   /*text-indent: 0;*/
 }
-.sliker ul.boutons li:hover,
-.sliker ul.boutons li.selected {
+.sliker ul.boutons li i {
+  font-size: 18px;
+  cursor: pointer;
+  color: #aaa;
+}
+.sliker ul.boutons li:hover span,
+.sliker ul.boutons li.selected span {
   background-color: #9ACD32;
   color: #fff;
+}
+.sliker ul.boutons li:hover i,
+.sliker ul.boutons li.selected i {
+  color: #9ACD32;
 }
 .sliker ul.boutons {
   position: absolute;

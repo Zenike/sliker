@@ -23,7 +23,7 @@ $pathLinkFile="./assets/";
 	<i class="fa fa-link"></i> SliKer
 </h1>
 
-<div id="slider_classique" class="sliker safeload vam" data-arrow="fa fa-caret">
+<div id="slider_classique" class="sliker safeload vam" data-arrow="fa fa-caret" data-bullet="fa fa-home">
 	<div class="conteneur_strict">
 		<ul class="grand_slider">
 			<?php for($i=1;$i<=6;$i++){ ?>

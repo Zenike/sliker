@@ -605,23 +605,25 @@ plugin.reset = function() {
 	}
 
 	/* CREER DES PUCES (lien direct de page) */
+	//supprimer les puces totalement avant de les recréer
 	$element.find(".boutons").remove();
+	
+	//si un autre slider sert de menu (ou si celui ci est un menu) => pas besoin de puces
 	if (plugin.settings.type != "visualiseur" && plugin.settings.type != "menu") {
 		$element.find(".conteneur_strict").after('<ul class="boutons hide_if_one"></ul>');
+		
 		for (var i = 1; i <= nbr_groupes; i++) {
-			$element.find(".boutons").append("<li><span>" + i + "</span></li>");
+			//créer les puces, check l'attr data-bullet qui permet de créer des puces icones
+			if($element.is("[data-bullet]")){
+				$element.find(".boutons").append('<li><i class="'+$element.attr("data-bullet")+'"></i></li>');
+			}else{
+				$element.find(".boutons").append("<li><span>"+i+"</span></li>");
+			}
 		}
 		if ($element.find(".boutons li").length <= 1) {
 			$element.find(".boutons.hide_if_one").hide();
 		}
-		/*
-		largeur_ul_boutons = ($element.find(".boutons li").outerWidth(true)) * nbr_groupes;
-		if (largeur_ul_boutons > $element.find(".conteneur_strict").width()) {
-			largeur_ul_boutons = $element.find(".conteneur_strict").width();
-		}
-		$element.find(".boutons").width(largeur_ul_boutons);
-		*/
-	}/*if*/
+	}
 	/* END CREER DES PUCES */
 
 	/* à lancer une seule fois pour la première selection de puce si il y a */
