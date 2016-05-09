@@ -788,7 +788,6 @@ background-clip:         padding-box;
   margin: auto;
   text-align: center;
   z-index: 10;
-  /* inter (en dessous) */
   left: 0;
   width: 100%;
   font-size: 0;
@@ -803,7 +802,6 @@ background-clip:         padding-box;
   background-color: #aaa;
   width: 15px;
   height: 15px;
-  /*height: auto;*/
   text-align: center;
   color: #eee;
   -webkit-border-radius: 30px;
@@ -811,11 +809,9 @@ background-clip:         padding-box;
   -ms-border-radius: 30px;
   -o-border-radius: 30px;
   border-radius: 30px;
-  /*.round(2px);*/
   cursor: pointer;
   overflow: hidden;
   text-indent: -100px;
-  /*text-indent: 0;*/
 }
 .sliker ul.boutons li i {
   font-size: 18px;

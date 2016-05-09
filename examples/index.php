@@ -23,7 +23,7 @@ $pathLinkFile="./assets/";
 	<i class="fa fa-link"></i> SliKer
 </h1>
 
-<div id="slider_classique" class="sliker safeload vam" data-arrow="fa fa-caret" data-bullet="fa fa-home">
+<div id="slider_classique" class="sliker safeload vam" data-arrow="fa fa-caret" data-bullet="fa fa-star">
 	<div class="conteneur_strict">
 		<ul class="grand_slider">
 			<?php for($i=1;$i<=6;$i++){ ?>
@@ -38,31 +38,21 @@ $pathLinkFile="./assets/";
 		</ul>
 	</div>
 </div>
-<!--
 <pre>
-&ltdiv id="slider_classique" class="sliker">
+&ltdiv id="slider_classique" class="sliker safeload vam" data-arrow="fa fa-caret" data-bullet="fa fa-star">
 	&ltdiv class="conteneur_strict">
 		&ltul class="grand_slider">
 			&lt?php for($i=1;$i&lt=6;$i++){ ?>
 			&ltli class="&lt?php if($i==3){echo "selected";} ?>">
-				&ltdiv class="illu_prop">
-					&ltimg class="template" src="&lt?php echo $pathLinkFile; ?>img/ratio/3_2.png">
-					&ltspan class="illu">
-						&ltspan>
-						&ltspan>
-							&ltimg class="" src="&lt?php echo $pathLinkFile; ?>img/examples/&lt?php echo $i; ?>.jpg">
-						&lt/span>
-						&lt/span>
+				&ltdiv class="block-3-2">
+					&ltspan>
+						&ltimg src="&lt?php echo $pathLinkFile; ?>img/examples/&lt?php echo $i; ?>.jpg">
 					&lt/span>
 				&lt/div>
 			&lt/li>
 			&lt?php } ?>
 		&lt/ul>
 	&lt/div>
-	
-	&lta class="btn_left" href="">&ltspan>&lti class="fa fa-chevron-left">&lt/i>&lt/span>&lt/a>
-	&lta class="btn_right" href="">&ltspan>&lti class="fa fa-chevron-right">&lt/i>&lt/span>&lt/a>
-	&lta class="btn_fs" href="">&ltspan>&lti class="fa fa-expand">&lt/i>&lt/span>&lt/a>
 &lt/div>
 
 $('#slider_classique').slider_nike({
@@ -79,20 +69,24 @@ $('#slider_classique').slider_nike({
 'drag':0,
 'creer_afficheur': 0,
 'fading_mode': 1,
+'buffering_nbr': 1,
+'fullscreen': 1,
 });
 </pre>
 <blockquote>
 - mettre ".full" sur la balise "img" si on souhaite qu'elle prenne 100% du li, sinon elle prendra sa taille réelle<br />
 <br />
-- conseil: si les images sont de formats différents, utiliser un .illu_prop pour les encadrer (voir startpack).<br />
-<br />
 - départ sur un slide précis possible (comme ici) grace à la classe "selected" à mettre sur un "li".<br />
 <br />
 - pour masquer les puces, mettre la class "no_btn" sur la base du slider.<br />
 <br />
-- pour afficher les puces en dehors du slier (en dessous) plutot que dedans, cibler "ul.boutons" en css et le passer en "position: static"<br />
+- mettre la class "vam" (pour vertical align middle) sur la base du slider pour que les li soient alignés verticalement<br />
 <br />
-- mettre la classe "safeload" à la racine (.sliker) afin d'avoir un chargement moins saccadé dans le cas d'un slider élastique
+- mettre la classe "safeload" à la racine (.sliker) afin d'avoir un chargement moins saccadé dans le cas d'un slider élastique (une image)<br />
+<br />
+- utiliser l'attribut data-arrow sur la base du slider en indiquant une class font-awesome (ou autre) sans la terminaison -left -right (ex: "fa fa-caret")<br />
+<br />
+- utiliser l'attribut data-bullet pour utiliser une icone comme puce à la place d'un span arrondi => spécifier la class font-awesome entière dans l'attribut (ex: "fa fa-star")<br />
 <br />
 <br />
 LES VARIABLES:<br />
@@ -109,6 +103,8 @@ LES VARIABLES:<br />
 'drag': si on peut slider en cliquer/glisser sur les photos (ne peut pas être désactivé sur mobile) (0 ou 1)<br />
 'creer_afficheur': crée automatiquement une structure de zoom au dessus du slider (0 ou 1)<br />
 'fading_mode': le défilement des slides se fait en fondu et plus en glissé (0 ou 1)<br />
+'buffering_nbr': nombre d'images suivants les images visibles qui sont déjà chargées (classique: 1 pour un slider élastique, sinon nbr identique au images visibles)<br />
+'fullscreen': affiche ou non le bouton (et donc la fonctionnalité) fullscreen(0 ou 1)<br />
 <br />
 <br />
 VARIABLES LESS
@@ -121,8 +117,8 @@ Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (
 @bg pour la couleur active (survol) des puces et fleches.<br />
 <br /><br />
 .sliker_bullets(@size,@round);<br />
-@size pour la taille (hauteur et largeur) de la puce.<br />
-@round pour l'arrondi de la puce (ex:2px pour un carré légèrement arrondi)<br />
+@size pour la taille: hauteur et largeur de la puce ou font-size de l'icone.<br />
+@round pour l'arrondi de la puce (ex:2px pour un carré légèrement arrondi) => inutile si la puce est une icone<br />
 <br /><br />
 .sliker_bullets_out(@spacing);<br />
 @spacing pour modifier les marges (top et bot) des boutons<br />
@@ -173,10 +169,6 @@ Ecrire .sliker_arrows_in; utilsera un spacing de 0px (par defaut) et les fleches
 			<?php } ?>
 		</ul>
 	</div>
-	
-	<a class="btn_left" href=""><span><i class="fa fa-chevron-left"></i></span></a>
-	<a class="btn_right" href=""><span><i class="fa fa-chevron-right"></i></span></a>
-	<a class="btn_fs" href=""><span><i class="fa fa-expand"></i></span></a>
 </div>
 <div id="slider_duo_bottom" class="sliker">
 	<div class="conteneur_strict">
@@ -192,10 +184,6 @@ Ecrire .sliker_arrows_in; utilsera un spacing de 0px (par defaut) et les fleches
 			<?php } ?>
 		</ul>
 	</div>
-	
-	<a class="btn_left" href=""><span><i class="fa fa-chevron-left"></i></span></a>
-	<a class="btn_right" href=""><span><i class="fa fa-chevron-right"></i></span></a>
-	<a class="btn_fs" href=""><span><i class="fa fa-expand"></i></span></a>
 </div>
 <pre>
 $('#slider_duo_top').slider_nike({
@@ -253,16 +241,12 @@ $('#slider_duo_bottom').slider_nike({
 			<?php } ?>
 		</ul>
 	</div>
-	
-	<a class="btn_left" href=""><span><i class="fa fa-chevron-left"></i></span></a>
-	<a class="btn_right" href=""><span><i class="fa fa-chevron-right"></i></span></a>
 </div>
 <blockquote>
 - Pour créer ce visuel, cibler en css le div ".conteneur_strict" et le rendre plus petit que 100% (valeur par défaut width:100%)<br />
 <br />
 - Pour l'effet "images inactives noircies", ajouter cette structure (&ltspan class="mask">&lt/span>) dans chaque li
 </blockquote>
--->
 
 
 
@@ -291,6 +275,8 @@ $(document).ready(function() {
 	'drag':0,
 	'creer_afficheur': 0,
 	'fading_mode': 1,
+	'buffering_nbr': 1,
+	'fullscreen': 1,
 	});
 
 	$('#slider_long').slider_nike({
@@ -307,6 +293,8 @@ $(document).ready(function() {
 	'drag':0,
 	'creer_afficheur': 0,
 	'fading_mode': 0,
+	'buffering_nbr': 1,
+	'fullscreen': 1,
 	});
 
 	$('#slider_duo_top').slider_nike({
@@ -323,6 +311,8 @@ $(document).ready(function() {
 	'drag':0,
 	'creer_afficheur': 0,
 	'fading_mode': 1,
+	'buffering_nbr': 1,
+	'fullscreen': 0,
 	});
 
 	$('#slider_duo_bottom').slider_nike({
@@ -339,6 +329,8 @@ $(document).ready(function() {
 	'drag':0,
 	'creer_afficheur': 1,
 	'fading_mode': 0,
+	'buffering_nbr': 3,
+	'fullscreen': 0,
 	});
 
 	$("pre").each(function(){

@@ -21,7 +21,7 @@ var defaults = {
 'creer_afficheur': 0,
 'fading_mode': 0,
 'buffering_nbr': 1,
-'fullscreen': 1,
+'fullscreen': 0,
 };
 
 // to avoid confusions, use "plugin" to reference the current instance of the object
