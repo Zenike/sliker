@@ -15,7 +15,7 @@
 ## Utilisation
 - créer la structure html suivant l'exemple
 ```html
-<div id="slider_classique" class="sliker">
+<div id="slider_example" class="sliker">
 	<div class="conteneur_strict">
 		<ul class="grand_slider">
 			<li><img src="./example.jpg"></li>
@@ -27,20 +27,20 @@
 ```
 - déclarer le slider en javascript
 ```javascript
-$('#slider_classique').slider_nike({
-'nbr_li':1,
-'vitesse_auto':3000,
-'vitesse': 500,
-'auto':0,
-'type':"none",
-'cible':"none",
-'isolement': 0,
-'pc_only':0,
-'loop':0,
-'liquide':1,
-'drag':0,
-'creer_afficheur': 0,
-'fading_mode': 1,
+$('#slider_example').slider_nike({
+'nbr_li':1, //nombre d'éléments qui défilent à chaque mouvement.
+'vitesse_auto':3000, //temps entre deux mouvements automatiques.
+'vitesse': 500, //rapidité du mouvement (automatique ou manuel, même paramètre).
+'auto':0, //activer ou non le défilement automatique.
+'type':"none", //définit le role du slider dans le cas d'une liaison. Options: visualiseur, menu, none.
+'cible':"none", //spécifie l'id du slider compagnon dans le cas d'une liaison (ex: #slider_deux).
+'isolement': 0, //si actif, le slider est isolé par un fond noir transparent lors de son utilisation.
+'pc_only':0, //si actif, le slider sera éffacé sur tous les dispositifs mobiles.
+'loop':0, //si actif, le slider répetera son contenu indéfiniment, créant un rail infini.
+'liquide':1, //si actif, l'élément actif prendra toute la zone du slider et suivra tout redimensionnement de celui-ci.
+'drag':0, //permet la manipulation du slider aux doigts ou en cliquer/glisser à la souris.
+'creer_afficheur': 0, //crée automatiquement une zone avec l'image zoomée au dessus du slider.
+'fading_mode': 1, //remplace la transition en "déplacement de rail" par un fondu.
 });
 ```
 
