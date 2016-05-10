@@ -1,5 +1,39 @@
-# Readme
-sliker is a responsive jQuery slideshow
+# Sliker
+### <http://flexvision.be/formflex/sliker.php>
+
+`sliker` est un plugin slider/slideshow écrit en `jQuery`
+
+## dépendances
+- `jQuery`: une version récente sans limitation précise
+- `Less`: le css de ce plugin est écrit en LESS, quelques variables de couleur devront être définies pour son bon fonctionnement.
+
+## Installation
+1. récuperer les fichiers `sliker.less` et `sliker.js` à la racine du projet GitHUb
+2. inclure le fichier `sliker.js` dans la document avant la fermeture de la balise `</body>`
+3. lier et génerer un css à partir de `sliker.less`
+
+## Utilisation
+- créer la structure html suivant l'exemple
+- déclarer le slider en javascript
+```javascript
+$('#slider_classique').slider_nike({
+'nbr_li':1,
+'vitesse_auto':3000,
+'vitesse': 500,
+'auto':0,
+'type':"none",
+'cible':"none",
+'isolement': 0,
+'pc_only':0,
+'loop':0,
+'liquide':1,
+'drag':0,
+'creer_afficheur': 0,
+'fading_mode': 1,
+});
+```
+
+
 
 - mettre ".full" sur la balise "img" si on souhaite qu'elle prenne 100% du li, sinon elle prendra sa taille réelle<br />
 <br />
