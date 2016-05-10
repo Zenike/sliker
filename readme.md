@@ -14,6 +14,17 @@
 
 ## Utilisation
 - créer la structure html suivant l'exemple
+```html
+<div id="slider_classique" class="sliker">
+	<div class="conteneur_strict">
+		<ul class="grand_slider">
+			<li><img src="./example.jpg"></li>
+			<li><img src="./example.jpg"></li>
+			<li><img src="./example.jpg"></li>	
+		</ul>
+  </div>
+</div>
+```
 - déclarer le slider en javascript
 ```javascript
 $('#slider_classique').slider_nike({
