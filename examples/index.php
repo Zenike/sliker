@@ -74,6 +74,7 @@ $('#slider_classique').slider_nike({
 });
 </pre>
 <blockquote>
+<?php include("../readme.md"); ?>
 - mettre ".full" sur la balise "img" si on souhaite qu'elle prenne 100% du li, sinon elle prendra sa taille réelle<br />
 <br />
 - départ sur un slide précis possible (comme ici) grace à la classe "selected" à mettre sur un "li".<br />
