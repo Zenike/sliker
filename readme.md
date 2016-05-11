@@ -20,9 +20,9 @@
 		<ul class="grand_slider">
 			<li><img src="./example.jpg"></li>
 			<li><img src="./example.jpg"></li>
-			<li><img src="./example.jpg"></li>	
+			<li><img src="./example.jpg"></li>
 		</ul>
-  </div>
+	</div>
 </div>
 ```
 - déclarer le slider en javascript
@@ -37,13 +37,26 @@ $('#slider_example').slider_nike({
 'isolement': 0, //si actif, le slider est isolé par un fond noir transparent lors de son utilisation.
 'pc_only':0, //si actif, le slider sera éffacé sur tous les dispositifs mobiles.
 'loop':0, //si actif, le slider répetera son contenu indéfiniment, créant un rail infini.
-'liquide':1, //si actif, l'élément actif prendra toute la zone du slider et suivra tout redimensionnement de celui-ci.
+'liquide':1, //si actif, l'élément prendra, de façon élastique, toute la zone du slider.
 'drag':0, //permet la manipulation du slider aux doigts ou en cliquer/glisser à la souris.
 'creer_afficheur': 0, //crée automatiquement une zone avec l'image zoomée au dessus du slider.
 'fading_mode': 1, //remplace la transition en "déplacement de rail" par un fondu.
 });
 ```
 
+## Personnalisation
+### Couleurs
+Par défaut, le less de Slike chercher après la variable @theme et se sert de celle-ci pour coloriser ses éléments de navigation.
+Il est donc nécessaire que cette variable existe.
+Il est toutefois possible de modifier ses couleurs indépendement en utilisant un mixin LESS :
+```css
+.sliker_colors(@color,@bg);<br />
+@color pour la couleur de fond (au repos) des puces et fleches.<br />
+@bg pour la couleur active (survol) des puces et fleches.<br />
+```
+
+
+- 
 
 
 - mettre ".full" sur la balise "img" si on souhaite qu'elle prenne 100% du li, sinon elle prendra sa taille réelle<br />
@@ -61,22 +74,6 @@ $('#slider_example').slider_nike({
 - utiliser l'attribut data-bullet pour utiliser une icone comme puce à la place d'un span arrondi => spécifier la class font-awesome entière dans l'attribut (ex: "fa fa-star")<br />
 <br />
 <br />
-LES VARIABLES:<br />
-'nbr_li': indique combien de li passer à chaque action de slide (pas le nombre de li visibles !!!)<br />
-'vitesse_auto': le temps entre deux défilements automatiques (en millisecondes)<br />
-'vitesse': la vitesse de déplacement du slider en mouvement<br />
-'auto': si le slider bouge de lui même (1) ou si il est totalement statique (0)<br />
-'type': soit rien de spécial (none), soit le zoom d'un double slider (visualiseur) soit le menu (menu)<br />
-'cible': dans le cas d'un double slider, donner l'id de son partenaire (ex: "#slider_articles")<br />
-'isolement': si un fond noir apparait quand on active le slider (1 ou 0)<br />
-'pc_only': si pc only est actif (1), ce slider disparait sur un périphérique mobile<br />
-'loop': si le slider boucle (première image après la dernière, etc) (0 ou 1).<br />
-'liquide': si les li prennent toute la largeur du slide (100%) (0 ou 1)<br />
-'drag': si on peut slider en cliquer/glisser sur les photos (ne peut pas être désactivé sur mobile) (0 ou 1)<br />
-'creer_afficheur': crée automatiquement une structure de zoom au dessus du slider (0 ou 1)<br />
-'fading_mode': le défilement des slides se fait en fondu et plus en glissé (0 ou 1)<br />
-'buffering_nbr': nombre d'images suivants les images visibles qui sont déjà chargées (classique: 1 pour un slider élastique, sinon nbr identique au images visibles)<br />
-'fullscreen': affiche ou non le bouton (et donc la fonctionnalité) fullscreen(0 ou 1)<br />
 <br />
 <br />
 VARIABLES LESS
@@ -84,9 +81,7 @@ VARIABLES LESS
 Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (par son id par exemple) et lui appliquer un de ces mixins: 
 <br />
 <br />
-.sliker_colors(@color,@bg);<br />
-@color pour la couleur de fond (au repos) des puces et fleches.<br />
-@bg pour la couleur active (survol) des puces et fleches.<br />
+
 <br /><br />
 .sliker_bullets(@size,@round);<br />
 @size pour la taille: hauteur et largeur de la puce ou font-size de l'icone.<br />
