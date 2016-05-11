@@ -48,12 +48,19 @@ $('#slider_example').slider_nike({
 ### Couleurs
 Par défaut, le less de Slike chercher après la variable @theme et se sert de celle-ci pour coloriser ses éléments de navigation.
 Il est donc nécessaire que cette variable existe.
-Il est toutefois possible de modifier ses couleurs indépendement en utilisant un mixin LESS :
+Il est toutefois possible de modifier ses couleurs indépendement en utilisant en ciblant le slider en CSS et 
+en utilisant un mixin LESS :
 ```css
 .sliker_colors(@color,@bg);
 ```
 - @color pour la couleur de fond (au repos) des puces et fleches.
 - @bg pour la couleur active (survol) des puces et fleches.
+#### Exemple
+```css
+#slider_example{
+.sliker_colors(red,white);
+}
+```
 
 
 - 
