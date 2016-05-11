@@ -3,17 +3,17 @@
 
 `sliker` est un plugin slider/slideshow écrit en `jQuery`
 
-## dépendances
+# dépendances
 - `jQuery`: une version récente sans limitation précise
 - `Less`: le css de ce plugin est écrit en LESS, quelques variables de couleur devront être définies pour son bon fonctionnement.
 - ´FontAwesome´: les flèches de navigation utilisent des icones FontAwesome. Il est possible de s'en passer (voir plus bas)
 
-## Installation
+# Installation
 1. récuperer les fichiers `sliker.less` et `sliker.js` à la racine du projet GitHUb
 2. inclure le fichier `sliker.js` dans la document avant la fermeture de la balise `</body>`
 3. lier et génerer un css à partir de `sliker.less`
 
-## Utilisation
+# Utilisation
 - créer la structure html suivant l'exemple
 ```html
 <div id="slider_example" class="sliker">
@@ -45,9 +45,9 @@ $('#slider_example').slider_nike({
 });
 ```
 
-## Personnalisation
+# Personnalisation
 
-### Couleurs
+## Couleurs
 Par défaut, le less de Slike chercher après la variable @theme et se sert de celle-ci pour coloriser ses éléments de navigation.
 Il est donc nécessaire que cette variable existe.
 Il est toutefois possible de modifier ses couleurs indépendement en utilisant en ciblant le slider en CSS et 
@@ -65,7 +65,7 @@ en utilisant un mixin LESS :
 }
 ```
 
-### Icones
+## Icones
 Par défaut, Sliker utilise des icones font-awesome pour ses flèches de navigation et des span arrondis en CSS pour ses puces.
 Ces éléments sont remplaçables facilement par d'autres icones (FontAwesome ou autre).
 
