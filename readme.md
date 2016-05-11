@@ -50,10 +50,10 @@ Par défaut, le less de Slike chercher après la variable @theme et se sert de c
 Il est donc nécessaire que cette variable existe.
 Il est toutefois possible de modifier ses couleurs indépendement en utilisant un mixin LESS :
 ```css
-.sliker_colors(@color,@bg);<br />
-@color pour la couleur de fond (au repos) des puces et fleches.<br />
-@bg pour la couleur active (survol) des puces et fleches.<br />
+.sliker_colors(@color,@bg);
 ```
+- @color pour la couleur de fond (au repos) des puces et fleches.
+- @bg pour la couleur active (survol) des puces et fleches.
 
 
 - 
