@@ -70,7 +70,7 @@ Par défaut, Sliker utilise des icones font-awesome pour ses flèches de navigat
 Ces éléments sont remplaçables facilement par d'autres icones (FontAwesome ou autre).
 
 - pour remplacer les flèches, ajouter un attribut ´data-arrow´ à la base du slider et y spécifier la classe FontAwesome ou autre (set d'icone personnalisé). Si l'icone utilisée possède une terminaison en -left ou en -right, le système appliquera les flèches correpondantes au coté ciblé.
-- 
+
 #### Exemple
 ```html
 <div id="slider_example" class="sliker" data-arrow="fa fa-caret-left" >
