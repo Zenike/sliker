@@ -58,7 +58,7 @@ en utilisant un mixin LESS :
 - @color pour la couleur de fond (au repos) des puces et fleches.
 - @bg pour la couleur active (survol) des puces et fleches.
 
-#### Exemple
+##### Exemple
 ```css
 #slider_example{
 .sliker_colors(red,white);
@@ -71,7 +71,7 @@ Ces éléments sont remplaçables facilement par d'autres icones (FontAwesome ou
 
 - pour remplacer les flèches, ajouter un attribut ´data-arrow´ à la base du slider et y spécifier la classe FontAwesome ou autre (set d'icone personnalisé). Si l'icone utilisée possède une terminaison en -left ou en -right, le système appliquera les flèches correpondantes au coté ciblé.
 
-#### Exemple
+##### Exemple
 ```html
 <div id="slider_example" class="sliker" data-arrow="fa fa-caret-left" >
 	<div class="conteneur_strict">
