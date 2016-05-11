@@ -55,6 +55,7 @@ en utilisant un mixin LESS :
 ```
 - @color pour la couleur de fond (au repos) des puces et fleches.
 - @bg pour la couleur active (survol) des puces et fleches.
+
 #### Exemple
 ```css
 #slider_example{
