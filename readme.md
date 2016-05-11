@@ -6,6 +6,7 @@
 ## dépendances
 - `jQuery`: une version récente sans limitation précise
 - `Less`: le css de ce plugin est écrit en LESS, quelques variables de couleur devront être définies pour son bon fonctionnement.
+- ´FontAwesome´: les flèches de navigation utilisent des icones FontAwesome. Il est possible de s'en passer (voir plus bas)
 
 ## Installation
 1. récuperer les fichiers `sliker.less` et `sliker.js` à la racine du projet GitHUb
@@ -45,6 +46,7 @@ $('#slider_example').slider_nike({
 ```
 
 ## Personnalisation
+
 ### Couleurs
 Par défaut, le less de Slike chercher après la variable @theme et se sert de celle-ci pour coloriser ses éléments de navigation.
 Il est donc nécessaire que cette variable existe.
@@ -61,6 +63,19 @@ en utilisant un mixin LESS :
 #slider_example{
 .sliker_colors(red,white);
 }
+```
+
+### Icones
+Par défaut, Sliker utilise des icones font-awesome pour ses flèches de navigation et des span arrondis en CSS pour ses puces.
+Ces éléments sont remplaçables facilement par d'autres icones (FontAwesome ou autre).
+
+- pour remplacer les flèches, ajouter un attribut ´data-arrow´ à la base du slider et y spécifier la classe FontAwesome ou autre (set d'icone personnalisé). Si l'icone utilisée possède une terminaison en -left ou en -right, le système appliquera les flèches correpondantes au coté ciblé.
+- 
+#### Exemple
+```html
+<div id="slider_example" class="sliker" data-arrow="fa fa-caret-left" >
+	<div class="conteneur_strict">
+		...
 ```
 
 
