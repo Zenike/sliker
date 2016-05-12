@@ -324,6 +324,7 @@ plugin.defilement_images = function() {
 	$.event.trigger({
 		type: "sliker_defilement",
 		cpt: compteur,
+		slider: $element,
 	});
 	
 	plugin.buffering_imgs();
@@ -331,9 +332,7 @@ plugin.defilement_images = function() {
 	$element.find(".boutons li").removeClass("selected");
 	$element.find(".boutons li:nth-child(" + compteur + ")").addClass("selected");
 	
-	if(plugin.settings.fading_mode == 1){
-	
-	}else{
+	if(plugin.settings.fading_mode != 1){
 		$element.find(".grand_slider li").removeClass("selected");
 		$element.find(".grand_slider li:nth-child(" + compteur + ")").addClass("selected");
 	}
@@ -373,6 +372,12 @@ plugin.defilement_images = function() {
 			
 			$element.find(".grand_slider li").removeClass("selected");
 			$element.find(".grand_slider li:nth-child(" + compteur + ")").addClass("selected");
+		
+			$.event.trigger({
+				type: "sliker_defilement_end",
+				cpt: compteur,
+				slider: $element,
+			});
 		});
 		$element.find(".grand_slider").fadeIn();
 	}else if (compteur == nbr_groupes + 1){
@@ -390,10 +395,13 @@ plugin.defilement_images = function() {
 		$element.find(".grand_slider").animate({left: "-" + largeur_groupe * (compteur - 1) + "px"}, plugin.settings.vitesse, 'linear');
 	}
 	
-	$.event.trigger({
-		type: "sliker_defilement_end",
-		cpt: compteur,
-	});
+	if(plugin.settings.fading_mode != 1){
+		$.event.trigger({
+			type: "sliker_defilement_end",
+			cpt: compteur,
+			slider: $element,
+		});
+	}
 };
 /* ACTION DEFILEMENT *****************************************************************************************************************************/
 
