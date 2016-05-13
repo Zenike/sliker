@@ -98,6 +98,7 @@ plugin.init = function() {
 	if (mobile != false) {
 		if (plugin.settings.drag == "mobile") {
 			plugin.settings.drag = 1;
+			plugin.settings.fading_mode = 0;
 		}
 		
 		$element.addClass("mobile");
