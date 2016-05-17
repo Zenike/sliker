@@ -153,6 +153,29 @@ z-index: 2;
 			}
 		}
 	}
+	.pages {
+	overflow: hidden;
+	margin: auto;
+	text-align: center;
+	z-index: 10;
+	left: 0;
+	width: 100%;
+	font-size: 0;
+		span {
+		display: inline-block;
+		font-size: 20px;
+		color: @gris_moyen;
+		}
+		.btn_left, .btn_right {
+		font-weight: normal;
+		position: static;
+		cursor: pointer;
+		margin: 0 5px;
+			&:hover {
+			color: @theme;
+			}
+		}
+	}
 	.sliker_bullets_in();
 	
 	.btn_left, .btn_right {
@@ -307,7 +330,7 @@ z-index: 2;
 }
 
 .sliker_bullets_out(@spacing: 3px) {
-	ul.boutons {
+	ul.boutons, .pages {
 	position: static;
 	margin-top: @spacing;
 	margin-bottom: @spacing;
@@ -315,7 +338,7 @@ z-index: 2;
 }
 
 .sliker_bullets_in(@spacing: 12px) {
-	ul.boutons {
+	ul.boutons, .pages {
 	position: absolute;
 	bottom: @spacing;
 	}

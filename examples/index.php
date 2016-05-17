@@ -23,10 +23,10 @@ $pathLinkFile="./assets/";
 	<i class="fa fa-link"></i> SliKer
 </h1>
 
-<div id="slider_classique" class="sliker safeload vam" data-arrow="fa fa-caret" data-bullet="fa fa-star">
+<div id="slider_classique" class="sliker safeload vam" data-arrow-off="fa fa-caret" data-bullet="fa fa-star">
 	<div class="conteneur_strict">
 		<ul class="grand_slider">
-			<?php for($i=1;$i<=6;$i++){ ?>
+			<?php for($i=1;$i<=12;$i++){ ?>
 			<li class="<?php if($i==3){echo "selected";} ?>">
 				<div class="block-3-2">
 					<span>
@@ -38,6 +38,7 @@ $pathLinkFile="./assets/";
 		</ul>
 	</div>
 </div>
+<!--
 <pre>
 &ltdiv id="slider_classique" class="sliker safeload vam" data-arrow="fa fa-caret" data-bullet="fa fa-star">
 	&ltdiv class="conteneur_strict">
@@ -248,7 +249,7 @@ $('#slider_duo_bottom').slider_nike({
 <br />
 - Pour l'effet "images inactives noircies", ajouter cette structure (&ltspan class="mask">&lt/span>) dans chaque li
 </blockquote>
-
+-->
 
 
 

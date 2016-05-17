@@ -21,7 +21,9 @@ var defaults = {
 'creer_afficheur': 0,
 'fading_mode': 0,
 'buffering_nbr': 1,
-'fullscreen': 0,
+'fullscreen': "pages",
+'bullets': 1,
+'bullets_limit': 6,
 };
 
 // to avoid confusions, use "plugin" to reference the current instance of the object
@@ -365,6 +367,9 @@ plugin.defilement_images = function() {
 	//les deux premières conditions n'apparaissent qu'en cas de loop
 	var dernier_saut = $element.find(".grand_slider li.rajout:first").index();
 
+	//met à jour l'affichage page si présent
+	$element.find(".pages .text span").text(compteur);
+	
 	if(plugin.settings.fading_mode == 1){
 		$element.find(".grand_slider").fadeOut(function(){
 			if(compteur == nbr_groupes + 1){compteur = 1;}
@@ -616,21 +621,32 @@ plugin.reset = function() {
 	/* CREER DES PUCES (lien direct de page) */
 	//supprimer les puces totalement avant de les recréer
 	$element.find(".boutons").remove();
+	$element.find(".pages").remove();
 	
 	//si un autre slider sert de menu (ou si celui ci est un menu) => pas besoin de puces
-	if (plugin.settings.type != "visualiseur" && plugin.settings.type != "menu") {
-		$element.find(".conteneur_strict").after('<ul class="boutons hide_if_one"></ul>');
-		
-		for (var i = 1; i <= nbr_groupes; i++) {
-			//créer les puces, check l'attr data-bullet qui permet de créer des puces icones
-			if($element.is("[data-bullet]")){
-				$element.find(".boutons").append('<li><i class="'+$element.attr("data-bullet")+'"></i></li>');
-			}else{
-				$element.find(".boutons").append("<li><span>"+i+"</span></li>");
+	if(plugin.settings.bullets == 1 && nbr_groupes > 1) {
+		if(plugin.settings.bullets_limit >= nbr_groupes){
+			$element.find(".conteneur_strict").after('<ul class="boutons"></ul>');
+			
+			for (var i = 1; i <= nbr_groupes; i++) {
+				//créer les puces, check l'attr data-bullet qui permet de créer des puces icones
+				if($element.is("[data-bullet]")){
+					$element.find(".boutons").append('<li><i class="'+$element.attr("data-bullet")+'"></i></li>');
+				}else{
+					$element.find(".boutons").append("<li><span>"+i+"</span></li>");
+				}
 			}
-		}
-		if ($element.find(".boutons li").length <= 1) {
-			$element.find(".boutons.hide_if_one").hide();
+		}else{
+			if($element.is("[data-arrow]")){
+				var icon = $element.attr("data-arrow");
+			}else{
+				var icon = "fa fa-chevron"
+			}
+			console.log(icon);
+			$element.find(".conteneur_strict").after('<div class="pages"></div>');
+			$element.find(".pages").append('<span class="btn_left"><i class="'+icon+'-left"></i></span>');
+			$element.find(".pages").append('<span class="text"><span>'+compteur+'</span>/'+nbr_groupes+'</span>');
+			$element.find(".pages").append('<span class="btn_right"><i class="'+icon+'-right"></i></span>');
 		}
 	}
 	/* END CREER DES PUCES */
