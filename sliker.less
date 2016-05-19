@@ -152,14 +152,20 @@ z-index: 2;
 	font-size: 0;
 		span {
 		display: inline-block;
-		font-size: 20px;
+		font-size: 18px;
 		color: @gris_moyen;
+		padding: 0 2px;
+		}
+		>span {
+		background-color: fade(#fff,90%);
+		.round(3px);
 		}
 		.btn_left, .btn_right {
 		font-weight: normal;
 		position: static;
 		cursor: pointer;
 		margin: 0 5px;
+		background: none;
 			&:hover {
 			color: @theme;
 			}
