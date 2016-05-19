@@ -23,10 +23,10 @@ $pathLinkFile="./assets/";
 	<i class="fa fa-link"></i> SliKer
 </h1>
 
-<div id="slider_classique" class="sliker safeload vam" data-arrow-off="fa fa-caret" data-bullet="fa fa-star">
+<div id="slider_classique" class="sliker safeload vam" data-arrow="fa fa-caret" data-bullet="fa fa-star">
 	<div class="conteneur_strict">
 		<ul class="grand_slider">
-			<?php for($i=1;$i<=12;$i++){ ?>
+			<?php for($i=1;$i<=25;$i++){ ?>
 			<li class="<?php if($i==3){echo "selected";} ?>">
 				<div class="block-3-2">
 					<span>
@@ -279,6 +279,8 @@ $(document).ready(function() {
 	'fading_mode': 1,
 	'buffering_nbr': 1,
 	'fullscreen': 1,
+	'bullets': 1,
+	'bullets_limit': 20,
 	});
 
 	$('#slider_long').slider_nike({
@@ -297,6 +299,8 @@ $(document).ready(function() {
 	'fading_mode': 0,
 	'buffering_nbr': 1,
 	'fullscreen': 1,
+	'bullets': 1,
+	'bullets_limit': 20,
 	});
 
 	$('#slider_duo_top').slider_nike({
@@ -315,6 +319,8 @@ $(document).ready(function() {
 	'fading_mode': 1,
 	'buffering_nbr': 1,
 	'fullscreen': 0,
+	'bullets': 1,
+	'bullets_limit': 20,
 	});
 
 	$('#slider_duo_bottom').slider_nike({
@@ -333,6 +339,8 @@ $(document).ready(function() {
 	'fading_mode': 0,
 	'buffering_nbr': 3,
 	'fullscreen': 0,
+	'bullets': 1,
+	'bullets_limit': 20,
 	});
 
 	$("pre").each(function(){

@@ -23,7 +23,7 @@ var defaults = {
 'buffering_nbr': 1,
 'fullscreen': "pages",
 'bullets': 1,
-'bullets_limit': 6,
+'bullets_limit': 20,
 };
 
 // to avoid confusions, use "plugin" to reference the current instance of the object
@@ -643,10 +643,10 @@ plugin.reset = function() {
 				var icon = "fa fa-chevron"
 			}
 			console.log(icon);
-			$element.find(".conteneur_strict").after('<div class="pages"></div>');
-			$element.find(".pages").append('<span class="btn_left"><i class="'+icon+'-left"></i></span>');
-			$element.find(".pages").append('<span class="text"><span>'+compteur+'</span>/'+nbr_groupes+'</span>');
-			$element.find(".pages").append('<span class="btn_right"><i class="'+icon+'-right"></i></span>');
+			$element.find(".conteneur_strict").after('<div class="pages"><div class="wrap"></div></div>');
+			$element.find(".pages .wrap").append('<span class="btn_left"><i class="'+icon+'-left"></i></span>');
+			$element.find(".pages .wrap").append('<span class="text"><span>'+compteur+'</span>/'+nbr_groupes+'</span>');
+			$element.find(".pages .wrap").append('<span class="btn_right"><i class="'+icon+'-right"></i></span>');
 		}
 	}
 	/* END CREER DES PUCES */
