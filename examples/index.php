@@ -262,7 +262,7 @@ $('#slider_duo_bottom').slider_nike({
 <script type="text/javascript" src="<?php echo $pathLinkFile; ?>/../../../sliker.js"></script>
 <script type="text/javascript" src="<?php echo $pathLinkFile; ?>js/startpack.js"></script>
 <script>
-$(document).ready(function() {
+$(document).ready(function(){
 	$('#slider_classique').slider_nike({
 	'nbr_li':1,
 	'vitesse_auto':3000,
@@ -342,14 +342,18 @@ $(document).ready(function() {
 	'bullets': 1,
 	'bullets_limit': 20,
 	});
+});//doc ready
 
+
+// menus code infos
+$(document).ready(function(){
 	$("pre").each(function(){
 		$(this).append('<span>code <i class="fa fa-chevron-down"></i><i class="fa fa-chevron-up"></i></span>');
 	});
 	$("blockquote").each(function(){
 		$(this).append('<span>infos <i class="fa fa-chevron-down"></i><i class="fa fa-chevron-up"></i></span>');
 	});
-});//doc ready
+});
 
 $("pre, blockquote").on("click","span",function(){
 	target = $(this).parents("pre, blockquote");

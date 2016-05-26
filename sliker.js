@@ -213,7 +213,7 @@ plugin.init = function() {
 	});
 
 	/* bouton pour défiler à gauche */
-	$element.find(".btn_left").click(function() {
+	$element.on("click",".btn_left",function() {
 		clearInterval(defilement_auto);
 		compteur -= 1;
 		if (plugin.settings.isolement == 1 && mobile == false) {
@@ -225,7 +225,8 @@ plugin.init = function() {
 	});
 
 	/* bouton pour défiler à droite */
-	$element.find(".btn_right").click(function() {
+	$element.on("click",".btn_right",function() {
+		console.log("rrr");
 		clearInterval(defilement_auto);
 		compteur += 1;
 		if (plugin.settings.isolement == 1 && mobile == false) {
@@ -317,7 +318,6 @@ plugin.init = function() {
 /* ACTION DEFILEMENT *****************************************************************************************************************************/
 /* action qui se lance quand on clique sur un des boutons de commande (droite ou gauche) */
 plugin.defilement_images = function() {
-	
 	/*
 	if (typeof slider_data_change == 'function') { 
 	slider_data_change(compteur);
@@ -642,7 +642,6 @@ plugin.reset = function() {
 			}else{
 				var icon = "fa fa-chevron"
 			}
-			console.log(icon);
 			$element.find(".conteneur_strict").after('<div class="pages"><div class="wrap"></div></div>');
 			$element.find(".pages .wrap").append('<span class="btn_left"><i class="'+icon+'-left"></i></span>');
 			$element.find(".pages .wrap").append('<span class="text"><span>'+compteur+'</span>/'+nbr_groupes+'</span>');
