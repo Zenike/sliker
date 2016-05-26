@@ -21,7 +21,7 @@ var defaults = {
 'creer_afficheur': 0,
 'fading_mode': 0,
 'buffering_nbr': 1,
-'fullscreen': "pages",
+'fullscreen': 0,
 'bullets': 1,
 'bullets_limit': 20,
 };

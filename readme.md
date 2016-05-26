@@ -1,5 +1,90 @@
-# Readme
-sliker is a responsive jQuery slideshow
+# Sliker
+### <http://flexvision.be/formflex/sliker.php>
+
+`sliker` est un plugin slider/slideshow écrit en `jQuery`
+
+# dépendances
+- `jQuery`: une version récente sans limitation précise
+- `Less`: le css de ce plugin est écrit en LESS, quelques variables de couleur devront être définies pour son bon fonctionnement.
+- ´FontAwesome´: les flèches de navigation utilisent des icones FontAwesome. Il est possible de s'en passer (voir plus bas)
+
+# Installation
+1. récuperer les fichiers `sliker.less` et `sliker.js` à la racine du projet GitHUb
+2. inclure le fichier `sliker.js` dans la document avant la fermeture de la balise `</body>`
+3. lier et génerer un css à partir de `sliker.less`
+
+# Utilisation
+- créer la structure html suivant l'exemple
+```html
+<div id="slider_example" class="sliker">
+	<div class="conteneur_strict">
+		<ul class="grand_slider">
+			<li><img src="./example.jpg"></li>
+			<li><img src="./example.jpg"></li>
+			<li><img src="./example.jpg"></li>
+		</ul>
+	</div>
+</div>
+```
+- déclarer le slider en javascript
+```javascript
+$('#slider_example').slider_nike({
+'nbr_li':1, //nombre d'éléments qui défilent à chaque mouvement.
+'vitesse_auto':3000, //temps entre deux mouvements automatiques.
+'vitesse': 500, //rapidité du mouvement (automatique ou manuel, même paramètre).
+'auto':0, //activer ou non le défilement automatique.
+'type':"none", //définit le role du slider dans le cas d'une liaison. Options: visualiseur, menu, none.
+'cible':"none", //spécifie l'id du slider compagnon dans le cas d'une liaison (ex: #slider_deux).
+'isolement': 0, //si actif, le slider est isolé par un fond noir transparent lors de son utilisation.
+'pc_only':0, //si actif, le slider sera éffacé sur tous les dispositifs mobiles.
+'loop':0, //si actif, le slider répetera son contenu indéfiniment, créant un rail infini.
+'liquide':1, //si actif, l'élément prendra, de façon élastique, toute la zone du slider.
+'drag':0, //permet la manipulation du slider aux doigts ou en cliquer/glisser à la souris.
+'creer_afficheur': 0, //crée automatiquement une zone avec l'image zoomée au dessus du slider.
+'fading_mode': 1, //remplace la transition en "déplacement de rail" par un fondu.
+'buffering_nbr': 1, //nombre d'image préchargé autour de l'image active. Nécessite l'utilisation de data-src au lieu de src.
+'fullscreen': 0, //affiche ou masque le bouton fullscreen.
+'bullets': 1, //affiche ou maque les puces du slider.
+'bullets_limit': 20, //limite de puces au délà de laquelle celles ci se transforme en un menu pages (ex: 7/22).
+});
+```
+
+# Personnalisation
+
+## Couleurs
+Par défaut, le less de Slike chercher après la variable @theme et se sert de celle-ci pour coloriser ses éléments de navigation.
+Il est donc nécessaire que cette variable existe.
+Il est toutefois possible de modifier ses couleurs indépendement en utilisant en ciblant le slider en CSS et 
+en utilisant un mixin LESS :
+```css
+.sliker_colors(@color,@bg);
+```
+- @color pour la couleur de fond (au repos) des puces et fleches.
+- @bg pour la couleur active (survol) des puces et fleches.
+
+##### Exemple
+```css
+#slider_example{
+.sliker_colors(red,white);
+}
+```
+
+## Icones
+Par défaut, Sliker utilise des icones font-awesome pour ses flèches de navigation et des span arrondis en CSS pour ses puces.
+Ces éléments sont remplaçables facilement par d'autres icones (FontAwesome ou autre).
+
+- pour remplacer les flèches, ajouter un attribut ´data-arrow´ à la base du slider et y spécifier la classe FontAwesome ou autre (set d'icone personnalisé). Si l'icone utilisée possède une terminaison en -left ou en -right, le système appliquera les flèches correpondantes au coté ciblé.
+
+##### Exemple
+```html
+<div id="slider_example" class="sliker" data-arrow="fa fa-caret-left" >
+	<div class="conteneur_strict">
+		...
+```
+
+
+- 
+
 
 - mettre ".full" sur la balise "img" si on souhaite qu'elle prenne 100% du li, sinon elle prendra sa taille réelle<br />
 <br />
@@ -16,22 +101,6 @@ sliker is a responsive jQuery slideshow
 - utiliser l'attribut data-bullet pour utiliser une icone comme puce à la place d'un span arrondi => spécifier la class font-awesome entière dans l'attribut (ex: "fa fa-star")<br />
 <br />
 <br />
-LES VARIABLES:<br />
-'nbr_li': indique combien de li passer à chaque action de slide (pas le nombre de li visibles !!!)<br />
-'vitesse_auto': le temps entre deux défilements automatiques (en millisecondes)<br />
-'vitesse': la vitesse de déplacement du slider en mouvement<br />
-'auto': si le slider bouge de lui même (1) ou si il est totalement statique (0)<br />
-'type': soit rien de spécial (none), soit le zoom d'un double slider (visualiseur) soit le menu (menu)<br />
-'cible': dans le cas d'un double slider, donner l'id de son partenaire (ex: "#slider_articles")<br />
-'isolement': si un fond noir apparait quand on active le slider (1 ou 0)<br />
-'pc_only': si pc only est actif (1), ce slider disparait sur un périphérique mobile<br />
-'loop': si le slider boucle (première image après la dernière, etc) (0 ou 1).<br />
-'liquide': si les li prennent toute la largeur du slide (100%) (0 ou 1)<br />
-'drag': si on peut slider en cliquer/glisser sur les photos (ne peut pas être désactivé sur mobile) (0 ou 1)<br />
-'creer_afficheur': crée automatiquement une structure de zoom au dessus du slider (0 ou 1)<br />
-'fading_mode': le défilement des slides se fait en fondu et plus en glissé (0 ou 1)<br />
-'buffering_nbr': nombre d'images suivants les images visibles qui sont déjà chargées (classique: 1 pour un slider élastique, sinon nbr identique au images visibles)<br />
-'fullscreen': affiche ou non le bouton (et donc la fonctionnalité) fullscreen(0 ou 1)<br />
 <br />
 <br />
 VARIABLES LESS
@@ -39,9 +108,7 @@ VARIABLES LESS
 Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (par son id par exemple) et lui appliquer un de ces mixins: 
 <br />
 <br />
-.sliker_colors(@color,@bg);<br />
-@color pour la couleur de fond (au repos) des puces et fleches.<br />
-@bg pour la couleur active (survol) des puces et fleches.<br />
+
 <br /><br />
 .sliker_bullets(@size,@round);<br />
 @size pour la taille: hauteur et largeur de la puce ou font-size de l'icone.<br />
