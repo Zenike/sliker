@@ -226,7 +226,6 @@ plugin.init = function() {
 
 	/* bouton pour défiler à droite */
 	$element.on("click",".btn_right",function() {
-		console.log("rrr");
 		clearInterval(defilement_auto);
 		compteur += 1;
 		if (plugin.settings.isolement == 1 && mobile == false) {
