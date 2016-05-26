@@ -42,6 +42,10 @@ $('#slider_example').slider_nike({
 'drag':0, //permet la manipulation du slider aux doigts ou en cliquer/glisser à la souris.
 'creer_afficheur': 0, //crée automatiquement une zone avec l'image zoomée au dessus du slider.
 'fading_mode': 1, //remplace la transition en "déplacement de rail" par un fondu.
+'buffering_nbr': 1, //nombre d'image préchargé autour de l'image active. Nécessite l'utilisation de data-src au lieu de src.
+'fullscreen': 0, //affiche ou masque le bouton fullscreen.
+'bullets': 1, //affiche ou maque les puces du slider.
+'bullets_limit': 20, //limite de puces au délà de laquelle celles ci se transforme en un menu pages (ex: 7/22).
 });
 ```
 
