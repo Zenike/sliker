@@ -3,7 +3,7 @@
 <div id="slider_classique" class="sliker safeload vam" data-arrow="fa fa-caret" data-bullet="fa fa-star">
 	<div class="conteneur_strict">
 		<ul class="grand_slider">
-			<?php for($i=1;$i<=25;$i++){ ?>
+			<?php for($i=1;$i<=10;$i++){ ?>
 			<li class="<?php if($i==3){echo "selected";} ?>">
 				<div class="block-3-2">
 					<span>

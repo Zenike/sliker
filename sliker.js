@@ -24,6 +24,7 @@ var defaults = {
 'fullscreen': 0,
 'bullets': 1,
 'bullets_limit': 20,
+'bullets_limit_mobile': 8,
 };
 
 // to avoid confusions, use "plugin" to reference the current instance of the object
@@ -107,6 +108,13 @@ plugin.init = function() {
 		
 		if (plugin.settings.pc_only == 1) {
 			$element.remove();
+		}
+		
+		//réunifier bullets_limit et bullets_limit_mobile en une seule valeur
+		if(plugin.settings.bullets_limit_mobile == "auto"){
+			//ne rien faire, sliker par defaut n'utilise que la variable "bullets_limit"
+		}else{
+			plugin.settings.bullets_limit = plugin.settings.bullets_limit_mobile;
 		}
 	}
 	
