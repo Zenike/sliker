@@ -4,7 +4,7 @@
 var mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
 
 // OBJET SLIDER NIKE: start ****************************************************************
-$.slider_nike = function(element, options) {
+$.sliker = function(element, options) {
 
 var defaults = {
 'nbr_li': 1,
@@ -701,11 +701,11 @@ plugin.init();
 
 
 //ajouter le plugin en tant qu'objet jquery
-$.fn.slider_nike = function(options) {
+$.fn.sliker = function(options) {
 	return this.each(function() {
-		if (undefined === $(this).data('slider_nike')) {
-			var plugin = new $.slider_nike(this, options);
-			$(this).data('slider_nike', plugin);
+		if (undefined === $(this).data('sliker')) {
+			var plugin = new $.sliker(this, options);
+			$(this).data('sliker', plugin);
 		}
 	});
 };

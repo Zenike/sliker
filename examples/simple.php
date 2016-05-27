@@ -19,7 +19,7 @@
 <?php include './inc/footer.php'; ?>
 <script>
 $(document).ready(function(){
-	$('#slider_classique').slider_nike({
+	$('#slider_classique').sliker({
 	'nbr_li':1,
 	'vitesse_auto':3000,
 	'vitesse': 500,
