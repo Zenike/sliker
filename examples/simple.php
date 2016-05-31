@@ -32,7 +32,7 @@ $(document).ready(function(){
 	'liquide':1,
 	'drag':0,
 	'creer_afficheur': 0,
-	'fading_mode': 1,
+	'fading_mode': 0,
 	'buffering_nbr': 1,
 	'fullscreen': 1,
 	'bullets': 1,

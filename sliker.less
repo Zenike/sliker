@@ -1,6 +1,7 @@
 .fullscreen {
 border: none !important;
 width: 100% !important;
+.round(0px) !important;
 max-width: none !important;
 height: 100% !important;
 overflow: hidden !important;
@@ -16,6 +17,7 @@ background-color: #000 !important;
 		height: 100% !important;
 			li {
 			height: 100% !important;
+			background-color: #000 !important;
 				img {
 				height: auto !important;
 				width: auto !important;
@@ -30,10 +32,12 @@ background-color: #000 !important;
 		}
 	}
 	.btn_left, .btn_right {
-	display: none;
+	
 	}
-	ul.boutons {
-	display: none;
+	ul.boutons, ul.pages {
+	position: absolute !important;
+	bottom: 20px !important;
+	margin: 0 !important;
 	}
 	.btn_fs {
 		span {

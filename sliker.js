@@ -56,6 +56,7 @@ var x;
 var oneclic;
 var slid_start;
 var x_start;
+var fading_mode_temp;
 
 
 
@@ -200,13 +201,15 @@ plugin.init = function() {
 
 		if ($element.hasClass("fullscreen")) {
 			$element.removeClass("fullscreen");
+			plugin.settings.fading_mode = fading_mode_temp;
 			plugin.reset();
 		} else {
 			$element.addClass("fullscreen");
+			fading_mode_temp = plugin.settings.fading_mode;
+			plugin.settings.fading_mode = 1;
 			plugin.reset();
 		}
 
-		plugin.defilement_images();
 		return false;
 	});
 	/* END FULLSCREEN SYSTEM *********************************************************/
@@ -325,12 +328,6 @@ plugin.init = function() {
 /* ACTION DEFILEMENT *****************************************************************************************************************************/
 /* action qui se lance quand on clique sur un des boutons de commande (droite ou gauche) */
 plugin.defilement_images = function() {
-	/*
-	if (typeof slider_data_change == 'function') { 
-	slider_data_change(compteur);
-	}
-	*/
-	
 	$.event.trigger({
 		type: "sliker_defilement",
 		cpt: compteur,
