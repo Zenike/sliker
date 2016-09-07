@@ -165,7 +165,7 @@ plugin.init = function() {
 			first_loop = 0;
 			
 			if(plugin.settings.auto == "custom"){
-				var timer_next = $element.find(".grand_slider li.selected").attr("data-timer");
+				var timer_next = $element.find(".grand_slider li:nth-child(" + compteur + ")").attr("data-timer");
 			}else{
 				var timer_next = plugin.settings.vitesse_auto;
 			}
