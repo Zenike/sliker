@@ -96,7 +96,7 @@ Important: en mode custom, chaque li doit posséder son propre data-timer, sans 
 				...
 ```
 
-
+## Informations diverses
 - mettre ".full" sur la balise "img" si on souhaite qu'elle prenne 100% du li, sinon elle prendra sa taille réelle<br />
 <br />
 - départ sur un slide précis possible (comme ici) grace à la classe "selected" à mettre sur un "li".<br />
@@ -110,17 +110,10 @@ Important: en mode custom, chaque li doit posséder son propre data-timer, sans 
 - utiliser l'attribut data-arrow sur la base du slider en indiquant une class font-awesome (ou autre) sans la terminaison -left -right (ex: "fa fa-caret")<br />
 <br />
 - utiliser l'attribut data-bullet pour utiliser une icone comme puce à la place d'un span arrondi => spécifier la class font-awesome entière dans l'attribut (ex: "fa fa-star")<br />
-<br />
-<br />
-<br />
-<br />
-VARIABLES LESS
-<br />
-Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (par son id par exemple) et lui appliquer un de ces mixins: 
-<br />
-<br />
 
-<br /><br />
+## Variables LESS
+Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (par son id par exemple) et lui appliquer un de ces mixins: 
+
 .sliker_bullets(@size,@round);<br />
 @size pour la taille: hauteur et largeur de la puce ou font-size de l'icone.<br />
 @round pour l'arrondi de la puce (ex:2px pour un carré légèrement arrondi) => inutile si la puce est une icone<br />
