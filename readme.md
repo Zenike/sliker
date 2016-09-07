@@ -32,7 +32,7 @@ $('#slider_example').slider_nike({
 'nbr_li':1, //nombre d'éléments qui défilent à chaque mouvement.
 'vitesse_auto':3000, //temps entre deux mouvements automatiques.
 'vitesse': 500, //rapidité du mouvement (automatique ou manuel, même paramètre).
-'auto':0, //activer ou non le défilement automatique.
+'auto':0, //activer (1) en utilisant vitesse_auto, désactiver (0) ou personnaliser ("custom"). Voir la rubrique Timer.
 'type':"none", //définit le role du slider dans le cas d'une liaison. Options: visualiseur, menu, none.
 'cible':"none", //spécifie l'id du slider compagnon dans le cas d'une liaison (ex: #slider_deux).
 'isolement': 0, //si actif, le slider est isolé par un fond noir transparent lors de son utilisation.
