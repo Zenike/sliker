@@ -82,6 +82,15 @@ Ces éléments sont remplaçables facilement par d'autres icones (FontAwesome ou
 		...
 ```
 
+- Pour remplacer les puces, utiliser l'attribut ´data-bullet´ à la base du slider et y spécifier la classe FontAwesome ou autre (set d'icone personnalisé).
+
+##### Exemple
+```html
+<div id="slider_example" class="sliker" data-bullet="fa fa-star" >
+	<div class="conteneur_strict">
+		...
+```
+
 ## Timer
 Sliker permet de configurer un mode de défilement automatique. Cette option se configure au moment de l'appel javascript en spécifiant la propriété `auto`. `auto` à 0 désactivera le défilement automatique alors que `auto`à 1 l'activera et utilisera la propriété `vitesse_auto` comme temps d'attente entre deux slides.
 La dernière option est "custom". Si `auto` est paramétré sur "custom", chaque slide peut avoir son propre timer. Pour indiquer ces timings il suffit d'écrire une valeur temporelle, en minisecondes, dans un attribut data-timer sur chaque li du slider.
@@ -137,4 +146,3 @@ Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (
 - pour masquer les puces, mettre la class "no_btn" sur la base du slider.
 - mettre la class "vam" (pour vertical align middle) sur la base du slider pour que les li soient alignés verticalement.
 - mettre la classe "safeload" à la racine (.sliker) afin d'avoir un chargement moins saccadé dans le cas d'un slider élastique (une image).
-- utiliser l'attribut data-bullet pour utiliser une icone comme puce à la place d'un span arrondi => spécifier la class font-awesome entière dans l'attribut (ex: "fa fa-star")<br />
