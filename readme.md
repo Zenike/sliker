@@ -131,17 +131,17 @@ Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (
 ```
 - position par defaut !
 - @spacing pour modifier la marge des boutons (séparation du bas du slider).
-- Ce mixin rentre les puces dans le bas du slider, par dessus le contenu. Ecrire .sliker_bullets_in; sans option est viable et appliquera la marge par defaut.
+- ce mixin rentre les puces dans le bas du slider, par dessus le contenu. Ecrire .sliker_bullets_in; sans option est viable et appliquera la marge par defaut.
 
 ```css
 .sliker_arrows_out(@spacing);
 ```
 - @spacing pour modifier l'espacement entre les fleches et le bord du slider (sans compter le padding autour de l'icone).
-- Ce mixin sort les fleches en dehors du slider. Ecrire .sliker_arrows_out; utilsera un spacing de 0px et les fleches seront contre le slider.
+- ce mixin sort les fleches en dehors du slider. Ecrire .sliker_arrows_out; utilsera un spacing de 0px et les fleches seront contre le slider.
 
 ```css
 .sliker_arrows_in(@spacing);
 ```
 - position par defaut !
 - @spacing pour modifier l'espacement entre les fleches et le bord du slider (sans compter le padding autour de l'icone).
-- Ce mixin rentre les fleches dans le slider. Ecrire .sliker_arrows_in; utilsera un spacing de 0px (par defaut) et les fleches seront contre le slider.
+- ce mixin rentre les fleches dans le slider. Ecrire .sliker_arrows_in; utilsera un spacing de 0px (par defaut) et les fleches seront contre le slider.
