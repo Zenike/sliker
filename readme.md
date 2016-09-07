@@ -77,9 +77,23 @@ Ces éléments sont remplaçables facilement par d'autres icones (FontAwesome ou
 
 ##### Exemple
 ```html
-<div id="slider_example" class="sliker" data-arrow="fa fa-caret-left" >
+<div id="slider_example" class="sliker" data-arrow="fa fa-caret" >
 	<div class="conteneur_strict">
 		...
+```
+
+## Timer
+Sliker permet de configurer un mode de défilement automatique. Cette option se configure au moment de l'appel javascript en spécifiant la propriété `auto`. `auto` à 0 désactivera le défilement automatique alors que `auto`à 1 l'activera et utilisera la propriété `vitesse_auto` comme temps d'attente entre deux slides.
+La dernière option est "custom". Si `auto` est paramétré sur "custom", chaque slide peut avoir son propre timer. Pour indiquer ces timings il suffit d'écrire une valeur temporelle, en minisecondes, dans un attribut data-timer sur chaque li du slider.
+Important: en mode custom, chaque li doit posséder son propre data-timer, sans exception.
+
+##### Exemple
+```html
+<div id="slider_example" class="sliker" data-arrow="fa fa-caret-left" >
+	<div class="conteneur_strict">
+		<ul class="grand_slider">
+			<li data-timer="3000">
+				...
 ```
 
 
