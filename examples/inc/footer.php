@@ -4,7 +4,6 @@
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 <![endif]-->
 <script type="text/javascript" src="<?php echo $pathLinkFile; ?>/../../../sliker.js"></script>
-<script type="text/javascript" src="<?php echo $pathLinkFile; ?>js/startpack.js"></script>
 <script>
 // menus code infos
 $(document).ready(function(){
