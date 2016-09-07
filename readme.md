@@ -73,7 +73,7 @@ en utilisant un mixin LESS :
 Par défaut, Sliker utilise des icones font-awesome pour ses flèches de navigation et des span arrondis en CSS pour ses puces.
 Ces éléments sont remplaçables facilement par d'autres icones (FontAwesome ou autre).
 
-- pour remplacer les flèches, ajouter un attribut ´data-arrow´ à la base du slider et y spécifier la classe FontAwesome ou autre (set d'icone personnalisé). Si l'icone utilisée possède une terminaison en -left ou en -right, le système appliquera les flèches correpondantes au coté ciblé.
+- pour remplacer les flèches, ajouter un attribut ´data-arrow´ à la base du slider et y spécifier la classe FontAwesome ou autre (set d'icone personnalisé). Il est nécessaire que ces nouvelles flèches aient deux variantes se terminant respectivement par -left et par -right. Indiquez le mot clé dans "data-arrow" sans la terminaison indiquant le sens (voir exemple ci dessous).
 
 ##### Exemple
 ```html
