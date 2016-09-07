@@ -167,7 +167,7 @@ plugin.init = function() {
 			if(plugin.settings.auto == "custom"){
 				var timer_next = $element.find(".grand_slider li.selected").attr("data-timer");
 			}else{
-				var timer_next = 1000;
+				var timer_next = plugin.settings.vitesse_auto;
 			}
 			defilement_auto = setTimeout(loop_function, timer_next);
 		};
