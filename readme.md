@@ -114,28 +114,38 @@ Important: en mode custom, chaque li doit posséder son propre data-timer, sans 
 ## Variables LESS
 Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (par son id par exemple) et lui appliquer un de ces mixins: 
 
-.sliker_bullets(@size,@round);<br />
-@size pour la taille: hauteur et largeur de la puce ou font-size de l'icone.<br />
-@round pour l'arrondi de la puce (ex:2px pour un carré légèrement arrondi) => inutile si la puce est une icone<br />
-<br /><br />
-.sliker_bullets_out(@spacing);<br />
-@spacing pour modifier les marges (top et bot) des boutons<br />
-- ce mixin sort les puces du slideret les positionnes après celui ci.<br />
-Ecrire .sliker_bullets_out; sans option est donc tout à fait viable;
-<br /><br />
-.sliker_bullets_in(@spacing);<br />
-! position par defaut !<br />
-@spacing pour modifier la marge des boutons (séparation du bas du slider)<br />
-- ce mixin rentre les puces dans le bas du slider, par dessus le contenu<br />
-Ecrire .sliker_bullets_in; sans option est viable et appliquera la marge par defaut;
-<br /><br />
-.sliker_arrows_out(@spacing);<br />
-@spacing pour modifier l'espacement entre les fleches et le bord du slider (sans compter le padding autour de l'icone)<br />
-- ce mixin sort les fleches en dehors du slider<br />
+```html
+.sliker_bullets(@size,@round);
+```
+@size pour la taille: hauteur et largeur de la puce ou font-size de l'icone.
+@round pour l'arrondi de la puce (ex:2px pour un carré légèrement arrondi) => inutile si la puce est une icone
+
+```html
+.sliker_bullets_out(@spacing);
+```
+@spacing pour modifier les marges (top et bot) des boutons
+ce mixin sort les puces du slideret les positionnes après celui ci.
+Ecrire .sliker_bullets_out; sans option est donc tout à fait viable.
+
+```html
+.sliker_bullets_in(@spacing);
+```
+position par defaut !
+@spacing pour modifier la marge des boutons (séparation du bas du slider).
+Ce mixin rentre les puces dans le bas du slider, par dessus le contenu.
+Ecrire .sliker_bullets_in; sans option est viable et appliquera la marge par defaut.
+
+```html
+.sliker_arrows_out(@spacing);
+```
+@spacing pour modifier l'espacement entre les fleches et le bord du slider (sans compter le padding autour de l'icone).
+Ce mixin sort les fleches en dehors du slider.
 Ecrire .sliker_arrows_out; utilsera un spacing de 0px et les fleches seront contre le slider.
-<br /><br />
-.sliker_arrows_in(@spacing);<br />
-! position par defaut !<br />
-@spacing pour modifier l'espacement entre les fleches et le bord du slider (sans compter le padding autour de l'icone)<br />
-- ce mixin rentre les fleches dans le slider<br />
+
+```html
+.sliker_arrows_in(@spacing);
+```
+position par defaut !
+@spacing pour modifier l'espacement entre les fleches et le bord du slider (sans compter le padding autour de l'icone).
+Ce mixin rentre les fleches dans le slider.
 Ecrire .sliker_arrows_in; utilsera un spacing de 0px (par defaut) et les fleches seront contre le slider.
