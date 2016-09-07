@@ -114,32 +114,32 @@ Important: en mode custom, chaque li doit posséder son propre data-timer, sans 
 ## Variables LESS
 Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (par son id par exemple) et lui appliquer un de ces mixins: 
 
-```html
+```css
 .sliker_bullets(@size,@round);
 ```
 - @size pour la taille: hauteur et largeur de la puce ou font-size de l'icone.
 - @round pour l'arrondi de la puce (ex:2px pour un carré légèrement arrondi) => inutile si la puce est une icone
 
-```html
+```css
 .sliker_bullets_out(@spacing);
 ```
 - @spacing pour modifier les marges (top et bot) des boutons.
 - ce mixin sort les puces du slideret les positionnes après celui ci. Ecrire .sliker_bullets_out; sans option est donc tout à fait viable.
 
-```html
+```css
 .sliker_bullets_in(@spacing);
 ```
 - position par defaut !
 - @spacing pour modifier la marge des boutons (séparation du bas du slider).
 - Ce mixin rentre les puces dans le bas du slider, par dessus le contenu. Ecrire .sliker_bullets_in; sans option est viable et appliquera la marge par defaut.
 
-```html
+```css
 .sliker_arrows_out(@spacing);
 ```
 - @spacing pour modifier l'espacement entre les fleches et le bord du slider (sans compter le padding autour de l'icone).
 - Ce mixin sort les fleches en dehors du slider. Ecrire .sliker_arrows_out; utilsera un spacing de 0px et les fleches seront contre le slider.
 
-```html
+```css
 .sliker_arrows_in(@spacing);
 ```
 - position par defaut !
