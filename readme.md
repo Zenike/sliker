@@ -96,21 +96,6 @@ Important: en mode custom, chaque li doit posséder son propre data-timer, sans 
 				...
 ```
 
-## Informations diverses
-- mettre ".full" sur la balise "img" si on souhaite qu'elle prenne 100% du li, sinon elle prendra sa taille réelle<br />
-<br />
-- départ sur un slide précis possible (comme ici) grace à la classe "selected" à mettre sur un "li".<br />
-<br />
-- pour masquer les puces, mettre la class "no_btn" sur la base du slider.<br />
-<br />
-- mettre la class "vam" (pour vertical align middle) sur la base du slider pour que les li soient alignés verticalement<br />
-<br />
-- mettre la classe "safeload" à la racine (.sliker) afin d'avoir un chargement moins saccadé dans le cas d'un slider élastique (une image)<br />
-<br />
-- utiliser l'attribut data-arrow sur la base du slider en indiquant une class font-awesome (ou autre) sans la terminaison -left -right (ex: "fa fa-caret")<br />
-<br />
-- utiliser l'attribut data-bullet pour utiliser une icone comme puce à la place d'un span arrondi => spécifier la class font-awesome entière dans l'attribut (ex: "fa fa-star")<br />
-
 ## Variables LESS
 Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (par son id par exemple) et lui appliquer un de ces mixins: 
 
@@ -145,3 +130,11 @@ Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (
 - position par defaut !
 - @spacing pour modifier l'espacement entre les fleches et le bord du slider (sans compter le padding autour de l'icone).
 - ce mixin rentre les fleches dans le slider. Ecrire .sliker_arrows_in; utilsera un spacing de 0px (par defaut) et les fleches seront contre le slider.
+
+## Informations diverses
+- mettre ".full" sur la balise "img" si on souhaite qu'elle prenne 100% du li, sinon elle prendra sa taille réelle.
+- départ sur un slide précis possible grace à la classe "selected" à mettre sur un "li".
+- pour masquer les puces, mettre la class "no_btn" sur la base du slider.
+- mettre la class "vam" (pour vertical align middle) sur la base du slider pour que les li soient alignés verticalement.
+- mettre la classe "safeload" à la racine (.sliker) afin d'avoir un chargement moins saccadé dans le cas d'un slider élastique (une image).
+- utiliser l'attribut data-bullet pour utiliser une icone comme puce à la place d'un span arrondi => spécifier la class font-awesome entière dans l'attribut (ex: "fa fa-star")<br />
