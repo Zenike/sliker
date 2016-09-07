@@ -149,20 +149,32 @@ plugin.init = function() {
 	
 	plugin.reset();
 	/* SYSTEME AUTO **************************************************************/
-	clearInterval(defilement_auto);
-	defilement_auto = setInterval(function() {
-		if (plugin.settings.auto == 1) {
-			compteur++;
-			if (plugin.settings.loop == 1) {
-				plugin.defilement_images();
-			} else if (compteur <= nbr_groupes) {
-				plugin.defilement_images();
-			} else {
-				compteur = 1;
-				plugin.defilement_images();
+	if(plugin.settings.auto != 0){
+		function loop_function(){
+			if(first_loop == 0){
+				compteur++;
+				if (plugin.settings.loop == 1) {
+					plugin.defilement_images();
+				} else if (compteur <= nbr_groupes) {
+					plugin.defilement_images();
+				} else {
+					compteur = 1;
+					plugin.defilement_images();
+				}
 			}
-		}
-	}, plugin.settings.vitesse_auto);
+			first_loop = 0;
+			
+			if(plugin.settings.auto == "custom"){
+				var timer_next = $element.find(".grand_slider li.selected").attr("data-timer");
+			}else{
+				var timer_next = 1000;
+			}
+			defilement_auto = setTimeout(loop_function, timer_next);
+		};
+		
+		var first_loop = 1;
+		loop_function();
+	}
 	/* END SYSTEME AUTO **************************************************************/
 	plugin.reset();
 	
@@ -181,7 +193,7 @@ plugin.init = function() {
 			});
 		} else {
 			$element.bind("touchstart", function(e) {
-				clearInterval(defilement_auto);
+				clearTimeout(defilement_auto);
 				plugin.appuyer(e);
 			});
 			$element.bind("touchend", function(e) {
@@ -197,7 +209,7 @@ plugin.init = function() {
 
 	/* FULLSCREEN SYSTEM *********************************************************/
 	$element.on("click", ".btn_fs", function() {
-		clearInterval(defilement_auto);
+		clearTimeout(defilement_auto);
 
 		if ($element.hasClass("fullscreen")) {
 			$element.removeClass("fullscreen");
@@ -220,12 +232,12 @@ plugin.init = function() {
 
 	/* coupaer défilement si clic */
 	$element.mousedown(function(e) {
-		clearInterval(defilement_auto);
+		clearTimeout(defilement_auto);
 	});
 
 	/* bouton pour défiler à gauche */
 	$element.on("click",".btn_left",function() {
-		clearInterval(defilement_auto);
+		clearTimeout(defilement_auto);
 		compteur -= 1;
 		if (plugin.settings.isolement == 1 && mobile == false) {
 			plugin.afficher_cache();
@@ -237,7 +249,7 @@ plugin.init = function() {
 
 	/* bouton pour défiler à droite */
 	$element.on("click",".btn_right",function() {
-		clearInterval(defilement_auto);
+		clearTimeout(defilement_auto);
 		compteur += 1;
 		if (plugin.settings.isolement == 1 && mobile == false) {
 			plugin.afficher_cache();
@@ -255,7 +267,7 @@ plugin.init = function() {
 		}
 
 		plugin.defilement_images();
-		clearInterval(defilement_auto);
+		clearTimeout(defilement_auto);
 		return false;
 	});
 
@@ -284,7 +296,7 @@ plugin.init = function() {
 				/* jusqu'ici */
 				
 				plugin.defilement_images();
-				clearInterval(defilement_auto);
+				clearTimeout(defilement_auto);
 				if (plugin.settings.isolement == 1 && mobile == false) {
 					plugin.afficher_cache();
 				}
@@ -584,7 +596,7 @@ plugin.reset = function() {
 	//si un seule groupe on coupe le défilement auto (pour ne pas boucler sur le même élément)
 	if (nbr_groupes <= 1) {
 		nbr_groupes = 1;
-		clearInterval(defilement_auto);
+		clearTimeout(defilement_auto);
 	};
 
 	if (plugin.settings.loop == 1) {
