@@ -123,9 +123,9 @@ plugin.init = function() {
 	if (plugin.settings.creer_afficheur == 1) {
 		if (mobile != false || plugin.settings.cible == "none") {
 			$element.prepend('<div class="afficheur"><img src=""></div>');
-			$element.find(".afficheur img").attr("src",$element.find(".grand_slider li:first-child img").attr("src"))
+			$element.find(".afficheur img").attr("src",$element.find(".grand_slider>li:first-child img").attr("src"))
 		
-			$element.find(".grand_slider li").click(function(){
+			$element.find(".grand_slider>li").click(function(){
 				$element.find(".afficheur img").attr("src",$(this).children("img").attr("src"));
 			});
 		}
@@ -151,6 +151,8 @@ plugin.init = function() {
 	/* SYSTEME AUTO **************************************************************/
 	if(plugin.settings.auto != 0){
 		function loop_function(){
+			console.log($element);
+			console.log("loooooooooooooooooooooooooooop");
 			if(first_loop == 0){
 				compteur++;
 				if (plugin.settings.loop == 1) {
@@ -165,7 +167,8 @@ plugin.init = function() {
 			first_loop = 0;
 			
 			if(plugin.settings.auto == "custom"){
-				var timer_next = $element.find(".grand_slider li:nth-child(" + compteur + ")").attr("data-timer");
+				var timer_next = $element.find(".grand_slider>li:nth-child(" + compteur + ")").attr("data-timer");
+				console.log("custom "+timer_next);
 			}else{
 				var timer_next = plugin.settings.vitesse_auto;
 			}
@@ -275,16 +278,16 @@ plugin.init = function() {
 	if (plugin.settings.type == "visualiseur") {
 		var decal;
 
-		$(plugin.settings.cible).on("mousedown", " .grand_slider li", function(e) {
+		$(plugin.settings.cible).on("mousedown", " .grand_slider>li", function(e) {
 			decal = e.pageX;
 		});
 
-		$(plugin.settings.cible).on("click", " .grand_slider li", function(e) {
+		$(plugin.settings.cible).on("click", " .grand_slider>li", function(e) {
 			decal = Math.abs(e.pageX - decal);
 			if (decal < 10 || mobile != false) {
 			
 				/* rajouter ceci */
-				if($(this).parents(".grand_slider").find("li:first-child").is("[data-group]")){
+				if($(this).parents(".grand_slider").children("li:first-child").is("[data-group]")){
 					compteur = 0;
 					$(this).prevAll().each(function(){
 						compteur = compteur + Math.round($(this).attr("data-group"));
@@ -352,12 +355,12 @@ plugin.defilement_images = function() {
 	$element.find(".boutons li:nth-child(" + compteur + ")").addClass("selected");
 	
 	if(plugin.settings.fading_mode != 1){
-		$element.find(".grand_slider li").removeClass("selected");
-		$element.find(".grand_slider li:nth-child(" + compteur + ")").addClass("selected");
+		$element.find(".grand_slider>li").removeClass("selected");
+		$element.find(".grand_slider>li:nth-child(" + compteur + ")").addClass("selected");
 	}
 	
 	$element.find(".grand_slider .mask").fadeIn();
-	$element.find(".grand_slider li.selected .mask").fadeOut();
+	$element.find(".grand_slider>li.selected .mask").fadeOut();
 
 
 	/* vï¿½rifie quand le compteur est ï¿½ 1 (pos de dï¿½part) ou dï¿½passe le nombre de groupe (remise ï¿½ 0) */
@@ -381,7 +384,7 @@ plugin.defilement_images = function() {
 	$element.find(".grand_slider").stop();
 
 	//les deux premières conditions n'apparaissent qu'en cas de loop
-	var dernier_saut = $element.find(".grand_slider li.rajout:first").index();
+	var dernier_saut = $element.find(".grand_slider>li.rajout:first").index();
 
 	//met à jour l'affichage page si présent
 	$element.find(".pages .text span").text(compteur);
@@ -392,8 +395,8 @@ plugin.defilement_images = function() {
 			else if(compteur == 0){compteur = nbr_groupes;}
 			$element.find(".grand_slider").css({left: "-" + largeur_groupe * (compteur - 1) + "px"});
 			
-			$element.find(".grand_slider li").removeClass("selected");
-			$element.find(".grand_slider li:nth-child(" + compteur + ")").addClass("selected");
+			$element.find(".grand_slider>li").removeClass("selected");
+			$element.find(".grand_slider>li:nth-child(" + compteur + ")").addClass("selected");
 		
 			$.event.trigger({
 				type: "sliker_defilement_end",
@@ -457,11 +460,11 @@ plugin.buffering_imgs = function() {
 	// de CHAQUE coté du slide actif (default: 1 -> donc trois images potentiellement chargées)
 	for (var i=compteur-plugin.settings.buffering_nbr;i<=compteur+plugin.settings.buffering_nbr;i++) {
 	
-		var src = $element.find(".grand_slider li:nth-child(" + i + ") img[data-src]").attr("src");
+		var src = $element.find(".grand_slider>li:nth-child(" + i + ") img[data-src]").attr("src");
 		
 		if(typeof src === 'undefined'){
-			var data_src = $element.find(".grand_slider li:nth-child(" + i + ") img[data-src]").attr("data-src");
-			$element.find(".grand_slider li:nth-child(" + i + ") img[data-src]").attr("src",data_src);
+			var data_src = $element.find(".grand_slider>li:nth-child(" + i + ") img[data-src]").attr("data-src");
+			$element.find(".grand_slider>li:nth-child(" + i + ") img[data-src]").attr("src",data_src);
 		}
 	}
 };
@@ -561,13 +564,13 @@ plugin.lacher = function(e) {
 
 plugin.reset = function() {
 	if (plugin.settings.liquide == 1) {
-		$element.find(".conteneur_strict .grand_slider li").width($element.find(".conteneur_strict").width());
+		$element.find(".conteneur_strict .grand_slider>li").width($element.find(".conteneur_strict").width());
 	}
 	
 	/* supprimer les li rajouts, ils vont être calculés à nouveau */
 	$element.find(".rajout").remove();
 	/* calcule la largeur d'un li */
-	largeur_li = $element.find(".grand_slider li").outerWidth(true);
+	largeur_li = $element.find(".grand_slider>li").outerWidth(true);
 	if(!largeur_li){largeur_li = 20;/* generique */}
 	/* compte le nombre de li visibles en même temps */
 	
@@ -609,12 +612,12 @@ plugin.reset = function() {
 	
 	
 	//départ alternatif si spécifié par la class "selected" (à mettre sur un li)
-	if($element.find(".grand_slider .selected").length==1){
-		compteur = $element.find(".grand_slider .selected").index()+1;
+	if($element.find(".grand_slider>.selected").length==1){
+		compteur = $element.find(".grand_slider>.selected").index()+1;
 	}else{
-		$element.find(".grand_slider li:first-child").addClass("selected");
+		$element.find(".grand_slider>li:first-child").addClass("selected");
 	}
-	$element.find(".grand_slider li.selected .mask").fadeOut();
+	$element.find(".grand_slider>li.selected .mask").fadeOut();
 	
 	/* Positionne le slider au départ */
 	$element.find(".grand_slider").css("left", (compteur - 1) * -1 * largeur_li);
@@ -672,7 +675,7 @@ plugin.reset = function() {
 	/* si on doit looper, rajouter des li fictifs à la fin du slide */
 	if (plugin.settings.loop == 1) {
 		for (var i = 0; i <= nbr_li_visibles * 2; i++) {
-			$element.find(".grand_slider li:nth-child(" + i + ")").clone()
+			$element.find(".grand_slider>li:nth-child(" + i + ")").clone()
 					.addClass("rajout").appendTo($element.find(".grand_slider"));
 		}
 	}
