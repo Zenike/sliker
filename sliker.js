@@ -151,8 +151,6 @@ plugin.init = function() {
 	/* SYSTEME AUTO **************************************************************/
 	if(plugin.settings.auto != 0){
 		function loop_function(){
-			console.log($element);
-			console.log("loooooooooooooooooooooooooooop");
 			if(first_loop == 0){
 				compteur++;
 				if (plugin.settings.loop == 1) {
@@ -168,7 +166,6 @@ plugin.init = function() {
 			
 			if(plugin.settings.auto == "custom"){
 				var timer_next = $element.find(".grand_slider>li:nth-child(" + compteur + ")").attr("data-timer");
-				console.log("custom "+timer_next);
 			}else{
 				var timer_next = plugin.settings.vitesse_auto;
 			}
