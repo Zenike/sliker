@@ -63,7 +63,7 @@ var fading_mode_temp;
 
 
 //action quand la page est entièrement chargée
-$(window).load(function() {
+$(window).on("load",function() {
 	$element.removeClass("safeload");
 });
 
