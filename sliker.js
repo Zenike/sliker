@@ -384,7 +384,7 @@ plugin.defilement_images = function() {
 	var dernier_saut = $element.find(".grand_slider>li.rajout:first").index();
 
 	//met à jour l'affichage page si présent
-	$element.find(".pages .text span").text(compteur);
+	$element.find(".pages .pages_menu_text span").text(compteur);
 	
 	if(plugin.settings.fading_mode == 1){
 		$element.find(".grand_slider").fadeOut(function(){
@@ -660,7 +660,7 @@ plugin.reset = function() {
 			}
 			$element.find(".conteneur_strict").after('<div class="pages"><div class="wrap"></div></div>');
 			$element.find(".pages .wrap").append('<span class="btn_left"><i class="'+icon+'-left"></i></span>');
-			$element.find(".pages .wrap").append('<span class="text"><span>'+compteur+'</span>/'+nbr_groupes+'</span>');
+			$element.find(".pages .wrap").append('<span class="pages_menu_text"><span>'+compteur+'</span>/'+nbr_groupes+'</span>');
 			$element.find(".pages .wrap").append('<span class="btn_right"><i class="'+icon+'-right"></i></span>');
 		}
 	}
