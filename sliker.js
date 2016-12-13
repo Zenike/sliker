@@ -20,6 +20,7 @@ var defaults = {
 'drag': 1,
 'creer_afficheur': 0,
 'fading_mode': 0,
+'fading_type': 1,
 'buffering_nbr': 1,
 'fullscreen': 0,
 'bullets': 1,
@@ -77,6 +78,13 @@ plugin.init = function() {
 
 	// the plugin's final properties are the merged default and user-provided options (if any)
 	plugin.settings = $.extend({}, defaults, options);
+	
+	//en mode fading type 2, le slide est obligatoirement en mode liquide
+	if (plugin.settings.fading_mode == 1) {
+		if (plugin.settings.fading_type == 2) {
+			plugin.settings.liquide = 1;
+		}
+	}
 	
 	//autocréation du bouton fullscreen
 	if (mobile == false && plugin.settings.fullscreen == 1 && plugin.settings.liquide == 1) {
@@ -387,21 +395,37 @@ plugin.defilement_images = function() {
 	$element.find(".pages .pages_menu_text span").text(compteur);
 	
 	if(plugin.settings.fading_mode == 1){
-		$element.find(".grand_slider").fadeOut(function(){
+		function move_the_rail_before_or_after_the_fading(){
 			if(compteur == nbr_groupes + 1){compteur = 1;}
 			else if(compteur == 0){compteur = nbr_groupes;}
 			$element.find(".grand_slider").css({left: "-" + largeur_groupe * (compteur - 1) + "px"});
 			
 			$element.find(".grand_slider>li").removeClass("selected");
 			$element.find(".grand_slider>li:nth-child(" + compteur + ")").addClass("selected");
-		
+
 			$.event.trigger({
 				type: "sliker_defilement_end",
 				cpt: compteur,
 				slider: $element,
 			});
-		});
-		$element.find(".grand_slider").fadeIn();
+		}
+		
+		if(plugin.settings.fading_type == 2){
+			var clone_to_fade = $element.find(".grand_slider>li:nth-child(" + compteur + ")").clone();
+			
+			$element.find(".conteneur_strict").prepend('<ul class="block_to_fade"></ul>');
+			$element.find(".block_to_fade").append(clone_to_fade);
+			
+			$element.find(".block_to_fade").animate({opacity:1},500,function(){
+				move_the_rail_before_or_after_the_fading();
+				$element.find(".block_to_fade").remove();
+			});
+		}else{
+			$element.find(".grand_slider").fadeOut(function(){
+				move_the_rail_before_or_after_the_fading();
+			});
+			$element.find(".grand_slider").fadeIn();
+		}
 	}else if (compteur == nbr_groupes + 1){
 		$element.find(".boutons li:first-child").addClass("selected");//allume le numï¿½ro malgrï¿½ qu'on soit sur le rajout
 		$element.find(".grand_slider").animate({left: "-" + (largeur_li * dernier_saut) + "px"}, plugin.settings.vitesse, 'linear');

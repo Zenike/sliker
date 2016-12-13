@@ -13,7 +13,7 @@ z-index: 9999999 !important;
 background-color: #000 !important;
 	.conteneur_strict {
 	height: 100% !important;
-		.grand_slider {
+		.grand_slider, .block_to_fade {
 		height: 100% !important;
 			>li {
 			height: 100% !important;
@@ -80,7 +80,7 @@ z-index: 2;
 	width: 100%;
 	margin: auto;
 	overflow: hidden;
-		.grand_slider {
+		.grand_slider, .block_to_fade {
 		position: relative;
 		width: 100000px;
 		left: 0px;
@@ -105,6 +105,15 @@ z-index: 2;
 				background-image: url(../img/trans/b.png);
 				}
 			}
+		}
+		.block_to_fade {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 5;
+		opacity: 0;
 		}
 	}
 	ul.boutons {
@@ -237,7 +246,7 @@ z-index: 2;
 		}
 	}
 	&.vam {
-		.grand_slider {
+		.grand_slider, .block_to_fade {
 			>li {
 			display: inline-block;
 			float: none;
@@ -257,7 +266,7 @@ z-index: 2;
 	display: none !important;
 	}
 	.conteneur_strict {
-		.grand_slider {
+		.grand_slider, .block_to_fade {
 		position: static;
 		width: 100%;
 			>li {
