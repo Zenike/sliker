@@ -481,11 +481,11 @@ plugin.buffering_imgs = function() {
 	// de CHAQUE coté du slide actif (default: 1 -> donc trois images potentiellement chargées)
 	for (var i=compteur-plugin.settings.buffering_nbr;i<=compteur+plugin.settings.buffering_nbr;i++) {
 	
-		var src = $element.find(".grand_slider>li:nth-child(" + i + ") img[data-src]").attr("src");
+		var src = $element.find(".grand_slider>li:nth-child(" + i + ") img[data-sliker-src]").attr("src");
 		
 		if(typeof src === 'undefined'){
-			var data_src = $element.find(".grand_slider>li:nth-child(" + i + ") img[data-src]").attr("data-src");
-			$element.find(".grand_slider>li:nth-child(" + i + ") img[data-src]").attr("src",data_src);
+			var data_src = $element.find(".grand_slider>li:nth-child(" + i + ") img[data-sliker-src]").attr("data-sliker-src");
+			$element.find(".grand_slider>li:nth-child(" + i + ") img[data-sliker-src]").attr("src",data_src);
 		}
 	}
 };
