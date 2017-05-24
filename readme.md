@@ -58,7 +58,7 @@ Par défaut, le less de Slike chercher après la variable @theme et se sert de c
 Il est donc nécessaire que cette variable existe.
 Il est toutefois possible de modifier ses couleurs indépendement en utilisant en ciblant le slider en CSS et 
 en utilisant un mixin LESS :
-```css
+```html
 .sliker_colors(@color,@bg);
 ```
 - @color pour la couleur de fond (au repos) des puces et fleches.
@@ -110,32 +110,32 @@ Important: en mode custom, chaque li doit posséder son propre data-timer, sans 
 ## Variables LESS
 Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (par son id par exemple) et lui appliquer un de ces mixins: 
 
-```css
+```html
 .sliker_bullets(@size,@round);
 ```
 - @size pour la taille: hauteur et largeur de la puce ou font-size de l'icone.
 - @round pour l'arrondi de la puce (ex:2px pour un carré légèrement arrondi) => inutile si la puce est une icone
 
-```css
+```html
 .sliker_bullets_out(@spacing);
 ```
 - @spacing pour modifier les marges (top et bot) des boutons.
 - ce mixin sort les puces du slideret les positionnes après celui ci. Ecrire .sliker_bullets_out; sans option est donc tout à fait viable.
 
-```css
+```html
 .sliker_bullets_in(@spacing);
 ```
 - position par defaut !
 - @spacing pour modifier la marge des boutons (séparation du bas du slider).
 - ce mixin rentre les puces dans le bas du slider, par dessus le contenu. Ecrire .sliker_bullets_in; sans option est viable et appliquera la marge par defaut.
 
-```css
+```html
 .sliker_arrows_out(@spacing);
 ```
 - @spacing pour modifier l'espacement entre les fleches et le bord du slider (sans compter le padding autour de l'icone).
 - ce mixin sort les fleches en dehors du slider. Ecrire .sliker_arrows_out; utilsera un spacing de 0px et les fleches seront contre le slider.
 
-```css
+```html
 .sliker_arrows_in(@spacing);
 ```
 - position par defaut !
