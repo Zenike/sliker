@@ -6,7 +6,7 @@
 # dépendances
 - `jQuery`: une version récente sans limitation précise
 - `Less`: le css de ce plugin est écrit en LESS, quelques variables de couleur devront être définies pour son bon fonctionnement.
-- ´FontAwesome´: les flèches de navigation utilisent des icones FontAwesome. Il est possible de s'en passer (voir plus bas)
+- `FontAwesome`: les flèches de navigation utilisent des icones FontAwesome. Il est possible de s'en passer (voir plus bas)
 
 # Installation
 1. récuperer les fichiers `sliker.less` et `sliker.js` à la racine du projet GitHUb
@@ -14,9 +14,9 @@
 3. lier et génerer un css à partir de `sliker.less`
 
 # Utilisation
-- créer la structure html suivant l'exemple
+- créer la structure html suivant l'exemple (data-arrow et data-bullet sont optionnels)
 ```html
-<div id="slider_example" class="sliker">
+<div id="slider_example" class="sliker" data-arrow="fa fa-caret" data-bullet="fa fa-star">
 	<div class="conteneur_strict">
 		<ul class="grand_slider">
 			<li><img src="./example.jpg"></li>
@@ -28,7 +28,7 @@
 ```
 - déclarer le slider en javascript
 ```javascript
-$('#slider_example').slider_nike({
+$('#slider_example').sliker({
 'nbr_li':1, //nombre d'éléments qui défilent à chaque mouvement.
 'vitesse_auto':3000, //temps entre deux mouvements automatiques.
 'vitesse': 500, //rapidité du mouvement (automatique ou manuel, même paramètre).
@@ -42,10 +42,12 @@ $('#slider_example').slider_nike({
 'drag':0, //permet la manipulation du slider aux doigts ou en cliquer/glisser à la souris.
 'creer_afficheur': 0, //crée automatiquement une zone avec l'image zoomée au dessus du slider.
 'fading_mode': 1, //remplace la transition en "déplacement de rail" par un fondu.
+'fading_type': 1, //mode 1: fondu blanc. mode 2: fondu enchainé entre deux images.
 'buffering_nbr': 1, //nombre d'image préchargé autour de l'image active. Nécessite l'utilisation de data-src au lieu de src.
 'fullscreen': 0, //affiche ou masque le bouton fullscreen.
 'bullets': 1, //affiche ou maque les puces du slider.
 'bullets_limit': 20, //limite de puces au délà de laquelle celles ci se transforme en un menu pages (ex: 7/22).
+'bullets_limit_mobile': 8, //identique à bullets_limit mais ne s'applique qu'en cas de mobile
 });
 ```
 
@@ -56,7 +58,7 @@ Par défaut, le less de Slike chercher après la variable @theme et se sert de c
 Il est donc nécessaire que cette variable existe.
 Il est toutefois possible de modifier ses couleurs indépendement en utilisant en ciblant le slider en CSS et 
 en utilisant un mixin LESS :
-```css
+```html
 .sliker_colors(@color,@bg);
 ```
 - @color pour la couleur de fond (au repos) des puces et fleches.
@@ -108,32 +110,38 @@ Important: en mode custom, chaque li doit posséder son propre data-timer, sans 
 ## Variables LESS
 Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (par son id par exemple) et lui appliquer un de ces mixins: 
 
-```css
+```html
+.sliker_colors(@color,@bg);
+```
+- @color pour la couleur de fond (au repos) des puces et fleches.
+- @bg pour la couleur active (survol) des puces et fleches.
+
+```html
 .sliker_bullets(@size,@round);
 ```
 - @size pour la taille: hauteur et largeur de la puce ou font-size de l'icone.
 - @round pour l'arrondi de la puce (ex:2px pour un carré légèrement arrondi) => inutile si la puce est une icone
 
-```css
+```html
 .sliker_bullets_out(@spacing);
 ```
 - @spacing pour modifier les marges (top et bot) des boutons.
 - ce mixin sort les puces du slideret les positionnes après celui ci. Ecrire .sliker_bullets_out; sans option est donc tout à fait viable.
 
-```css
+```html
 .sliker_bullets_in(@spacing);
 ```
 - position par defaut !
 - @spacing pour modifier la marge des boutons (séparation du bas du slider).
 - ce mixin rentre les puces dans le bas du slider, par dessus le contenu. Ecrire .sliker_bullets_in; sans option est viable et appliquera la marge par defaut.
 
-```css
+```html
 .sliker_arrows_out(@spacing);
 ```
 - @spacing pour modifier l'espacement entre les fleches et le bord du slider (sans compter le padding autour de l'icone).
 - ce mixin sort les fleches en dehors du slider. Ecrire .sliker_arrows_out; utilsera un spacing de 0px et les fleches seront contre le slider.
 
-```css
+```html
 .sliker_arrows_in(@spacing);
 ```
 - position par defaut !
