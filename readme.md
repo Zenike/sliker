@@ -6,7 +6,7 @@
 # dépendances
 - `jQuery`: une version récente sans limitation précise
 - `Less`: le css de ce plugin est écrit en LESS, quelques variables de couleur devront être définies pour son bon fonctionnement.
-- ´FontAwesome´: les flèches de navigation utilisent des icones FontAwesome. Il est possible de s'en passer (voir plus bas)
+- `FontAwesome`: les flèches de navigation utilisent des icones FontAwesome. Il est possible de s'en passer (voir plus bas)
 
 # Installation
 1. récuperer les fichiers `sliker.less` et `sliker.js` à la racine du projet GitHUb
@@ -14,9 +14,9 @@
 3. lier et génerer un css à partir de `sliker.less`
 
 # Utilisation
-- créer la structure html suivant l'exemple
+- créer la structure html suivant l'exemple (data-arrow et data-bullet sont optionnels)
 ```html
-<div id="slider_example" class="sliker">
+<div id="slider_example" class="sliker" data-arrow="fa fa-caret" data-bullet="fa fa-star">
 	<div class="conteneur_strict">
 		<ul class="grand_slider">
 			<li><img src="./example.jpg"></li>
@@ -109,6 +109,12 @@ Important: en mode custom, chaque li doit posséder son propre data-timer, sans 
 
 ## Variables LESS
 Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (par son id par exemple) et lui appliquer un de ces mixins: 
+
+```html
+.sliker_colors(@color,@bg);
+```
+- @color pour la couleur de fond (au repos) des puces et fleches.
+- @bg pour la couleur active (survol) des puces et fleches.
 
 ```html
 .sliker_bullets(@size,@round);
