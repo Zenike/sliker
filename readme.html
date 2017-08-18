@@ -43,9 +43,10 @@
 &#39;fading_type&#39;: 1, //mode 1: fondu blanc. mode 2: fondu enchainé entre deux images.
 &#39;buffering_nbr&#39;: 1, //nombre d&#39;image préchargé autour de l&#39;image active. Nécessite l&#39;utilisation de data-src au lieu de src.
 &#39;fullscreen&#39;: 0, //affiche ou masque le bouton fullscreen.
-&#39;bullets&#39;: 1, //affiche ou maque les puces du slider.
+&#39;bullets&#39;: 1, //affiche ou masque les puces du slider.
 &#39;bullets_limit&#39;: 20, //limite de puces au délà de laquelle celles ci se transforme en un menu pages (ex: 7/22).
 &#39;bullets_limit_mobile&#39;: 8, //identique à bullets_limit mais ne s&#39;applique qu&#39;en cas de mobile
+&#39;arrows&#39;: 1, //affiche ou masque les flèches du slider.
 });
 </code></pre>
 </li>
@@ -105,11 +106,12 @@ Important: en mode custom, chaque li doit posséder son propre data-timer, sans 
 <li>@color pour la couleur de fond (au repos) des puces et fleches.</li>
 <li>@bg pour la couleur active (survol) des puces et fleches.</li>
 </ul>
-<pre><code class="lang-html">.sliker_bullets(@size,@round);
+<pre><code class="lang-html">.sliker_bullets(@size,@round,@specific_span_width);
 </code></pre>
 <ul>
 <li>@size pour la taille: hauteur et largeur de la puce ou font-size de l&#39;icone.</li>
 <li>@round pour l&#39;arrondi de la puce (ex:2px pour un carré légèrement arrondi) =&gt; inutile si la puce est une icone</li>
+<li>@specific_span_width : optionnel, spécifie une largeur différente de la hauteur =&gt; inutile si la puce est une icone</li>
 </ul>
 <pre><code class="lang-html">.sliker_bullets_out(@spacing);
 </code></pre>
