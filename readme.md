@@ -45,9 +45,10 @@ $('#slider_example').sliker({
 'fading_type': 1, //mode 1: fondu blanc. mode 2: fondu enchainé entre deux images.
 'buffering_nbr': 1, //nombre d'image préchargé autour de l'image active. Nécessite l'utilisation de data-src au lieu de src.
 'fullscreen': 0, //affiche ou masque le bouton fullscreen.
-'bullets': 1, //affiche ou maque les puces du slider.
+'bullets': 1, //affiche ou masque les puces du slider.
 'bullets_limit': 20, //limite de puces au délà de laquelle celles ci se transforme en un menu pages (ex: 7/22).
 'bullets_limit_mobile': 8, //identique à bullets_limit mais ne s'applique qu'en cas de mobile
+'arrows': 1, //affiche ou masque les flèches du slider.
 });
 ```
 
@@ -117,10 +118,11 @@ Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (
 - @bg pour la couleur active (survol) des puces et fleches.
 
 ```html
-.sliker_bullets(@size,@round);
+.sliker_bullets(@size,@round,@specific_span_width);
 ```
 - @size pour la taille: hauteur et largeur de la puce ou font-size de l'icone.
 - @round pour l'arrondi de la puce (ex:2px pour un carré légèrement arrondi) => inutile si la puce est une icone
+- @specific_span_width : optionnel, spécifie une largeur différente de la hauteur => inutile si la puce est une icone
 
 ```html
 .sliker_bullets_out(@spacing);
