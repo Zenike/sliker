@@ -26,6 +26,7 @@ var defaults = {
 'bullets': 1,
 'bullets_limit': 20,
 'bullets_limit_mobile': 8,
+'arrows': 1,
 };
 
 // to avoid confusions, use "plugin" to reference the current instance of the object
@@ -94,7 +95,7 @@ plugin.init = function() {
 	}
 	
 	//autocréation des flèches
-	if (mobile == false) {
+	if (mobile == false && plugin.settings.arrows == 1) {
 		if($element.is("[data-arrow]")){
 			var icon = $element.attr("data-arrow");
 		}else{
@@ -368,7 +369,7 @@ plugin.defilement_images = function() {
 	$element.find(".grand_slider>li.selected .mask").fadeOut();
 
 
-	/* vï¿½rifie quand le compteur est ï¿½ 1 (pos de dï¿½part) ou dï¿½passe le nombre de groupe (remise ï¿½ 0) */
+	/* verifie quand le compteur est a 1 (pos de depart) ou depasse le nombre de groupe (remise a 0) */
 	if (compteur == 1) {
 		$element.find(".btn_left").css("visibility", "hidden");
 	} else {

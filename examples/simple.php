@@ -38,6 +38,7 @@ $(document).ready(function(){
 	'fullscreen': 1,
 	'bullets': 1,
 	'bullets_limit': 20,
+	'arrows': 1,
 	});
 });//doc ready
 </script>
