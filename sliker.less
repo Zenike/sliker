@@ -1,7 +1,7 @@
 .fullscreen {
 border: none !important;
 width: 100% !important;
-.round(0px) !important;
+border-radius: 0px !important;
 max-width: none !important;
 height: 100% !important;
 overflow: hidden !important;
@@ -90,7 +90,7 @@ z-index: 2;
 			float: left;
 			position: relative;
 			overflow: hidden;
-			background-color: @w;
+			background-color: #fff;
 				>img.full {
 				display: block;
 				width: 100%;
@@ -135,7 +135,7 @@ z-index: 2;
 			height: 15px;
 			text-align: center;
 			color: #eee;
-			.round(30px);
+			border-radius: 30px;
 			cursor: pointer;
 			overflow: hidden;
 			text-indent: -100px;
@@ -168,12 +168,12 @@ z-index: 2;
 		.wrap {
 		display: inline-block;
 		background-color: fade(#000,70%);
-		.round(2px);
+		border-radius: 2px;
 		}
 		span {
 		display: inline-block;
 		font-size: 12px;
-		color: @w;
+		color: #fff;
 		}
 		.btn_left, .btn_right {
 		font-weight: normal;
@@ -331,7 +331,7 @@ z-index: 2;
 			width: @size;
 			height: @size;
 			width: @specific_span_width;
-			.round(@round);
+			border-radius: @round;
 			}
 			i {
 			font-size: @size;
