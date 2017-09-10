@@ -57,7 +57,7 @@ $('#slider_example').sliker({
 ## Couleurs
 Par défaut, le less de Slike chercher après la variable @theme et se sert de celle-ci pour coloriser ses éléments de navigation.
 Il est donc nécessaire que cette variable existe.
-Il est toutefois possible de modifier ses couleurs indépendement en utilisant en ciblant le slider en CSS et 
+Il est toutefois possible de modifier ses couleurs indépendement en utilisant en ciblant le slider en CSS et
 en utilisant un mixin LESS :
 ```html
 .sliker_colors(@color,@bg);
@@ -109,7 +109,7 @@ Important: en mode custom, chaque li doit posséder son propre data-timer, sans 
 ```
 
 ## Variables LESS
-Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (par son id par exemple) et lui appliquer un de ces mixins: 
+Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (par son id par exemple) et lui appliquer un de ces mixins:
 
 ```html
 .sliker_colors(@color,@bg);
@@ -151,8 +151,6 @@ Ces variables s'appliquent en css. Il faut cibler le slider dans le css normal (
 - ce mixin rentre les fleches dans le slider. Ecrire .sliker_arrows_in; utilsera un spacing de 0px (par defaut) et les fleches seront contre le slider.
 
 ## Informations diverses
-- mettre ".full" sur la balise "img" si on souhaite qu'elle prenne 100% du li, sinon elle prendra sa taille réelle.
 - départ sur un slide précis possible grace à la classe "selected" à mettre sur un "li".
-- pour masquer les puces, mettre la class "no_btn" sur la base du slider.
 - mettre la class "vam" (pour vertical align middle) sur la base du slider pour que les li soient alignés verticalement.
 - mettre la classe "safeload" à la racine (.sliker) afin d'avoir un chargement moins saccadé dans le cas d'un slider élastique (une image).
