@@ -11,9 +11,9 @@ left: 0 !important;
 margin: 0 !important;
 z-index: 9999999 !important;
 background-color: #000 !important;
-	.conteneur_strict {
+	.sliker__window {
 	height: 100% !important;
-		.grand_slider, .block_to_fade {
+		.sliker__track, .sliker__fading-mask {
 		height: 100% !important;
 			>li {
 			height: 100% !important;
@@ -34,7 +34,7 @@ background-color: #000 !important;
 	.btn_left, .btn_right {
 
 	}
-	ul.boutons, ul.pages {
+	.sliker__bullets, ul.pages {
 	position: absolute !important;
 	bottom: 20px !important;
 	margin: 0 !important;
@@ -69,57 +69,54 @@ display: none;
 .sliker {
 position: relative;
 z-index: 2;
-	.afficheur {
-		img {
-		display: block;
-		width: 100%;
-		}
+	.sliker__displayer {
+
 	}
-	.conteneur_strict {
+	.sliker__displayer-img {
+	display: block;
+	width: 100%;
+	}
+	.sliker__window {
 	position: relative;
 	width: 100%;
 	margin: auto;
 	overflow: hidden;
-		.grand_slider, .block_to_fade {
-		list-style-type: none;
-		margin-bottom: 0;
-		padding-left: 0;
-		position: relative;
-		width: 100000px;
-		left: 0px;
-		overflow: hidden;
-		font-size: 0;
-			>li {
-			float: left;
-			position: relative;
-			overflow: hidden;
-			background-color: #fff;
-				.mask {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				z-index: 5;
-				background-image: url(../img/trans/b.png);
-				}
-			}
-		}
-		.grand_slider {
-		transition-property: transform;
-		will-change: transform;
-		}
-		.block_to_fade {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 5;
-		opacity: 0;
-		}
 	}
-	ul.boutons {
+	.sliker__track {
+	list-style-type: none;
+	margin-bottom: 0;
+	padding-left: 0;
+	position: relative;
+	width: 1000000px;
+	left: 0px;
+	overflow: hidden;
+	font-size: 0;
+	}
+	.sliker__track {
+	transition-property: transform;
+	will-change: transform;
+	}
+	.sliker__fading-mask {
+	list-style-type: none;
+	margin-bottom: 0;
+	padding-left: 0;
+	overflow: hidden;
+	font-size: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 5;
+	opacity: 0;
+	}
+	.sliker__item {
+	float: left;
+	position: relative;
+	overflow: hidden;
+	background-color: #fff;
+	}
+	.sliker__bullets {
 	overflow: hidden;
 	margin: auto;
 	text-align: center;
@@ -128,36 +125,36 @@ z-index: 2;
 	width: 100%;
 	font-size: 0;
 	padding-left: 0;
-		li {
-		display: inline-block;
-		margin-right: 3px;
-		margin-left: 3px;
-			span {
-			display: block;
-			background-color: #aaa;
-			width: 15px;
-			height: 15px;
-			text-align: center;
-			color: #eee;
-			border-radius: 30px;
-			cursor: pointer;
-			overflow: hidden;
-			text-indent: -100px;
-			}
-			i {
-			font-size: 18px;
-			cursor: pointer;
-			color: #aaa;
-			}
+	}
+	.sliker__bulletitem {
+	display: inline-block;
+	margin-right: 3px;
+	margin-left: 3px;
+		span {
+		display: block;
+		background-color: #aaa;
+		width: 15px;
+		height: 15px;
+		text-align: center;
+		color: #eee;
+		border-radius: 30px;
+		cursor: pointer;
+		overflow: hidden;
+		text-indent: -100px;
 		}
-		li:hover, li.selected {
-			span {
-			background-color: @theme;
-			color: #fff;
-			}
-			i {
-			color: @theme;
-			}
+		i {
+		font-size: 18px;
+		cursor: pointer;
+		color: #aaa;
+		}
+	}
+	.sliker__bulletitem:hover, .sliker__bulletitem.selected {
+		span {
+		background-color: @theme;
+		color: #fff;
+		}
+		i {
+		color: @theme;
 		}
 	}
 	.pages {
@@ -250,7 +247,7 @@ z-index: 2;
 		}
 	}
 	&.vam {
-		.grand_slider, .block_to_fade {
+		.sliker__track, .sliker__fading-mask {
 			>li {
 			display: inline-block;
 			float: none;
@@ -261,11 +258,11 @@ z-index: 2;
 }
 
 .sliker.sliker--safeload {
-	.btn_left, .btn_right, .btn_fs, ul.boutons {
+	.btn_left, .btn_right, .btn_fs, .sliker__bullets {
 	display: none !important;
 	}
-	.conteneur_strict {
-		.grand_slider, .block_to_fade {
+	.sliker__window {
+		.sliker__track, .sliker__fading-mask {
 		position: static;
 		width: 100%;
 			>li {
@@ -303,7 +300,7 @@ z-index: 2;
 		color: @color;
 		}
 	}
-	ul.boutons {
+	.sliker__bullets {
 		li {
 			span {
 			background-color: @bg;
@@ -324,7 +321,7 @@ z-index: 2;
 }
 
 .sliker_bullets(@size,@round,@specific_span_width: @size) {
-	ul.boutons {
+	.sliker__bullets {
 		li {
 			span {
 			width: @size;
@@ -340,7 +337,7 @@ z-index: 2;
 }
 
 .sliker_bullets_out(@spacing: 3px) {
-	ul.boutons, .pages {
+	.sliker__bullets, .pages {
 	position: static;
 	margin-top: @spacing;
 	margin-bottom: @spacing;
@@ -348,7 +345,7 @@ z-index: 2;
 }
 
 .sliker_bullets_in(@spacing: 12px) {
-	ul.boutons, .pages {
+	.sliker__bullets, .pages {
 	position: absolute;
 	bottom: @spacing;
 	}

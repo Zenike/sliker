@@ -45,7 +45,7 @@ var nbr_li_visibles_raw;
 var nbr_li_visibles;
 var nbr_li;
 var nbr_groupes;
-/*var largeur_ul_boutons;*/
+/*var largeur_ul_sliker__bullets;*/
 var compteur_slides_auto;
 var defilement_auto;
 var reste_division;
@@ -131,11 +131,11 @@ plugin.init = function() {
 	//créer un afficheur statique pour mobile our pour PC si pas de cible
 	if (plugin.settings.creer_afficheur == 1) {
 		if (mobile != false || plugin.settings.cible == "none") {
-			$element.prepend('<div class="afficheur"><img src=""></div>');
-			$element.find(".afficheur img").attr("src",$element.find(".grand_slider>li:first-child img").attr("src"))
+			$element.prepend('<div class="sliker__displayer"><img class="sliker__displayer-img" src=""></div>');
+			$element.find(".sliker__displayer img").attr("src",$element.find(".sliker__item:first-child img").attr("src"))
 
-			$element.find(".grand_slider>li").click(function(){
-				$element.find(".afficheur img").attr("src",$(this).children("img").attr("src"));
+			$element.find(".sliker__item").click(function(){
+				$element.find(".sliker__displayer .sliker__displayer-img").attr("src",$(this).find("img").attr("src"));
 			});
 		}
 	}
@@ -174,7 +174,7 @@ plugin.init = function() {
 			first_loop = 0;
 
 			if(plugin.settings.auto == "custom"){
-				var timer_next = $element.find(".grand_slider>li:nth-child(" + compteur + ")").attr("data-timer");
+				var timer_next = $element.find(".sliker__item:nth-child(" + compteur + ")").attr("data-timer");
 			}else{
 				var timer_next = plugin.settings.vitesse_auto;
 			}
@@ -197,7 +197,7 @@ plugin.init = function() {
 			$element.mouseup(function(e) {
 				plugin.lacher();
 			});
-			$element.find(".conteneur_strict").mouseout(function(e) {
+			$element.find(".sliker__window").mouseout(function(e) {
 				plugin.lacher();
 			});
 		} else {
@@ -269,7 +269,7 @@ plugin.init = function() {
 	});
 
 	/* bouton aller à une page précise */
-	$element.on("click", ".boutons li", function() {
+	$element.on("click", ".sliker__bulletitem", function() {
 		compteur = $(this).index() + 1;
 		if (plugin.settings.isolement == 1 && mobile == false) {
 			plugin.afficher_cache();
@@ -284,16 +284,16 @@ plugin.init = function() {
 	if (plugin.settings.type == "visualiseur") {
 		var decal;
 
-		$(plugin.settings.cible).on("mousedown", " .grand_slider>li", function(e) {
+		$(plugin.settings.cible).on("mousedown", " .sliker__item", function(e) {
 			decal = e.pageX;
 		});
 
-		$(plugin.settings.cible).on("click", " .grand_slider>li", function(e) {
+		$(plugin.settings.cible).on("click", " .sliker__item", function(e) {
 			decal = Math.abs(e.pageX - decal);
 			if (decal < 10 || mobile != false) {
 
 				/* rajouter ceci */
-				if($(this).parents(".grand_slider").children("li:first-child").is("[data-group]")){
+				if($(this).parents(".sliker__track").children("li:first-child").is("[data-group]")){
 					compteur = 0;
 					$(this).prevAll().each(function(){
 						compteur = compteur + Math.round($(this).attr("data-group"));
@@ -347,7 +347,7 @@ plugin.init = function() {
 
 
 /* ACTION DEFILEMENT *****************************************************************************************************************************/
-/* action qui se lance quand on clique sur un des boutons de commande (droite ou gauche) */
+/* action qui se lance quand on clique sur un des sliker__bullets de commande (droite ou gauche) */
 plugin.defilement_images = function() {
 	$.event.trigger({
 		type: "sliker_defilement",
@@ -357,16 +357,13 @@ plugin.defilement_images = function() {
 
 	plugin.buffering_imgs();
 
-	$element.find(".boutons li").removeClass("selected");
-	$element.find(".boutons li:nth-child(" + compteur + ")").addClass("selected");
+	$element.find(".sliker__bulletitem").removeClass("selected");
+	$element.find(".sliker__bulletitem:nth-child(" + compteur + ")").addClass("selected");
 
 	if(plugin.settings.fading_mode != 1){
-		$element.find(".grand_slider>li").removeClass("selected");
-		$element.find(".grand_slider>li:nth-child(" + compteur + ")").addClass("selected");
+		$element.find(".sliker__item").removeClass("selected");
+		$element.find(".sliker__item:nth-child(" + compteur + ")").addClass("selected");
 	}
-
-	$element.find(".grand_slider .mask").fadeIn();
-	$element.find(".grand_slider>li.selected .mask").fadeOut();
 
 
 	/* verifie quand le compteur est a 1 (pos de depart) ou depasse le nombre de groupe (remise a 0) */
@@ -387,10 +384,10 @@ plugin.defilement_images = function() {
 		$element.find(".btn_left").css("visibility", "visible");
 	}
 
-	$element.find(".grand_slider").stop();
+	$element.find(".sliker__track").stop();
 
 	//les deux premières conditions n'apparaissent qu'en cas de loop
-	var dernier_saut = $element.find(".grand_slider>li.rajout:first").index();
+	var dernier_saut = $element.find(".sliker__item.rajout:first").index();
 
 	//met à jour l'affichage page si présent
 	$element.find(".pages .pages_menu_text span").text(compteur);
@@ -399,10 +396,10 @@ plugin.defilement_images = function() {
 		// function move_the_rail_before_or_after_the_fading(){
 		// 	if(compteur == nbr_groupes + 1){compteur = 1;}
 		// 	else if(compteur == 0){compteur = nbr_groupes;}
-		// 	$element.find(".grand_slider").css({left: "-" + largeur_groupe * (compteur - 1) + "px"});
+		// 	$element.find(".sliker__track").css({left: "-" + largeur_groupe * (compteur - 1) + "px"});
 		//
-		// 	$element.find(".grand_slider>li").removeClass("selected");
-		// 	$element.find(".grand_slider>li:nth-child(" + compteur + ")").addClass("selected");
+		// 	$element.find(".sliker__item").removeClass("selected");
+		// 	$element.find(".sliker__item:nth-child(" + compteur + ")").addClass("selected");
 		//
 		// 	$.event.trigger({
 		// 		type: "sliker_defilement_end",
@@ -412,34 +409,34 @@ plugin.defilement_images = function() {
 		// }
 		//
 		// if(plugin.settings.fading_type == 2){
-		// 	var clone_to_fade = $element.find(".grand_slider>li:nth-child(" + compteur + ")").clone();
+		// 	var clone_to_fade = $element.find(".sliker__item:nth-child(" + compteur + ")").clone();
 		//
-		// 	$element.find(".conteneur_strict").prepend('<ul class="block_to_fade"></ul>');
-		// 	$element.find(".block_to_fade").append(clone_to_fade);
+		// 	$element.find(".sliker__window").prepend('<ul class="sliker__fading-mask"></ul>');
+		// 	$element.find(".sliker__fading-mask").append(clone_to_fade);
 		//
-		// 	$element.find(".block_to_fade").animate({opacity:1},500,function(){
+		// 	$element.find(".sliker__fading-mask").animate({opacity:1},500,function(){
 		// 		move_the_rail_before_or_after_the_fading();
-		// 		$element.find(".block_to_fade").remove();
+		// 		$element.find(".sliker__fading-mask").remove();
 		// 	});
 		// }else{
-		// 	$element.find(".grand_slider").fadeOut(function(){
+		// 	$element.find(".sliker__track").fadeOut(function(){
 		// 		move_the_rail_before_or_after_the_fading();
 		// 	});
-		// 	$element.find(".grand_slider").fadeIn();
+		// 	$element.find(".sliker__track").fadeIn();
 		// }
 	}else if (compteur == nbr_groupes + 1){
-		// $element.find(".boutons li:first-child").addClass("selected");//allume le numï¿½ro malgrï¿½ qu'on soit sur le rajout
-		// $element.find(".grand_slider").animate({left: "-" + (largeur_li * dernier_saut) + "px"}, plugin.settings.vitesse, 'linear');
+		// $element.find(".sliker__bulletitem:first-child").addClass("selected");//allume le numï¿½ro malgrï¿½ qu'on soit sur le rajout
+		// $element.find(".sliker__track").animate({left: "-" + (largeur_li * dernier_saut) + "px"}, plugin.settings.vitesse, 'linear');
 		// compteur = 1;
-		// $element.find(".grand_slider").animate({left: "-" + largeur_groupe * (compteur - 1) + "px"}, 1);
+		// $element.find(".sliker__track").animate({left: "-" + largeur_groupe * (compteur - 1) + "px"}, 1);
 	}else if(compteur == 0){
 		// compteur = nbr_groupes + 1;
-		// $element.find(".boutons li:last-child").addClass("selected");//allume le numï¿½ro malgrï¿½ qu'on soit sur le rajout
-		// $element.find(".grand_slider").animate({left: "-" + (largeur_li * dernier_saut) + "px"}, 1);
+		// $element.find(".sliker__bulletitem:last-child").addClass("selected");//allume le numï¿½ro malgrï¿½ qu'on soit sur le rajout
+		// $element.find(".sliker__track").animate({left: "-" + (largeur_li * dernier_saut) + "px"}, 1);
 		// compteur = nbr_groupes;
-		// $element.find(".grand_slider").animate({left: "-" + (largeur_groupe * (compteur - 1)) + "px"}, plugin.settings.vitesse, 'linear');
+		// $element.find(".sliker__track").animate({left: "-" + (largeur_groupe * (compteur - 1)) + "px"}, plugin.settings.vitesse, 'linear');
 	}else{
-		// $element.find(".grand_slider").animate({left: "-" + largeur_groupe * (compteur - 1) + "px"}, plugin.settings.vitesse, 'linear');
+		// $element.find(".sliker__track").animate({left: "-" + largeur_groupe * (compteur - 1) + "px"}, plugin.settings.vitesse, 'linear');
 		plugin.moveTo("-" + largeur_groupe * (compteur - 1));
 	}
 
@@ -453,7 +450,7 @@ plugin.defilement_images = function() {
 };
 
 plugin.moveTo = function(newPosittion) {
-	$element.find(".grand_slider").css({
+	$element.find(".sliker__track").css({
 		"transition-duration" : plugin.settings.vitesse + "s",
 		"-webkit-transform" : "translate(" + newPosittion + "px,0)",
 		"-ms-transform" : "translate(" + newPosittion + "px,0)",
@@ -462,7 +459,7 @@ plugin.moveTo = function(newPosittion) {
 }
 
 plugin.instantMoveTo = function(newPosittion) {
-	$element.find(".grand_slider").css({
+	$element.find(".sliker__track").css({
 		"transition-duration" : "0s",
 		"-webkit-transform" : "translate(" + newPosittion + "px,0)",
 		"-ms-transform" : "translate(" + newPosittion + "px,0)",
@@ -501,17 +498,17 @@ plugin.buffering_imgs = function() {
 	// de CHAQUE coté du slide actif (default: 1 -> donc trois images potentiellement chargées)
 	for (var i=compteur-plugin.settings.buffering_nbr;i<=compteur+plugin.settings.buffering_nbr;i++) {
 
-		var src = $element.find(".grand_slider>li:nth-child(" + i + ") img[data-sliker-src]").attr("src");
+		var src = $element.find(".sliker__item:nth-child(" + i + ") img[data-sliker-src]").attr("src");
 
 		if(typeof src === 'undefined'){
-			var data_src = $element.find(".grand_slider>li:nth-child(" + i + ") img[data-sliker-src]").attr("data-sliker-src");
-			$element.find(".grand_slider>li:nth-child(" + i + ") img[data-sliker-src]").attr("src",data_src);
+			var data_src = $element.find(".sliker__item:nth-child(" + i + ") img[data-sliker-src]").attr("data-sliker-src");
+			$element.find(".sliker__item:nth-child(" + i + ") img[data-sliker-src]").attr("src",data_src);
 		}
 	}
 };
 
 plugin.appuyer = function(e) {
-	$element.find(".grand_slider").stop();
+	$element.find(".sliker__track").stop();
 	oneclic = 1;
 	if (mobile == false) {
 		x_start = Math.round(e.pageX - offset.left);
@@ -519,16 +516,16 @@ plugin.appuyer = function(e) {
 		var touch1 = e.originalEvent.touches[0];
 		x_start = Math.round(touch1.pageX - offset.left);
 	}
-	slid_start = $element.find(".grand_slider").position();
+	slid_start = $element.find(".sliker__track").position();
 
 	slid_start = Math.round(slid_start.left);
 	if (mobile == false) {
-		$element.find(".conteneur_strict").mousemove(function(e) {
+		$element.find(".sliker__window").mousemove(function(e) {
 			x = Math.round(e.pageX - offset.left);
 			plugin.bouger(e);
 		});
 	} else {
-		$element.find(".conteneur_strict").bind("touchmove", function(e) {
+		$element.find(".sliker__window").bind("touchmove", function(e) {
 			var touch = e.originalEvent.touches[0];
 			x = Math.round(touch.pageX - offset.left);
 			plugin.bouger(e);
@@ -541,7 +538,7 @@ plugin.appuyer = function(e) {
 plugin.bouger = function(e) {
 	var newTransformPosition = slid_start + (x - x_start);
 
-	$element.find(".grand_slider").css({
+	$element.find(".sliker__track").css({
 		"transition-duration" : "0s",
 		'-webkit-transform' : 'translate(' + newTransformPosition + 'px,0px)',
 		'-moz-transform'    : 'translate(' + newTransformPosition + 'px,0px)',
@@ -564,9 +561,9 @@ plugin.lacher = function(e) {
 	if (oneclic == 1) {
 		oneclic = 0;
 		if (mobile == false) {
-			$element.find(".conteneur_strict").unbind("mousemove");
+			$element.find(".sliker__window").unbind("mousemove");
 		} else {
-			$element.find(".conteneur_strict").unbind("touchmove");
+			$element.find(".sliker__window").unbind("touchmove");
 		}
 		if (next == 1) {
 			next = 0;
@@ -615,17 +612,17 @@ plugin.lacher = function(e) {
 
 plugin.reset = function() {
 	if (plugin.settings.liquide == 1) {
-		$element.find(".conteneur_strict .grand_slider>li").width($element.find(".conteneur_strict").width());
+		$element.find(".sliker__window .sliker__item").width($element.find(".sliker__window").width());
 	}
 
 	/* supprimer les li rajouts, ils vont être calculés à nouveau */
 	$element.find(".rajout").remove();
 	/* calcule la largeur d'un li */
-	largeur_li = $element.find(".grand_slider>li").outerWidth(true);
+	largeur_li = $element.find(".sliker__item").outerWidth(true);
 	if(!largeur_li){largeur_li = 20;/* generique */}
 	/* compte le nombre de li visibles en même temps */
 
-	nbr_li_visibles_raw = $element.find(".conteneur_strict").width() / largeur_li;
+	nbr_li_visibles_raw = $element.find(".sliker__window").width() / largeur_li;
 	nbr_li_visibles = Math.floor(nbr_li_visibles_raw);
 
 	//choisir ici le pourcentage (0.8 = 80%) à partir duquel l'image compte comme vue meme si tronquée
@@ -642,7 +639,7 @@ plugin.reset = function() {
 	/* calcule la largeur d'un groupe de vignettes */
 	largeur_groupe = largeur_li * plugin.settings.nbr_li;
 	/* compte le nombre de li */
-	nbr_li = Math.ceil($element.find(".grand_slider>li").length);
+	nbr_li = Math.ceil($element.find(".sliker__item").length);
 	/* Fait en sorte de ne pas tenir compte des li en bout de chaine quand les lis visibles sont plus nombreux que les li par groupe.
 	 Ne pas faire cette soustraction quand on est en mode loop*/
 	nbr_groupes = Math.ceil((nbr_li - (nbr_li_visibles - plugin.settings.nbr_li)) / plugin.settings.nbr_li);
@@ -663,15 +660,14 @@ plugin.reset = function() {
 
 
 	//départ alternatif si spécifié par la class "selected" (à mettre sur un li)
-	if($element.find(".grand_slider>.selected").length==1){
-		compteur = $element.find(".grand_slider>.selected").index()+1;
+	if($element.find(".sliker__track>.selected").length==1){
+		compteur = $element.find(".sliker__track>.selected").index()+1;
 	}else{
-		$element.find(".grand_slider>li:first-child").addClass("selected");
+		$element.find(".sliker__item:first-child").addClass("selected");
 	}
-	$element.find(".grand_slider>li.selected .mask").fadeOut();
 
 	/* Positionne le slider au départ */
-	// $element.find(".grand_slider").css("left", (compteur - 1) * -1 * largeur_li);
+	// $element.find(".sliker__track").css("left", (compteur - 1) * -1 * largeur_li);
 	plugin.instantMoveTo((compteur - 1) * -1 * largeur_li);
 
 	/* affiche le bouton de défilement de droite (si il y a plus d'un groupe) (visibility pour ne pas dï¿½caler le slider) */
@@ -691,20 +687,20 @@ plugin.reset = function() {
 
 	/* CREER DES PUCES (lien direct de page) */
 	//supprimer les puces totalement avant de les recréer
-	$element.find(".boutons").remove();
+	$element.find(".sliker__bullets").remove();
 	$element.find(".pages").remove();
 
 	//si un autre slider sert de menu (ou si celui ci est un menu) => pas besoin de puces
 	if(plugin.settings.bullets == 1 && nbr_groupes > 1) {
 		if(plugin.settings.bullets_limit >= nbr_groupes){
-			$element.find(".conteneur_strict").after('<ul class="boutons"></ul>');
+			$element.find(".sliker__window").after('<ul class="sliker__bullets"></ul>');
 
 			for (var i = 1; i <= nbr_groupes; i++) {
 				//créer les puces, check l'attr data-bullet qui permet de créer des puces icones
 				if($element.is("[data-bullet]")){
-					$element.find(".boutons").append('<li><i class="'+$element.attr("data-bullet")+'"></i></li>');
+					$element.find(".sliker__bullets").append('<li class="sliker__bulletitem"><i class="'+$element.attr("data-bullet")+'"></i></li>');
 				}else{
-					$element.find(".boutons").append("<li><span>"+i+"</span></li>");
+					$element.find(".sliker__bullets").append('<li class="sliker__bulletitem"><span>"+i+"</span></li>');
 				}
 			}
 		}else{
@@ -713,7 +709,7 @@ plugin.reset = function() {
 			}else{
 				var icon = "fa fa-chevron"
 			}
-			$element.find(".conteneur_strict").after('<div class="pages"><div class="wrap"></div></div>');
+			$element.find(".sliker__window").after('<div class="pages"><div class="wrap"></div></div>');
 			$element.find(".pages .wrap").append('<span class="btn_left"><i class="'+icon+'-left"></i></span>');
 			$element.find(".pages .wrap").append('<span class="pages_menu_text"><span>'+compteur+'</span>/'+nbr_groupes+'</span>');
 			$element.find(".pages .wrap").append('<span class="btn_right"><i class="'+icon+'-right"></i></span>');
@@ -722,17 +718,17 @@ plugin.reset = function() {
 	/* END CREER DES PUCES */
 
 	/* à lancer une seule fois pour la première selection de puce si il y a */
-	$element.find(".boutons li:nth-child(" + compteur + ")").addClass("selected");
+	$element.find(".sliker__bullets li:nth-child(" + compteur + ")").addClass("selected");
 
 	/* si on doit looper, rajouter des li fictifs à la fin du slide */
 	if (plugin.settings.loop == 1) {
 		for (var i = 0; i <= nbr_li_visibles * 2; i++) {
-			$element.find(".grand_slider>li:nth-child(" + i + ")").clone()
-					.addClass("rajout").appendTo($element.find(".grand_slider"));
+			$element.find(".sliker__item:nth-child(" + i + ")").clone()
+					.addClass("rajout").appendTo($element.find(".sliker__track"));
 		}
 	}
-	offset = $element.find(".conteneur_strict").offset();
-	zone = $element.find(".conteneur_strict li").width();
+	offset = $element.find(".sliker__window").offset();
+	zone = $element.find(".sliker__window li").width();
 };
 
 

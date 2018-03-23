@@ -25,10 +25,10 @@ $pathLinkFile="./assets/";
 </h1>
 
 <div id="slider_classique" class="sliker sliker--safeload" data-arrow="fa fa-caret" data-bullet="fa fa-star">
-	<div class="conteneur_strict">
-		<ul class="grand_slider">
+	<div class="sliker__window">
+		<ul class="sliker__track">
 			<?php for($i=1;$i<=10;$i++){ ?>
-			<li class="<?php if($i==3){echo "selected";} ?>">
+			<li class="sliker__item <?php if($i==3){echo "selected";} ?>">
 				<div class="block-3-2">
 					<span>
 						<img src="<?php echo $pathLinkFile; ?>img/examples/<?php echo $i; ?>.jpg">
@@ -42,8 +42,8 @@ $pathLinkFile="./assets/";
 
 <blockquote>
 &lt;div id="slider_classique" class="sliker safeload" data-arrow="fa fa-caret" data-bullet="fa fa-star">
-	&lt;div class="conteneur_strict">
-		&lt;ul class="grand_slider">
+	&lt;div class="sliker__window">
+		&lt;ul class="sliker__track">
 			&lt;?php for($i=1;$i&lt;=10;$i++){ ?>
 			&lt;li class="&lt;?php if($i==3){echo "selected";} ?>">
 				&lt;div class="block-3-2">
