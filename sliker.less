@@ -1,4 +1,4 @@
-.fullscreen {
+.sliker--fullscreen {
 border: none !important;
 width: 100% !important;
 border-radius: 0px !important;
@@ -104,6 +104,10 @@ z-index: 2;
 				background-image: url(../img/trans/b.png);
 				}
 			}
+		}
+		.grand_slider {
+		transition-property: transform;
+		will-change: transform;
 		}
 		.block_to_fade {
 		position: absolute;
@@ -256,7 +260,7 @@ z-index: 2;
 	}
 }
 
-.sliker.safeload {
+.sliker.sliker--safeload {
 	.btn_left, .btn_right, .btn_fs, ul.boutons {
 	display: none !important;
 	}

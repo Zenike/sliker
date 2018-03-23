@@ -24,7 +24,7 @@ $pathLinkFile="./assets/";
 	<i class="fa fa-link"></i> SliKer
 </h1>
 
-<div id="slider_classique" class="sliker safeload" data-arrow="fa fa-caret" data-bullet="fa fa-star">
+<div id="slider_classique" class="sliker sliker--safeload" data-arrow="fa fa-caret" data-bullet="fa fa-star">
 	<div class="conteneur_strict">
 		<ul class="grand_slider">
 			<?php for($i=1;$i<=10;$i++){ ?>
@@ -115,7 +115,7 @@ $(document).ready(function(){
 	$('#slider_classique').sliker({
 	'nbr_li':1, //nombre d'éléments qui défilent à chaque mouvement.
 	'vitesse_auto':3000, //temps entre deux mouvements automatiques.
-	'vitesse': 500, //rapidité du mouvement (automatique ou manuel, même paramètre).
+	'vitesse': 0.5, //rapidité du mouvement (automatique ou manuel, même paramètre).
 	'auto':0, //activer (1) en utilisant vitesse_auto, désactiver (0) ou personnaliser ("custom"). Voir la rubrique Timer.
 	'type':"none", //définit le role du slider dans le cas d'une liaison. Options: visualiseur, menu, none.
 	'cible':"none", //spécifie l'id du slider compagnon dans le cas d'une liaison (ex: #slider_deux).
@@ -123,9 +123,9 @@ $(document).ready(function(){
 	'pc_only':0, //si actif, le slider sera éffacé sur tous les dispositifs mobiles.
 	'loop':0, //si actif, le slider répetera son contenu indéfiniment, créant un rail infini.
 	'liquide':1, //si actif, l'élément prendra, de façon élastique, toute la zone du slider.
-	'drag':0, //permet la manipulation du slider aux doigts ou en cliquer/glisser à la souris.
+	'drag':1, //permet la manipulation du slider aux doigts ou en cliquer/glisser à la souris.
 	'creer_afficheur': 0, //crée automatiquement une zone avec l'image zoomée au dessus du slider.
-	'fading_mode': 1, //remplace la transition en "déplacement de rail" par un fondu.
+	'fading_mode': 0, //remplace la transition en "déplacement de rail" par un fondu.
 	'fading_type': 1, //mode 1: fondu blanc. mode 2: fondu enchainé entre deux images.
 	'buffering_nbr': 1, //nombre d'image préchargé autour de l'image active. Nécessite l'utilisation de data-src au lieu de src.
 	'fullscreen': 1, //affiche ou masque le bouton fullscreen.
