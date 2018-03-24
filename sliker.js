@@ -102,8 +102,8 @@ plugin.init = function() {
 			var icon = "fa fa-chevron"
 		}
 		if($element.find(".sliker__arrow-left").length < 1){
-			$element.append('<a class="sliker__arrow-left" href=""><span><i class="'+icon+'-left"></i></span></a>');
-			$element.append('<a class="sliker__arrow-right" href=""><span><i class="'+icon+'-right"></i></span></a>');
+			$element.append('<a class="sliker__arrow-left" href=""><i class="'+icon+'-left"></i></a>');
+			$element.append('<a class="sliker__arrow-right" href=""><i class="'+icon+'-right"></i></a>');
 		}
 	}
 
