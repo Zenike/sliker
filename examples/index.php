@@ -24,7 +24,7 @@ $pathLinkFile="./assets/";
 	<i class="fa fa-link"></i> SliKer
 </h1>
 
-<div id="slider_classique" class="sliker sliker--safeload" data-arrow="fa fa-caret" data-bullet="fa fa-star">
+<div id="slider_classique" class="sliker sliker--safeload" data-arrow="fa fa-caret" data-bullet="<i class='fa fa-star'></i>">
 	<div class="sliker__window">
 		<ul class="sliker__track">
 			<?php for($i=1;$i<=10;$i++){ ?>
@@ -130,7 +130,7 @@ $(document).ready(function(){
 	'buffering_nbr': 1, //nombre d'image préchargé autour de l'image active. Nécessite l'utilisation de data-src au lieu de src.
 	'fullscreen': 1, //affiche ou masque le bouton fullscreen.
 	'bullets': 1, //affiche ou masque les puces du slider.
-	'bullets_limit': 20, //limite de puces au délà de laquelle celles ci se transforme en un menu pages (ex: 7/22).
+	'bullets_limit': 5, //limite de puces au délà de laquelle celles ci se transforme en un menu pages (ex: 7/22).
 	'bullets_limit_mobile': 8, //identique à bullets_limit mais ne s'applique qu'en cas de mobile
 	'arrows': 1, //affiche ou masque les flèches du slider.
 	});

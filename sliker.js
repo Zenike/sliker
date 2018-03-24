@@ -89,8 +89,8 @@ plugin.init = function() {
 
 	//autocréation du bouton fullscreen
 	if (mobile == false && plugin.settings.fullscreen == 1 && plugin.settings.liquide == 1) {
-		if($element.find(".btn_fs").length < 1){
-			$element.append('<a class="btn_fs" href=""><span><i class="fa fa-expand"></i></span></a>');
+		if($element.find(".sliker__btn-fullscreen").length < 1){
+			$element.append('<a class="sliker__btn-fullscreen" href=""><span><i class="fa fa-expand"></i></span></a>');
 		}
 	}
 
@@ -101,9 +101,9 @@ plugin.init = function() {
 		}else{
 			var icon = "fa fa-chevron"
 		}
-		if($element.find(".btn_left").length < 1){
-			$element.append('<a class="btn_left" href=""><span><i class="'+icon+'-left"></i></span></a>');
-			$element.append('<a class="btn_right" href=""><span><i class="'+icon+'-right"></i></span></a>');
+		if($element.find(".sliker__arrow-left").length < 1){
+			$element.append('<a class="sliker__arrow-left" href=""><span><i class="'+icon+'-left"></i></span></a>');
+			$element.append('<a class="sliker__arrow-right" href=""><span><i class="'+icon+'-right"></i></span></a>');
 		}
 	}
 
@@ -217,7 +217,7 @@ plugin.init = function() {
 
 
 	/* FULLSCREEN SYSTEM *********************************************************/
-	$element.on("click", ".btn_fs", function() {
+	$element.on("click", ".sliker__btn-fullscreen", function() {
 		clearTimeout(defilement_auto);
 
 		if ($element.hasClass("sliker--fullscreen")) {
@@ -245,7 +245,7 @@ plugin.init = function() {
 	});
 
 	/* bouton pour défiler à gauche */
-	$element.on("click",".btn_left",function() {
+	$element.on("click",".sliker__arrow-left, .sliker__pages-btn-left",function() {
 		clearTimeout(defilement_auto);
 		compteur -= 1;
 		if (plugin.settings.isolement == 1 && mobile == false) {
@@ -257,7 +257,7 @@ plugin.init = function() {
 	});
 
 	/* bouton pour défiler à droite */
-	$element.on("click",".btn_right",function() {
+	$element.on("click",".sliker__arrow-right, .sliker__pages-btn-right",function() {
 		clearTimeout(defilement_auto);
 		compteur += 1;
 		if (plugin.settings.isolement == 1 && mobile == false) {
@@ -368,20 +368,20 @@ plugin.defilement_images = function() {
 
 	/* verifie quand le compteur est a 1 (pos de depart) ou depasse le nombre de groupe (remise a 0) */
 	if (compteur == 1) {
-		$element.find(".btn_left").css("visibility", "hidden");
+		$element.find(".sliker__arrow-left, .sliker__pages-btn-left").css("visibility", "hidden");
 	} else {
-		$element.find(".btn_left").css("visibility", "visible");
+		$element.find(".sliker__arrow-left, .sliker__pages-btn-left").css("visibility", "visible");
 	}
 
 	if (compteur >= nbr_groupes) {
-		$element.find(".btn_right").css("visibility", "hidden");
+		$element.find(".sliker__arrow-right, .sliker__pages-btn-right").css("visibility", "hidden");
 	} else {
-		$element.find(".btn_right").css("visibility", "visible");
+		$element.find(".sliker__arrow-right, .sliker__pages-btn-right").css("visibility", "visible");
 	}
 
 	if (plugin.settings.loop == 1) {
-		$element.find(".btn_right").css("visibility", "visible");
-		$element.find(".btn_left").css("visibility", "visible");
+		$element.find(".sliker__arrow-right, .sliker__pages-btn-right").css("visibility", "visible");
+		$element.find(".sliker__arrow-left, .sliker__pages-btn-left").css("visibility", "visible");
 	}
 
 	$element.find(".sliker__track").stop();
@@ -390,7 +390,7 @@ plugin.defilement_images = function() {
 	var dernier_saut = $element.find(".sliker__item.rajout:first").index();
 
 	//met à jour l'affichage page si présent
-	$element.find(".pages .pages_menu_text span").text(compteur);
+	$element.find(".sliker__pages .sliker__pages-text .sliker__pages-text-nbr").text(compteur);
 
 	if(plugin.settings.fading_mode == 1){
 		// function move_the_rail_before_or_after_the_fading(){
@@ -452,18 +452,18 @@ plugin.defilement_images = function() {
 plugin.moveTo = function(newPosittion) {
 	$element.find(".sliker__track").css({
 		"transition-duration" : plugin.settings.vitesse + "s",
-		"-webkit-transform" : "translate(" + newPosittion + "px,0)",
-		"-ms-transform" : "translate(" + newPosittion + "px,0)",
-		"transform" : "translate(" + newPosittion + "px,0)"
+		"-webkit-transform" : "translate(" + newPosittion + "px,0) translateZ(0)",
+		"-ms-transform" : "translate(" + newPosittion + "px,0) translateZ(0)",
+		"transform" : "translate(" + newPosittion + "px,0) translateZ(0)"
 	});
 }
 
 plugin.instantMoveTo = function(newPosittion) {
 	$element.find(".sliker__track").css({
 		"transition-duration" : "0s",
-		"-webkit-transform" : "translate(" + newPosittion + "px,0)",
-		"-ms-transform" : "translate(" + newPosittion + "px,0)",
-		"transform" : "translate(" + newPosittion + "px,0)"
+		"-webkit-transform" : "translate(" + newPosittion + "px,0) translateZ(0)",
+		"-ms-transform" : "translate(" + newPosittion + "px,0) translateZ(0)",
+		"transform" : "translate(" + newPosittion + "px,0) translateZ(0)"
 	});
 }
 /* ACTION DEFILEMENT *****************************************************************************************************************************/
@@ -540,11 +540,11 @@ plugin.bouger = function(e) {
 
 	$element.find(".sliker__track").css({
 		"transition-duration" : "0s",
-		'-webkit-transform' : 'translate(' + newTransformPosition + 'px,0px)',
-		'-moz-transform'    : 'translate(' + newTransformPosition + 'px,0px)',
-		'-ms-transform'     : 'translate(' + newTransformPosition + 'px,0px)',
-		'-o-transform'      : 'translate(' + newTransformPosition + 'px,0px)',
-		'transform'         : 'translate(' + newTransformPosition + 'px,0px)'
+		'-webkit-transform' : 'translate(' + newTransformPosition + 'px,0px) translateZ(0)',
+		'-moz-transform'    : 'translate(' + newTransformPosition + 'px,0px) translateZ(0)',
+		'-ms-transform'     : 'translate(' + newTransformPosition + 'px,0px) translateZ(0)',
+		'-o-transform'      : 'translate(' + newTransformPosition + 'px,0px) translateZ(0)',
+		'transform'         : 'translate(' + newTransformPosition + 'px,0px) translateZ(0)'
 	});
 	if ((x - x_start) < (zone / 8 * -1)) {
 		previous = 0;
@@ -672,23 +672,23 @@ plugin.reset = function() {
 
 	/* affiche le bouton de défilement de droite (si il y a plus d'un groupe) (visibility pour ne pas dï¿½caler le slider) */
 	if (nbr_groupes == 1 || nbr_groupes == 0) {
-		$element.find(".btn_left, .btn_right").css("visibility", "hidden");
+		$element.find(".sliker__arrow-left, .sliker__arrow-right").css("visibility", "hidden");
 	}else if (plugin.settings.loop == 1) {
-		$element.find(".btn_left, .btn_right").css("visibility", "visible");
+		$element.find(".sliker__arrow-left, .sliker__arrow-right").css("visibility", "visible");
 	} else if (compteur == 1) {
-		$element.find(".btn_left").css("visibility", "hidden");
-		$element.find(".btn_right").css("visibility", "visible");
+		$element.find(".sliker__arrow-left").css("visibility", "hidden");
+		$element.find(".sliker__arrow-right").css("visibility", "visible");
 	} else if (compteur == nbr_groupes) {
-		$element.find(".btn_left").css("visibility", "visible");
-		$element.find(".btn_right").css("visibility", "hidden");
+		$element.find(".sliker__arrow-left").css("visibility", "visible");
+		$element.find(".sliker__arrow-right").css("visibility", "hidden");
 	} else {
-		$element.find(".btn_left, .btn_right").css("visibility", "visible");
+		$element.find(".sliker__arrow-left, .sliker__arrow-right").css("visibility", "visible");
 	}
 
 	/* CREER DES PUCES (lien direct de page) */
 	//supprimer les puces totalement avant de les recréer
 	$element.find(".sliker__bullets").remove();
-	$element.find(".pages").remove();
+	$element.find(".sliker__pages").remove();
 
 	//si un autre slider sert de menu (ou si celui ci est un menu) => pas besoin de puces
 	if(plugin.settings.bullets == 1 && nbr_groupes > 1) {
@@ -698,9 +698,9 @@ plugin.reset = function() {
 			for (var i = 1; i <= nbr_groupes; i++) {
 				//créer les puces, check l'attr data-bullet qui permet de créer des puces icones
 				if($element.is("[data-bullet]")){
-					$element.find(".sliker__bullets").append('<li class="sliker__bulletitem"><i class="'+$element.attr("data-bullet")+'"></i></li>');
+					$element.find(".sliker__bullets").append('<li class="sliker__bulletitem">' + $element.attr("data-bullet") + '</li>');
 				}else{
-					$element.find(".sliker__bullets").append('<li class="sliker__bulletitem"><span>"+i+"</span></li>');
+					$element.find(".sliker__bullets").append('<li class="sliker__bulletitem"><span class="sliker__bullet-classic">"+i+"</span></li>');
 				}
 			}
 		}else{
@@ -709,10 +709,10 @@ plugin.reset = function() {
 			}else{
 				var icon = "fa fa-chevron"
 			}
-			$element.find(".sliker__window").after('<div class="pages"><div class="wrap"></div></div>');
-			$element.find(".pages .wrap").append('<span class="btn_left"><i class="'+icon+'-left"></i></span>');
-			$element.find(".pages .wrap").append('<span class="pages_menu_text"><span>'+compteur+'</span>/'+nbr_groupes+'</span>');
-			$element.find(".pages .wrap").append('<span class="btn_right"><i class="'+icon+'-right"></i></span>');
+			$element.find(".sliker__window").after('<div class="sliker__pages"><div class="sliker__pages-wrap"></div></div>');
+			$element.find(".sliker__pages .sliker__pages-wrap").append('<span class="sliker__pages-btn-left"><i class="'+icon+'-left"></i></span>');
+			$element.find(".sliker__pages .sliker__pages-wrap").append('<span class="sliker__pages-text"><span class="sliker__pages-text-nbr">'+compteur+'</span>/'+nbr_groupes+'</span>');
+			$element.find(".sliker__pages .sliker__pages-wrap").append('<span class="sliker__pages-btn-right"><i class="'+icon+'-right"></i></span>');
 		}
 	}
 	/* END CREER DES PUCES */

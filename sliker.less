@@ -31,7 +31,7 @@ background-color: #000 !important;
 			}
 		}
 	}
-	.btn_left, .btn_right {
+	.sliker__arrow-left, .sliker__arrow-right {
 
 	}
 	.sliker__bullets, ul.pages {
@@ -39,14 +39,12 @@ background-color: #000 !important;
 	bottom: 20px !important;
 	margin: 0 !important;
 	}
-	.btn_fs {
-		span {
-		width: 50px !important;
-		height: 50px !important;
-			i {
-			font-size: 40px !important;
-			top: 5px !important;
-			}
+	.sliker__btn-fullscreen {
+	width: 50px !important;
+	height: 50px !important;
+		i {
+		font-size: 40px !important;
+		top: 5px !important;
 		}
 	}
 }/* .fullscreen */
@@ -86,15 +84,11 @@ z-index: 2;
 	list-style-type: none;
 	margin-bottom: 0;
 	padding-left: 0;
-	position: relative;
 	width: 1000000px;
-	left: 0px;
 	overflow: hidden;
-	font-size: 0;
-	}
-	.sliker__track {
 	transition-property: transform;
 	will-change: transform;
+	display: flex;
 	}
 	.sliker__fading-mask {
 	list-style-type: none;
@@ -111,10 +105,8 @@ z-index: 2;
 	opacity: 0;
 	}
 	.sliker__item {
-	float: left;
 	position: relative;
 	overflow: hidden;
-	background-color: #fff;
 	}
 	.sliker__bullets {
 	overflow: hidden;
@@ -130,26 +122,26 @@ z-index: 2;
 	display: inline-block;
 	margin-right: 3px;
 	margin-left: 3px;
-		span {
-		display: block;
-		background-color: #aaa;
-		width: 15px;
-		height: 15px;
-		text-align: center;
-		color: #eee;
-		border-radius: 30px;
-		cursor: pointer;
-		overflow: hidden;
-		text-indent: -100px;
-		}
 		i {
 		font-size: 18px;
 		cursor: pointer;
 		color: #aaa;
 		}
 	}
+	.sliker__bullet-classic {
+	display: block;
+	background-color: #aaa;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	color: #eee;
+	border-radius: 30px;
+	cursor: pointer;
+	overflow: hidden;
+	text-indent: -100px;
+	}
 	.sliker__bulletitem:hover, .sliker__bulletitem.selected {
-		span {
+		.sliker__bullet-classic {
 		background-color: @theme;
 		color: #fff;
 		}
@@ -157,7 +149,7 @@ z-index: 2;
 		color: @theme;
 		}
 	}
-	.pages {
+	.sliker__pages {
 	overflow: hidden;
 	margin: auto;
 	text-align: center;
@@ -166,30 +158,37 @@ z-index: 2;
 	width: 100%;
 	font-size: 0;
 	opacity: 0.8;
-		.wrap {
-		display: inline-block;
-		background-color: fade(#000,70%);
-		border-radius: 2px;
-		}
-		span {
-		display: inline-block;
-		font-size: 12px;
-		color: #fff;
-		}
-		.btn_left, .btn_right {
-		font-weight: normal;
-		position: static;
-		cursor: pointer;
-		padding: 3px 5px;
-		background: none;
-			&:hover {
-			color: @theme;
-			}
+	}
+	.sliker__pages-wrap {
+	display: inline-block;
+	background-color: fade(#000,70%);
+	border-radius: 2px;
+	}
+	.sliker__pages-text {
+	display: inline-block;
+	font-size: 12px;
+	color: #fff;
+	}
+	.sliker__pages-text-nbr {
+
+	}
+	.sliker__pages-btn-left, .sliker__pages-btn-right {
+	font-weight: normal;
+	position: static;
+	cursor: pointer;
+	padding: 3px 5px;
+	background: none;
+	display: inline-block;
+	font-size: 12px;
+	color: #fff;
+		&:hover {
+		color: @theme;
 		}
 	}
+
 	.sliker_bullets_in();
 
-	.btn_left, .btn_right {
+	.sliker__arrow-left, .sliker__arrow-right {
 	font-weight: bold;
 	position: absolute;
 	top: 50%;
@@ -210,89 +209,77 @@ z-index: 2;
 		color: @theme;
 		}
 	}
-	.btn_left {
+	.sliker__arrow-left {
 	left: 0px;
 	}
-	.btn_right {
+	.sliker__arrow-right {
 	right: 0px;
 	}
+
 	.sliker_arrows_in(0px);
-	.btn_fs {
+
+	.sliker__btn-fullscreen {
 	font-weight: bold;
 	position: absolute;
 	bottom: 5px;
 	right: 5px;
 	visibility: visible;
 	z-index: 11;
-		span {
-		display: block;
-		background-color: #000;
-		-moz-border-radius: 3px;
-		-webkit-border-radius: 3px;
-		border-radius: 3px;
-		width: 20px;
-		height: 20px;
-		line-height: 20px;
-		text-align: center;
-		opacity: 0.4;
-		}
+	background-color: #000;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	opacity: 0.4;
 		i {
 		font-size: 14px;
 		color: #ddd;
 		position: relative;
 		top: 2px;
 		}
-		span:hover {
+		&:hover {
 		opacity: 0.8;
-		}
-	}
-	&.vam {
-		.sliker__track, .sliker__fading-mask {
-			>li {
-			display: inline-block;
-			float: none;
-			vertical-align: middle;
-			}
 		}
 	}
 }
 
-.sliker.sliker--safeload {
-	.btn_left, .btn_right, .btn_fs, .sliker__bullets {
+.sliker--safeload {
+	.sliker__arrow-left, .sliker__arrow-right, .sliker__btn-fullscreen, .sliker__bullets {
 	display: none !important;
 	}
-	.sliker__window {
-		.sliker__track, .sliker__fading-mask {
-		position: static;
-		width: 100%;
-			>li {
-			float: none;
-			position: relative;
-			overflow: hidden;
-			display: none;
-			}
-			>li:first-child {
-			display: block;
-			width: 100% !important;
-			}
-			>li.selected {
-			display: block;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100% !important;
-			height: 100%;
-			}
-			>li.selected:first-child {
-			height: auto;
-			position: static;
-			}
-		}
+	.sliker__track, .sliker__fading-mask {
+	position: static;
+	width: 100%;
+	}
+	.sliker__item {
+	float: none;
+	position: relative;
+	overflow: hidden;
+	display: none;
+	}
+	.sliker__item:first-child {
+	display: block;
+	width: 100% !important;
+	}
+	.sliker__item.selected {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100% !important;
+	height: 100%;
+	}
+	.sliker__item.selected:first-child {
+	height: auto;
+	position: static;
 	}
 }
 
 .sliker_colors(@color,@bg) {
-	.btn_left, .btn_right {
+	.sliker__arrow-left, .sliker__arrow-right {
 		span {
 		color: @bg;
 		}
@@ -337,7 +324,7 @@ z-index: 2;
 }
 
 .sliker_bullets_out(@spacing: 3px) {
-	.sliker__bullets, .pages {
+	.sliker__bullets, .sliker__pages {
 	position: static;
 	margin-top: @spacing;
 	margin-bottom: @spacing;
@@ -345,26 +332,26 @@ z-index: 2;
 }
 
 .sliker_bullets_in(@spacing: 12px) {
-	.sliker__bullets, .pages {
+	.sliker__bullets, .sliker__pages {
 	position: absolute;
 	bottom: @spacing;
 	}
 }
 
 .sliker_arrows_out(@spacing: 0px) {
-	.btn_left span {
+	.sliker__arrow-left span {
 	left: -50px - @spacing;
 	}
-	.btn_right span {
+	.sliker__arrow-right span {
 	right: -50px - @spacing;
 	}
 }
 
 .sliker_arrows_in(@spacing: 0px) {
-	.btn_left span {
+	.sliker__arrow-left span {
 	left: 0px + @spacing;
 	}
-	.btn_right span {
+	.sliker__arrow-right span {
 	right: 0px + @spacing;
 	}
 }
