@@ -26,7 +26,7 @@ $slidersCpt = 1;
 <ul id="buttons_dl">
 	<li>
 		<a href="https://github.com/Zenike/sliker" target="_blank">
-		télécharger sur <strong>GITHUB</strong>
+		Download on <strong>GITHUB</strong>
 		</a>
 	</li>
 </ul>
@@ -41,7 +41,7 @@ $slidersCpt = 1;
 
 <?php ob_start(); ?>
 
-<div id="slider_<?php echo $slidersCpt; ?>" class="sliker sliker--safeload" data-arrow="fa fa-caret" data-bsullet="<i class='fa fa-star'></i>">
+<div id="slider_<?php echo $slidersCpt; ?>" class="sliker sliker--safeload">
 	<div class="sliker__window">
 		<ul class="sliker__track">
 <?php for($i=1;$i<=3;$i++){ ?>
@@ -64,6 +64,45 @@ $(document).ready(function(){
 <pre>
 <?php echo str_replace("<", "&lt;", "$ffx_example_code"); ?>
 </pre>
+<?php echo $slidersCpt++; ?>
+
+<!--------------------------------------------------------------------------------->
+
+<h2 class="sliker-example-title">
+	With customs icons
+</h2>
+
+<div class="sliker-example-text">
+	Bullets and arrows are customs.
+	The options are in the data-properties on the root of the slider
+</div>
+
+<?php ob_start(); ?>
+
+<div id="slider_<?php echo $slidersCpt; ?>" class="sliker sliker--safeload" data-arrow="fa fa-caret" data-bullet="<i class='fa fa-star'></i>">
+	<div class="sliker__window">
+		<ul class="sliker__track">
+<?php for($i=1;$i<=3;$i++){ ?>
+			<li class="sliker__item<?php if($i==2){echo " sliker__item--selected";} ?>">
+				<div class="block-3-2"><span><img src="<?php echo $pathLinkFile; ?>img/examples/<?php echo $i; ?>.jpg"></span></div>
+			</li>
+<?php } ?>
+		</ul>
+	</div>
+</div>
+
+<script>
+$(document).ready(function(){
+	$('#slider_<?php echo $slidersCpt; ?>').sliker();
+});
+</script>
+
+<?php $ffx_example_code = ob_get_clean(); ?>
+<?php echo $ffx_example_code; ?>
+<pre>
+<?php echo str_replace("<", "&lt;", "$ffx_example_code"); ?>
+</pre>
+<?php echo $slidersCpt++; ?>
 
 <!--------------------------------------------------------------------------------->
 
