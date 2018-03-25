@@ -141,8 +141,8 @@ plugin.init = function() {
 	}
 
 	// creer le masque. une fois pour tous les sliders
-	if ($("#cache_slider").length == 0 && plugin.settings.isolement == 1) {
-		$("body").append('<div id="cache_slider"></div>');
+	if ($(".sliker-isolation").length == 0 && plugin.settings.isolement == 1) {
+		$("body").append('<div class="sliker-isolation"></div>');
 	}
 
 	//en mode drag, pas de mode loop
@@ -316,11 +316,11 @@ plugin.init = function() {
 	}/* if visualiseur */
 
 	$(window).scroll(function() {
-		$("#cache_slider").fadeOut();
+		$(".sliker-isolation").fadeOut();
 	});
 
-	$("body").on("click", "#cache_slider", function() {
-		$("#cache_slider").fadeOut();
+	$("body").on("click", ".sliker-isolation", function() {
+		$(".sliker-isolation").fadeOut();
 	});
 
 	//charger les images au fur et à mesure (nécessite un attribut data-src sur les images et des src vides)
@@ -357,12 +357,12 @@ plugin.defilement_images = function() {
 
 	plugin.buffering_imgs();
 
-	$element.find(".sliker__bulletitem").removeClass("selected");
-	$element.find(".sliker__bulletitem:nth-child(" + compteur + ")").addClass("selected");
+	$element.find(".sliker__bulletitem").removeClass("sliker__bulletitem--selected");
+	$element.find(".sliker__bulletitem:nth-child(" + compteur + ")").addClass("sliker__bulletitem--selected");
 
 	if(plugin.settings.fading_mode != 1){
-		$element.find(".sliker__item").removeClass("selected");
-		$element.find(".sliker__item:nth-child(" + compteur + ")").addClass("selected");
+		$element.find(".sliker__item").removeClass("sliker__item--selected");
+		$element.find(".sliker__item:nth-child(" + compteur + ")").addClass("sliker__item--selected");
 	}
 
 
@@ -398,8 +398,8 @@ plugin.defilement_images = function() {
 		// 	else if(compteur == 0){compteur = nbr_groupes;}
 		// 	$element.find(".sliker__track").css({left: "-" + largeur_groupe * (compteur - 1) + "px"});
 		//
-		// 	$element.find(".sliker__item").removeClass("selected");
-		// 	$element.find(".sliker__item:nth-child(" + compteur + ")").addClass("selected");
+		// 	$element.find(".sliker__item").removeClass("sliker__item--selected");
+		// 	$element.find(".sliker__item:nth-child(" + compteur + ")").addClass("sliker__item--selected");
 		//
 		// 	$.event.trigger({
 		// 		type: "sliker_defilement_end",
@@ -425,13 +425,13 @@ plugin.defilement_images = function() {
 		// 	$element.find(".sliker__track").fadeIn();
 		// }
 	}else if (compteur == nbr_groupes + 1){
-		// $element.find(".sliker__bulletitem:first-child").addClass("selected");//allume le numï¿½ro malgrï¿½ qu'on soit sur le rajout
+		// $element.find(".sliker__bulletitem:first-child").addClass("sliker__bulletitem--selected");//allume le numï¿½ro malgrï¿½ qu'on soit sur le rajout
 		// $element.find(".sliker__track").animate({left: "-" + (largeur_li * dernier_saut) + "px"}, plugin.settings.vitesse, 'linear');
 		// compteur = 1;
 		// $element.find(".sliker__track").animate({left: "-" + largeur_groupe * (compteur - 1) + "px"}, 1);
 	}else if(compteur == 0){
 		// compteur = nbr_groupes + 1;
-		// $element.find(".sliker__bulletitem:last-child").addClass("selected");//allume le numï¿½ro malgrï¿½ qu'on soit sur le rajout
+		// $element.find(".sliker__bulletitem:last-child").addClass("sliker__bulletitem--selected");//allume le numï¿½ro malgrï¿½ qu'on soit sur le rajout
 		// $element.find(".sliker__track").animate({left: "-" + (largeur_li * dernier_saut) + "px"}, 1);
 		// compteur = nbr_groupes;
 		// $element.find(".sliker__track").animate({left: "-" + (largeur_groupe * (compteur - 1)) + "px"}, plugin.settings.vitesse, 'linear');
@@ -490,7 +490,7 @@ plugin.instantMoveTo = function(newPosittion) {
 
 //fonctions externes
 plugin.afficher_cache = function() {
-	$("#cache_slider").fadeIn();
+	$(".sliker-isolation").fadeIn();
 };
 
 plugin.buffering_imgs = function() {
@@ -660,10 +660,10 @@ plugin.reset = function() {
 
 
 	//départ alternatif si spécifié par la class "selected" (à mettre sur un li)
-	if($element.find(".sliker__track>.selected").length==1){
-		compteur = $element.find(".sliker__track>.selected").index()+1;
+	if($element.find(".sliker__item--selected").length==1){
+		compteur = $element.find(".sliker__item--selected").index()+1;
 	}else{
-		$element.find(".sliker__item:first-child").addClass("selected");
+		$element.find(".sliker__item:first-child").addClass("sliker__item--selected");
 	}
 
 	/* Positionne le slider au départ */
@@ -718,7 +718,7 @@ plugin.reset = function() {
 	/* END CREER DES PUCES */
 
 	/* à lancer une seule fois pour la première selection de puce si il y a */
-	$element.find(".sliker__bullets li:nth-child(" + compteur + ")").addClass("selected");
+	$element.find(".sliker__bulletitem:nth-child(" + compteur + ")").addClass("sliker__bulletitem--selected");
 
 	/* si on doit looper, rajouter des li fictifs à la fin du slide */
 	if (plugin.settings.loop == 1) {
