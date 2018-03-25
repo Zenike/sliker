@@ -119,20 +119,20 @@ padding-top: 20px;
 padding-left: 20px;
 font-family: georgia;
 }
-h2 {
-color: yellowgreen;
-font-size: 30px;
-border-bottom: 1px dashed yellowgreen;
-padding-bottom: 10px;
-margin-bottom: 20px;
-vertical-align: middle;
+.sliker-example-title {
+color: #fff;
+font-size: 24px;
+margin-top: 30px;
+margin-bottom: 30px;
+margin-left: 15px;
+text-align: center;
 }
 
 #wrapper {
 max-width: 1000px;
 width: 96%;
 margin: auto;
-margin-top: 20px;
+margin-top: 50px;
 margin-bottom: 50px;
 padding-bottom: 50px;
 /*border: 1px dotted #ddd;*/
@@ -144,6 +144,38 @@ border-radius: 10px;
 	min-width: 900px;
 	max-width: 1920px;
 	}
+}
+
+#buttons_dl {
+position: absolute;
+top: -43px;
+right: 0px;
+list-style-type: none;
+padding-left: 0;
+margin: 0;
+	li {
+	float: left;
+	margin-left: 5px;
+		a, button {
+		display: block;
+		padding: 0 20px;
+		height: 40px;
+		line-height: 40px;
+		color: #fff;
+		font-size: 12px;
+		background-color: yellowgreen;
+		cursor: pointer;
+		z-index: 999;
+		border-radius: 5px;
+		text-decoration: none;
+			&:hover {
+			background-color: #000;
+			}
+		}
+	}
+@media all and (max-width:400px){
+display: none;
+}
 }
 
 #navbar {

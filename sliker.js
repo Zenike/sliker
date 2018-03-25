@@ -90,7 +90,7 @@ plugin.init = function() {
 	//autocréation du bouton fullscreen
 	if (mobile == false && plugin.settings.fullscreen == 1 && plugin.settings.liquide == 1) {
 		if($element.find(".sliker__btn-fullscreen").length < 1){
-			$element.append('<a class="sliker__btn-fullscreen" href=""><span><i class="fa fa-expand"></i></span></a>');
+			$element.append('<a class="sliker__btn-fullscreen" href=""><i class="fa fa-expand"></i></a>');
 		}
 	}
 
