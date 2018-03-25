@@ -16,7 +16,7 @@ var defaults = {
 'isolement': 0, //si actif, le slider est isolé par un fond noir transparent lors de son utilisation.
 'pc_only': 0, //si actif, le slider sera éffacé sur tous les dispositifs mobiles.
 'loop': 0, //si actif, le slider répetera son contenu indéfiniment, créant un rail infini.
-'liquide': 1, //si actif, l'élément prendra, de façon élastique, toute la zone du slider.
+'liquid': 1, //si actif, l'élément prendra, de façon élastique, toute la zone du slider.
 'drag': 0, //permet la manipulation du slider aux doigts ou en cliquer/glisser à la souris.
 'creer_afficheur': 0, //crée automatiquement une zone avec l'image zoomée au dessus du slider.
 'fading_mode': 0, //remplace la transition en "déplacement de rail" par un fondu.
@@ -80,15 +80,15 @@ plugin.init = function() {
 	// the plugin's final properties are the merged default and user-provided options (if any)
 	plugin.settings = $.extend({}, defaults, options);
 
-	//en mode fading type 2, le slide est obligatoirement en mode liquide
+	//en mode fading type 2, le slide est obligatoirement en mode liquid
 	if (plugin.settings.fading_mode == 1) {
 		if (plugin.settings.fading_type == 2) {
-			plugin.settings.liquide = 1;
+			plugin.settings.liquid = 1;
 		}
 	}
 
 	//autocréation du bouton fullscreen
-	if (mobile == false && plugin.settings.fullscreen == 1 && plugin.settings.liquide == 1) {
+	if (mobile == false && plugin.settings.fullscreen == 1 && plugin.settings.liquid == 1) {
 		if($element.find(".sliker__btn-fullscreen").length < 1){
 			$element.append('<a class="sliker__btn-fullscreen" href=""><i class="fa fa-expand"></i></a>');
 		}
@@ -611,7 +611,8 @@ plugin.lacher = function(e) {
 
 
 plugin.reset = function() {
-	if (plugin.settings.liquide == 1) {
+
+	if (plugin.settings.liquid == 1) {
 		$element.find(".sliker__window .sliker__item").width($element.find(".sliker__window").width());
 	}
 
@@ -732,35 +733,13 @@ plugin.reset = function() {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// call the "constructor" method init, (seul endroit ou c'est lancé, jamais rafraichis)
+// call the "constructor" method init
 plugin.init();
 
-};// OBJET SLIDER NIKE: end **********************************************************************
+};// END OF THE SLIKER METHOD
 
 
-
-
-//ajouter le plugin en tant qu'objet jquery
+// add the plugin as a jQuery object
 $.fn.sliker = function(options) {
 	return this.each(function() {
 		if (undefined === $(this).data('sliker')) {

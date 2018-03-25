@@ -36,12 +36,17 @@ $slidersCpt = 1;
 <!-- /FIN DU HEADER ------------------------------------------------------------------------------->
 
 <h2 class="sliker-example-title">
-	Classique
+	Classical
 </h2>
+
+<div class="sliker-example-text">
+	the "sliker__item--selected" class is optionnal. Without it, the slider will simply start at
+	the first sliker__item
+</div>
 
 <?php ob_start(); ?>
 
-<div id="slider_<?php echo $slidersCpt; ?>" class="sliker sliker--safeload">
+<div id="slider_<?php echo $slidersCpt; ?>" class="sliker">
 	<div class="sliker__window">
 		<ul class="sliker__track">
 <?php for($i=1;$i<=3;$i++){ ?>
@@ -65,6 +70,44 @@ $(document).ready(function(){
 <?php echo str_replace("<", "&lt;", "$ffx_example_code"); ?>
 </pre>
 <?php echo $slidersCpt++; ?>
+<!--------------------------------------------------------------------------------->
+
+<h2 class="sliker-example-title">
+	Classical with "safeload"
+</h2>
+
+<div class="sliker-example-text">
+	"sliker--safeload" is an option that preserve the aspect of the slider before
+	the initialization of the javascript (window load here). In this example, the call is commented out
+	to show the slider style in this short period of time before loading.
+</div>
+
+<?php ob_start(); ?>
+
+<div id="slider_<?php echo $slidersCpt; ?>" class="sliker sliker--safeload">
+	<div class="sliker__window">
+		<ul class="sliker__track">
+<?php for($i=1;$i<=3;$i++){ ?>
+			<li class="sliker__item<?php if($i==2){echo " sliker__item--selected";} ?>">
+				<div class="block-3-2"><span><img src="<?php echo $pathLinkFile; ?>img/examples/<?php echo $i; ?>.jpg"></span></div>
+			</li>
+<?php } ?>
+		</ul>
+	</div>
+</div>
+
+<script>
+// $(document).ready(function(){
+// 	$('#slider_<?php echo $slidersCpt; ?>').sliker();
+// });
+</script>
+
+<?php $ffx_example_code = ob_get_clean(); ?>
+<?php echo $ffx_example_code; ?>
+<pre>
+<?php echo str_replace("<", "&lt;", "$ffx_example_code"); ?>
+</pre>
+<?php echo $slidersCpt++; ?>
 
 <!--------------------------------------------------------------------------------->
 
@@ -79,11 +122,11 @@ $(document).ready(function(){
 
 <?php ob_start(); ?>
 
-<div id="slider_<?php echo $slidersCpt; ?>" class="sliker sliker--safeload" data-arrow="fa fa-caret" data-bullet="<i class='fa fa-star'></i>">
+<div id="slider_<?php echo $slidersCpt; ?>" class="sliker" data-arrow="fa fa-caret" data-bullet="<i class='fa fa-star'></i>">
 	<div class="sliker__window">
 		<ul class="sliker__track">
 <?php for($i=1;$i<=3;$i++){ ?>
-			<li class="sliker__item<?php if($i==2){echo " sliker__item--selected";} ?>">
+			<li class="sliker__item">
 				<div class="block-3-2"><span><img src="<?php echo $pathLinkFile; ?>img/examples/<?php echo $i; ?>.jpg"></span></div>
 			</li>
 <?php } ?>
@@ -96,6 +139,54 @@ $(document).ready(function(){
 	$('#slider_<?php echo $slidersCpt; ?>').sliker();
 });
 </script>
+
+<?php $ffx_example_code = ob_get_clean(); ?>
+<?php echo $ffx_example_code; ?>
+<pre>
+<?php echo str_replace("<", "&lt;", "$ffx_example_code"); ?>
+</pre>
+<?php echo $slidersCpt++; ?>
+
+<!--------------------------------------------------------------------------------->
+
+<h2 class="sliker-example-title">
+	Sliker multi pics
+</h2>
+
+<div class="sliker-example-text">
+	With the "liquid" option at 0, the sliker__items don't thake the full with.
+	So, we need to set their width in css to see them.<br>
+	IMPORTANT: a sliker without liquid should NOT use the "sliker--safeload" option.
+</div>
+
+<?php ob_start(); ?>
+
+<div id="slider_<?php echo $slidersCpt; ?>" class="sliker">
+	<div class="sliker__window">
+		<ul class="sliker__track">
+<?php for($i=1;$i<=6;$i++){ ?>
+			<li class="sliker__item">
+				<div class="block-3-2"><span><img src="<?php echo $pathLinkFile; ?>img/examples/<?php echo $i; ?>.jpg"></span></div>
+			</li>
+<?php } ?>
+		</ul>
+	</div>
+</div>
+
+<script>
+$(document).ready(function(){
+	$('#slider_<?php echo $slidersCpt; ?>').sliker({
+		'nbr_li': 2,
+		'liquid': 0,
+	});
+});
+</script>
+
+<style>
+	#slider_<?php echo $slidersCpt; ?> .sliker__item {
+	width: 250px;
+	}
+</style>
 
 <?php $ffx_example_code = ob_get_clean(); ?>
 <?php echo $ffx_example_code; ?>
