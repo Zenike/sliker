@@ -1,8 +1,3 @@
-<?php
-$pathLinkFile = "./assets/";
-$slidersCpt = 1;
-?>
-
 <!doctype html>
 <html lang="fr">
 <head>
@@ -14,10 +9,11 @@ $slidersCpt = 1;
 	<meta http-equiv="Content-Script-Type" content="text/javascript" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link href="<?php echo $pathLinkFile; ?>css/style.css" rel="stylesheet" type="text/css" />
+	<link href="./assets/css/style.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-	<link href="<?php echo $pathLinkFile; ?>img/favicon.png" rel="shortcut icon" type="image/png" />
+	<link href="./assets/img/favicon.png" rel="shortcut icon" type="image/png" />
 	<script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="./assets/js/prefunctions.js"></script>
 </head>
 <body>
 
@@ -44,32 +40,29 @@ $slidersCpt = 1;
 	the first sliker__item
 </div>
 
-<?php ob_start(); ?>
+<section class="example-1">
 
-<div id="slider_<?php echo $slidersCpt; ?>" class="sliker">
+<div id="slider_1" class="sliker">
 	<div class="sliker__window">
 		<ul class="sliker__track">
-<?php for($i=1;$i<=3;$i++){ ?>
-			<li class="sliker__item<?php if($i==2){echo " sliker__item--selected";} ?>">
-				<div class="block-3-2"><span><img src="<?php echo $pathLinkFile; ?>img/examples/<?php echo $i; ?>.jpg"></span></div>
-			</li>
-<?php } ?>
+			<li class="sliker__item"><div class="imgblock1"></div></li>
+			<li class="sliker__item sliker__item--selected"><div class="imgblock2"></div></li>
+			<li class="sliker__item"><div class="imgblock3"></div></li>
 		</ul>
 	</div>
 </div>
 
 <script>
 $(document).ready(function(){
-	$('#slider_<?php echo $slidersCpt; ?>').sliker();
+	$('#slider_1').sliker();
 });
 </script>
 
-<?php $ffx_example_code = ob_get_clean(); ?>
-<?php echo $ffx_example_code; ?>
-<pre>
-<?php echo str_replace("<", "&lt;", "$ffx_example_code"); ?>
-</pre>
-<?php echo $slidersCpt++; ?>
+</section>
+
+<script>
+	createExampleBlockById(1);
+</script>
 <!--------------------------------------------------------------------------------->
 
 <h2 class="sliker-example-title">
@@ -82,32 +75,29 @@ $(document).ready(function(){
 	to show the slider style in this short period of time before loading.
 </div>
 
-<?php ob_start(); ?>
+<section class="example-2">
 
-<div id="slider_<?php echo $slidersCpt; ?>" class="sliker sliker--safeload">
+<div id="slider_2" class="sliker sliker--safeload">
 	<div class="sliker__window">
 		<ul class="sliker__track">
-<?php for($i=1;$i<=3;$i++){ ?>
-			<li class="sliker__item<?php if($i==2){echo " sliker__item--selected";} ?>">
-				<div class="block-3-2"><span><img src="<?php echo $pathLinkFile; ?>img/examples/<?php echo $i; ?>.jpg"></span></div>
-			</li>
-<?php } ?>
+			<li class="sliker__item"><div class="imgblock1"></div></li>
+			<li class="sliker__item sliker__item--selected"><div class="imgblock2"></div></li>
+			<li class="sliker__item"><div class="imgblock3"></div></li>
 		</ul>
 	</div>
 </div>
 
 <script>
 // $(document).ready(function(){
-// 	$('#slider_<?php echo $slidersCpt; ?>').sliker();
+// 	$('#slider_2').sliker();
 // });
 </script>
 
-<?php $ffx_example_code = ob_get_clean(); ?>
-<?php echo $ffx_example_code; ?>
-<pre>
-<?php echo str_replace("<", "&lt;", "$ffx_example_code"); ?>
-</pre>
-<?php echo $slidersCpt++; ?>
+</section>
+
+<script>
+	createExampleBlockById(2);
+</script>
 
 <!--------------------------------------------------------------------------------->
 
@@ -120,32 +110,29 @@ $(document).ready(function(){
 	The options are in the data-properties on the root of the slider
 </div>
 
-<?php ob_start(); ?>
+<section class="example-3">
 
-<div id="slider_<?php echo $slidersCpt; ?>" class="sliker" data-arrow="fa fa-caret" data-bullet="<i class='fa fa-star'></i>">
+<div id="slider_3" class="sliker" data-arrow="fa fa-caret" data-bullet="<i class='fa fa-star'></i>">
 	<div class="sliker__window">
 		<ul class="sliker__track">
-<?php for($i=1;$i<=3;$i++){ ?>
-			<li class="sliker__item">
-				<div class="block-3-2"><span><img src="<?php echo $pathLinkFile; ?>img/examples/<?php echo $i; ?>.jpg"></span></div>
-			</li>
-<?php } ?>
+			<li class="sliker__item"><div class="imgblock1"></div></li>
+			<li class="sliker__item"><div class="imgblock2"></div></li>
+			<li class="sliker__item"><div class="imgblock3"></div></li>
 		</ul>
 	</div>
 </div>
 
 <script>
 $(document).ready(function(){
-	$('#slider_<?php echo $slidersCpt; ?>').sliker();
+	$('#slider_3').sliker();
 });
 </script>
 
-<?php $ffx_example_code = ob_get_clean(); ?>
-<?php echo $ffx_example_code; ?>
-<pre>
-<?php echo str_replace("<", "&lt;", "$ffx_example_code"); ?>
-</pre>
-<?php echo $slidersCpt++; ?>
+</section>
+
+<script>
+	createExampleBlockById(3);
+</script>
 
 <!--------------------------------------------------------------------------------->
 
@@ -159,23 +146,24 @@ $(document).ready(function(){
 	IMPORTANT: a sliker without liquid should NOT use the "sliker--safeload" option.
 </div>
 
-<?php ob_start(); ?>
+<section class="example-4">
 
-<div id="slider_<?php echo $slidersCpt; ?>" class="sliker">
+<div id="slider_4" class="sliker">
 	<div class="sliker__window">
 		<ul class="sliker__track">
-<?php for($i=1;$i<=6;$i++){ ?>
-			<li class="sliker__item">
-				<div class="block-3-2"><span><img src="<?php echo $pathLinkFile; ?>img/examples/<?php echo $i; ?>.jpg"></span></div>
-			</li>
-<?php } ?>
+			<li class="sliker__item"><div class="imgblock1"></div></li>
+			<li class="sliker__item"><div class="imgblock2"></div></li>
+			<li class="sliker__item"><div class="imgblock3"></div></li>
+			<li class="sliker__item"><div class="imgblock4"></div></li>
+			<li class="sliker__item"><div class="imgblock5"></div></li>
+			<li class="sliker__item"><div class="imgblock6"></div></li>
 		</ul>
 	</div>
 </div>
 
 <script>
 $(document).ready(function(){
-	$('#slider_<?php echo $slidersCpt; ?>').sliker({
+	$('#slider_4').sliker({
 		'nbr_li': 2,
 		'liquid': 0,
 	});
@@ -183,23 +171,22 @@ $(document).ready(function(){
 </script>
 
 <style>
-	#slider_<?php echo $slidersCpt; ?> .sliker__item {
-	width: 250px;
-	}
+#slider_4 .sliker__item {
+width: 250px;
+}
 </style>
 
-<?php $ffx_example_code = ob_get_clean(); ?>
-<?php echo $ffx_example_code; ?>
-<pre>
-<?php echo str_replace("<", "&lt;", "$ffx_example_code"); ?>
-</pre>
-<?php echo $slidersCpt++; ?>
+</section>
+
+<script>
+	createExampleBlockById(4);
+</script>
 
 <!--------------------------------------------------------------------------------->
 
 </div><!-- \#wrapper -->
 
-<script type="text/javascript" src="<?php echo $pathLinkFile; ?>/../../../sliker.js"></script>
-<script type="text/javascript" src="<?php echo $pathLinkFile; ?>js/monjquery.js"></script>
+<script type="text/javascript" src="../sliker.js"></script>
+<script type="text/javascript" src="./assets/js/postfunctions.js"></script>
 </body>
 </html>
