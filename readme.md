@@ -1,10 +1,10 @@
-# Sliker
+# About Sliker
 `sliker` is a gallery/slider writen in `jQuery`
 
-## Demo (Github Page)
+# Demo (Github Page)
 ### <http://zenike.github.io/sliker/>
 
-# dependencies
+# Dependencies
 - `jQuery`: compatible with all the recents versions
 - `Less`: Sliker's css is writen in Less. Some variables will be required to make it work properly. Plus, some dynamic less mixins add more features.
 - `FontAwesome`: les flèches de navigation utilisent des icones FontAwesome. Il est possible de s'en passer (voir plus bas)
