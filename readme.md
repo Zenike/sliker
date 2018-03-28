@@ -1,7 +1,7 @@
 # Sliker
-### <http://flexvision.be/formflex/sliker.php>
-
 `sliker` est un plugin slider/slideshow écrit en `jQuery`
+Demo ici (GitHub Page) :
+### <http://flexvision.be/formflex/sliker.php>
 
 # dépendances
 - `jQuery`: une version récente sans limitation précise

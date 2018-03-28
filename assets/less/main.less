@@ -1,4 +1,6 @@
-/*  reset total des styles par défaut des navigateurs */
+@blue: #417CC0;
+
+// css reset
 html {font-size: 10px;}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,
 blockquote,th,td {margin:0; padding:0; }
@@ -13,71 +15,27 @@ h1,h2,h3,h4,h5,h6,textarea { font-size:100%; font-weight:normal; }
 abbr,acronym { border:0; }
 a { text-decoration:none; color:#000000; outline-style:none; }
 button { border:none; background-color:transparent; cursor: pointer; }
-/*  END reset total des styles par défaut des navigateurs */
-
-.block-3-2, .block-16-9, .block-square {
-display: block;
-	>div, >span {
-	display: block;
-	width: 100%;
-	position: relative;
-	padding: 0;
-	overflow: hidden;
-		>div, >span, >a {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-			>img {
-			display: block;
-			max-width: 100%;
-			max-height: 100%;
-			margin: auto;
-			position: relative;
-			}
-		}
-		>img {
-		position: absolute;
-		top: 0;
-		width: 100%;
-		display: block;
-		}
-	}
-	&.block-3-2 {
-		>div, >span {
-		padding-bottom: 66.6666666666%;
-		}
-	}
-	&.block-16-9 {
-		>div, >span {
-		padding-bottom: 56.25%;
-		}
-	}
-	&.block-square {
-		>div, >span {
-		padding-bottom: 100%;
-		}
-	}
-}
 
 body, textarea {
 font-family: Verdana, Arial, sans-serif;
 }
 
 body {
-background-color: #333;
+background-color: darken(@blue,30%);
 }
 
-h1 {
-color: darken(orange,25%);
+.logo-header {
 font-size: 50px;
-border-bottom: 1px dashed orange;
+border-bottom: 1px solid #417CC0;
 padding-bottom: 20px;
 margin-bottom: 40px;
 padding-top: 20px;
 padding-left: 20px;
 font-family: georgia;
+	img {
+	display: block;
+	width: 200px;
+	}
 }
 
 .sliker-example-title {
@@ -90,7 +48,7 @@ text-align: center;
 }
 
 .sliker-example-text {
-color: #666;
+color: lighten(@blue,20%);
 font-size: 12px;
 margin: auto;
 margin-top: 30px;
@@ -104,12 +62,10 @@ width: 96%;
 max-width: 1000px;
 width: 96%;
 margin: auto;
-margin-top: 50px;
-margin-bottom: 50px;
 padding-bottom: 50px;
 position: relative;
-background-color: #111;
-border-radius: 10px;
+background-color: darken(@blue,35%);
+box-shadow: 0 0 30px 30px darken(@blue,35%);
 	&.responsive {
 	width: 80%;
 	min-width: 900px;
@@ -119,28 +75,26 @@ border-radius: 10px;
 
 #buttons_dl {
 position: absolute;
-top: -43px;
+top: 10px;
 right: 0px;
 list-style-type: none;
 padding-left: 0;
 margin: 0;
 	li {
 	float: left;
-	margin-left: 5px;
 		a, button {
 		display: block;
-		padding: 0 20px;
-		height: 40px;
-		line-height: 40px;
+		padding: 8px 25px;
 		color: #fff;
 		font-size: 12px;
-		background-color: yellowgreen;
 		cursor: pointer;
 		z-index: 999;
-		border-radius: 5px;
+		border-radius: 3px;
 		text-decoration: none;
+		background-color: @blue;
+		border: 5px solid darken(@blue,20%);
 			&:hover {
-			background-color: #000;
+			background-color: darken(@blue,10%);
 			}
 		}
 	}
@@ -158,7 +112,7 @@ margin-top: 20px;
 padding: 0 30px;
 padding-top: 40px;
 overflow: hidden;
-background-color: yellowgreen;
+background-color: @blue;
 color: #fff;
 overflow: hidden;
 position: relative;
@@ -177,19 +131,19 @@ white-space: pre;
 	span {
 	height: 15px;
 	line-height: 15px;
-	background-color: #57721B;
+	background-color: darken(@blue,20%);
 	display: block;
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
-	color: yellowgreen;
+	color: lighten(@blue,10%);
 	text-align: center;
 	cursor: pointer;
 		.fa-chevron-down {display: inline;}
 		.fa-chevron-up {display: none;}
 		&:hover {
-		background-color: #445B12;
+		background-color: darken(@blue,30%);
 		}
 	}
 }
