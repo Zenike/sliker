@@ -1,24 +1,25 @@
 # Sliker
-### <http://flexvision.be/formflex/sliker.php>
+`sliker` is a gallery/slider writen in `jQuery`
 
-`sliker` est un plugin slider/slideshow écrit en `jQuery`
+## Demo (Github Page)
+### <http://zenike.github.io/sliker/>
 
-# dépendances
-- `jQuery`: une version récente sans limitation précise
-- `Less`: le css de ce plugin est écrit en LESS, quelques variables de couleur devront être définies pour son bon fonctionnement.
+# dependencies
+- `jQuery`: compatible with all the recents versions
+- `Less`: Sliker's css is writen in Less. Some variables will be required to make it work properly. Plus, some dynamic less mixins add more features.
 - `FontAwesome`: les flèches de navigation utilisent des icones FontAwesome. Il est possible de s'en passer (voir plus bas)
 
 # Installation
-1. récuperer les fichiers `sliker.less` et `sliker.js` à la racine du projet GitHUb
-2. inclure le fichier `sliker.js` dans la document avant la fermeture de la balise `</body>`
-3. lier et génerer un css à partir de `sliker.less`
+1. get the files `sliker.less` and `sliker.js` in the root of the Github project OR use `npm install sliker`
+2. link `sliker.js` in the end of the document, before the `</body>` closing tag
+3. link and generate a css from `sliker.less`
 
-# Utilisation
-- créer la structure html suivant l'exemple (data-arrow et data-bullet sont optionnels)
+# Use
+- copy this `html structure` in your code
 ```html
-<div id="slider_example" class="sliker" data-arrow="fa fa-caret" data-bullet="fa fa-star">
-	<div class="conteneur_strict">
-		<ul class="grand_slider">
+<div id="slider_example" class="sliker">
+	<div class="sliker__window">
+		<ul class="sliker__track">
 			<li><img src="./example.jpg"></li>
 			<li><img src="./example.jpg"></li>
 			<li><img src="./example.jpg"></li>
@@ -26,22 +27,22 @@
 	</div>
 </div>
 ```
-- déclarer le slider en javascript
+- call the Sliker in `javascript/jQuery`
 ```javascript
 $('#slider_example').sliker({
-'nbr_li':1, //nombre d'éléments qui défilent à chaque mouvement.
-'vitesse_auto':3000, //temps entre deux mouvements automatiques.
-'vitesse': 500, //rapidité du mouvement (automatique ou manuel, même paramètre).
-'auto':0, //activer (1) en utilisant vitesse_auto, désactiver (0) ou personnaliser ("custom"). Voir la rubrique Timer.
-'type':"none", //définit le role du slider dans le cas d'une liaison. Options: visualiseur, menu, none.
-'cible':"none", //spécifie l'id du slider compagnon dans le cas d'une liaison (ex: #slider_deux).
+'nbr_li': 1, //nombre d'éléments qui défilent à chaque mouvement.
+'vitesse_auto': 3000, //temps entre deux mouvements automatiques.
+'vitesse': 0.5, //rapidité du mouvement (automatique ou manuel, même paramètre).
+'auto': 0, //activer (1) en utilisant vitesse_auto, désactiver (0) ou personnaliser ("custom"). Voir la rubrique Timer.
+'type': "none", //définit le role du slider dans le cas d'une liaison. Options: visualiseur, menu, none.
+'cible': "none", //spécifie l'id du slider compagnon dans le cas d'une liaison (ex: #slider_deux).
 'isolement': 0, //si actif, le slider est isolé par un fond noir transparent lors de son utilisation.
-'pc_only':0, //si actif, le slider sera éffacé sur tous les dispositifs mobiles.
-'loop':0, //si actif, le slider répetera son contenu indéfiniment, créant un rail infini.
-'liquide':1, //si actif, l'élément prendra, de façon élastique, toute la zone du slider.
-'drag':0, //permet la manipulation du slider aux doigts ou en cliquer/glisser à la souris.
+'pc_only': 0, //si actif, le slider sera éffacé sur tous les dispositifs mobiles.
+'loop': 0, //si actif, le slider répetera son contenu indéfiniment, créant un rail infini.
+'liquid': 1, //si actif, l'élément prendra, de façon élastique, toute la zone du slider.
+'drag': 0, //permet la manipulation du slider aux doigts ou en cliquer/glisser à la souris.
 'creer_afficheur': 0, //crée automatiquement une zone avec l'image zoomée au dessus du slider.
-'fading_mode': 1, //remplace la transition en "déplacement de rail" par un fondu.
+'fading_mode': 0, //remplace la transition en "déplacement de rail" par un fondu.
 'fading_type': 1, //mode 1: fondu blanc. mode 2: fondu enchainé entre deux images.
 'buffering_nbr': 1, //nombre d'image préchargé autour de l'image active. Nécessite l'utilisation de data-src au lieu de src.
 'fullscreen': 0, //affiche ou masque le bouton fullscreen.
