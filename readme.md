@@ -1,7 +1,8 @@
 # Sliker
-`sliker` est un plugin slider/slideshow écrit en `jQuery`
+`sliker` est un plugin slider/slideshow écrit en `jQuery`.
+
 Demo ici (GitHub Page) :
-### <http://flexvision.be/formflex/sliker.php>
+### <http://zenike.github.io/sliker/>
 
 # dépendances
 - `jQuery`: une version récente sans limitation précise
