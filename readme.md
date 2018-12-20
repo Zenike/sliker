@@ -49,7 +49,7 @@ $('#slider_example').sliker({
 'bullets': 1, //affiche ou masque les puces du slider.
 'bullets_limit': 20, //limite de puces au délà de laquelle celles ci se transforme en un menu pages (ex: 7/22).
 'bullets_limit_mobile': 8, //identique à bullets_limit mais ne s'applique qu'en cas de mobile
-'arrows': 1, //affiche ou masque les flèches du slider.
+'arrows': 2, //affiche ou masque les flèches du slider. 0 = jamais, 1 = pc only, 2 = tout (pc et mobile)
 });
 ```
 

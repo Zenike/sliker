@@ -26,7 +26,7 @@ var defaults = {
 'bullets': 1, //affiche ou masque les puces du slider.
 'bullets_limit': 20, //limite de puces au délà de laquelle celles ci se transforme en un menu pages (ex: 7/22).
 'bullets_limit_mobile': 8, //identique à bullets_limit mais ne s'applique qu'en cas de mobile
-'arrows': 1, //affiche ou masque les flèches du slider.
+'arrows': 2, //affiche ou masque les flèches du slider. 0 = jamais, 1 = pc only, 2 = tout (pc et mobile)
 };
 
 // to avoid confusions, use "plugin" to reference the current instance of the object
@@ -95,7 +95,7 @@ plugin.init = function() {
 	}
 
 	//autocréation des flèches
-	if (mobile == false && plugin.settings.arrows == 1) {
+	if (mobile == false && plugin.settings.arrows == 1 || plugin.settings.arrows == 2) {
 		if($element.is("[data-arrow]")){
 			var icon = $element.attr("data-arrow");
 		}else{
