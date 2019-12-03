@@ -1,59 +1,59 @@
 # Sliker
-`sliker` est un plugin slider/slideshow écrit en `jQuery`.
+`sliker` is a web slider/slideshow written in `jQuery`.
 
-Demo ici (GitHub Page) :
+Demo here (GitHub Page) :
 ### <http://zenike.github.io/sliker/>
 
-# dépendances
-- `jQuery`: une version récente sans limitation précise
-- `Less`: le css de ce plugin est écrit en LESS, quelques variables de couleur devront être définies pour son bon fonctionnement.
-- `FontAwesome`: les flèches de navigation utilisent des icones FontAwesome. Il est possible de s'en passer (voir plus bas)
+# Dependencies
+- `jQuery`: compatible with all the versions of jQuery
+- `Less`: this plugin css is written in less. Some less variables need to be defined in order to make it work.
+- `FontAwesome`: the navigation arrows use FontAwesome icons by default. It is possible to not use it (by replacing the icons by your own files, as demonstrate further in this doc).
 
 # Installation
-1. récuperer les fichiers `sliker.less` et `sliker.js` à la racine du projet GitHUb
-2. inclure le fichier `sliker.js` dans la document avant la fermeture de la balise `</body>`
-3. lier et génerer un css à partir de `sliker.less`
+1. get the files `sliker.less` and `sliker.js` in the root of the GitHUb project or install the package via npm.
+2. include the `sliker.js` file in the end of the document. Before the `</body>` close tag.
+3. Use `sliker.less` to generate a css file.
 
-# Utilisation
-- créer la structure html suivant l'exemple (data-arrow et data-bullet sont optionnels)
+# Use
+- create the basic html structure following this example
 ```html
-<div id="slider_example" class="sliker" data-arrow="fa fa-caret" data-bullet="fa fa-star">
-	<div class="conteneur_strict">
-		<ul class="grand_slider">
-			<li><img src="./example.jpg"></li>
-			<li><img src="./example.jpg"></li>
-			<li><img src="./example.jpg"></li>
+<div id="slider_example" class="sliker">
+	<div class="sliker__window">
+		<ul class="sliker__track">
+			<li class="sliker__item"><img src="./example.jpg"></li>
+			<li class="sliker__item"><img src="./example.jpg"></li>
+			<li class="sliker__item"><img src="./example.jpg"></li>
 		</ul>
 	</div>
 </div>
 ```
-- déclarer le slider en javascript
+- declare the slider via jQuery
 ```javascript
 $('#slider_example').sliker({
-'nbr_li': 1, //nombre d'éléments qui défilent à chaque mouvement.
-'vitesse_auto': 3000, //temps entre deux mouvements automatiques.
-'vitesse': 0.5, //rapidité du mouvement (automatique ou manuel, même paramètre).
-'auto': 0, //activer (1) en utilisant vitesse_auto, désactiver (0) ou personnaliser ("custom"). Voir la rubrique Timer.
-'type': "none", //définit le role du slider dans le cas d'une liaison. Options: visualiseur, menu, none.
-'cible': "none", //spécifie l'id du slider compagnon dans le cas d'une liaison (ex: #slider_deux).
-'isolement': 0, //si actif, le slider est isolé par un fond noir transparent lors de son utilisation.
-'pc_only': 0, //si actif, le slider sera éffacé sur tous les dispositifs mobiles.
-'loop': 0, //si actif, le slider répetera son contenu indéfiniment, créant un rail infini.
-'liquid': 1, //si actif, l'élément prendra, de façon élastique, toute la zone du slider.
-'drag': 0, //permet la manipulation du slider aux doigts ou en cliquer/glisser à la souris.
-'creer_afficheur': 0, //crée automatiquement une zone avec l'image zoomée au dessus du slider.
-'fading_mode': 0, //remplace la transition en "déplacement de rail" par un fondu.
-'fading_type': 1, //mode 1: fondu blanc. mode 2: fondu enchainé entre deux images.
-'buffering_nbr': 1, //nombre d'image préchargé autour de l'image active. Nécessite l'utilisation de data-src au lieu de src.
-'fullscreen': 0, //affiche ou masque le bouton fullscreen.
-'bullets': 1, //affiche ou masque les puces du slider.
-'bullets_limit': 20, //limite de puces au délà de laquelle celles ci se transforme en un menu pages (ex: 7/22).
-'bullets_limit_mobile': 8, //identique à bullets_limit mais ne s'applique qu'en cas de mobile
-'arrows': 2, //affiche ou masque les flèches du slider. 0 = jamais, 1 = pc only, 2 = tout (pc et mobile)
+'nbr_li': 1, // number of elements to pass at each slider move event
+'vitesse_auto': 3000, // timer between two automatic movements
+'vitesse': 0.5, // speed of a slide movement (same parameter for the automatic move and the click event move)
+'auto': 0, // active (1) and use 'vitesse_auto' to control the timer, deactivate (0) or set to 'custom' (see the "Timer" section)
+'type': 'none', // define the role of the slider when linked with another one. Values : 'visualiseur', 'menu', 'none'
+'cible': 'none', // define the id of the linked slider if there is one (ex: '#slider_deux').
+'isolement': 0, // if used (1), the slider will be isolated by a transparent black background when used
+'pc_only': 0, // if used (1), the slider will be hidden on all the mobile devices
+'loop': 0, // if used (1), the slider will repeat itself to create an infinite loop
+'liquid': 1, // if used (1), each element (.sliker__item) will take the full width of the slider, in a responsive way
+'drag': 0, // if used (1), allow the slider to be moved by click-and-drag
+'creer_afficheur': 0, // if used (1), create dynamically a div on top of the slider with the zoomed picture in it
+'fading_mode': 0, // if used (1), replace the defaut transition (rail mode) by a fading
+'fading_type': 1, // only work when fading_mode is set to 1. When '1' : white fading. When '2' : cross-fading betwwen the pictures
+'buffering_nbr': 1, // number of pictures preloaded (before and after the active picture). Require the use of 'data-src' in place of 'src' on the img tags
+'fullscreen': 0, // if used (1), show a fullscreen button that allow the active picture to be zoomed in a popup
+'bullets': 1, // if used (1), show the navigation bullets under the slider
+'bullets_limit': 20, // only work when 'bullets' is set to 1. Limit the number of bullets to show before switching to the 'pages menu' display (ex: 7/22)
+'bullets_limit_mobile': 8, // identical to 'bullets_limit' but apply only on mobile devices
+'arrows': 2, // display or hide the navigation arrows. 0 = hidden, 1 = hidden on mobile, 2 = always show
 });
 ```
 
-# Personnalisation
+# Customization
 
 ## Couleurs
 Par défaut, le less de Slike chercher après la variable @theme et se sert de celle-ci pour coloriser ses éléments de navigation.
